@@ -10,4 +10,6 @@
  */
 public class test {
     String nom;
+    String keke;
+    String retraso;
 }
