@@ -9,5 +9,5 @@
  * @author ND17613
  */
 public class test {
-    
+    String nom;
 }
