@@ -1,14 +1,162 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <p:panel header="Cuadrante" style="margin-bottom:10px; background-color: #e9e9e9" >
+
+                <h:panelGrid columns="2" cellpadding="5" style="font-size: 14px">
+                    <p:row>
+                        <p:column style="font-weight: bold; font-size: 14px">A</p:column>
+                    </p:row>
+
+                    <p:column>
+                        <p:dataTable var="usuari" value="A" rows="7" >
+
+
+                            <p:column headerText="1">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="2">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="3">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="4">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="5">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="6">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="7">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="8">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="9">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="10">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+
+                            <p:column headerText="11">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="12">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="13">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="14">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="15">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="16">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="17">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="18">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="19">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="20">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+
+                            <p:column headerText="21">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="22">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="23">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="24">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="25">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="26">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="27">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="28">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="29">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="30">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:column headerText="31">
+                                <h:outputText value="#" style="font-weight: bold" />
+                            </p:column>
+                            <p:row>
+                                <p:column style="font-weight: bold; font-size: 14px">A</p:column>
+                            </p:row>
+                        </p:dataTable>
+                    </p:column>
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; font-size: 14px">B</p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; font-size: 14px">C</p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; font-size: 14px">D</p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; font-size: 14px">E</p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; font-size: 14px">F</p:column>
+                    </p:row>
+                </h:panelGrid>
+
+
+
+            </p:panel>
+        </h:form>
         <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+
+        <!--        <h:form>
+                    <p:panel header="Cuadrante" style="margin-bottom:10px; background-color: #e9e9e9" >
+                        <p:panelGrid style="margin-top:20px">
+                            <f:facet name="header">
+                                <p:row>
+                                    <p:column colspan="7">1995-96 NBA Playoffs</p:column>
+                                </p:row>
+                            </f:facet>
+                    </p:panel>
+                </h:form>-->
     </h:body>
 </html>
 
