@@ -68,11 +68,6 @@ public class QuadrantServei implements Serializable {
     public List<String> getLlist() {
         return llist;
     }
-
-    @Override
-    public String toString() {
-        return "QuadrantServei{" + "llist=" + llist + '}';
-    }
     
     
     
