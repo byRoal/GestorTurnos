@@ -24,30 +24,33 @@ import org.primefaces.util.ArrayUtils;
 @SessionScoped
 public class Tornservei implements Serializable {
 
+    private char[] tornA = {'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O'};
+    private char[] tornB = {'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R'};
+    private char[] tornC = {'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X'};
+    private char[] tornD = {'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N'};
+    private char[] tornE = {'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T'};
+    private char[] tornF = {'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M'};
+
+    private char[] seq1 = new char[366];
+    private char[] seq2 = new char[366];
+    private char[] seq3 = new char[366];
+    private char[] seq4 = new char[366];
+    private char[] seq5 = new char[366];
+    private char[] seq6 = new char[366];
+
     private List<Torn> torns;
-    private List<Torn> tornMod;
-    private int any=Calendar.getInstance().get(Calendar.YEAR);
+
+    private int any = Calendar.getInstance().get(Calendar.YEAR);
     private int diaTornComença;
 
     @PostConstruct
     public void init() {
         torns = new ArrayList(6);
-        tornMod = new ArrayList(6);
-        torns.add(new Torn(new char[]{'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O'}));
-        torns.add(new Torn(new char[]{'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R'}));
-        torns.add(new Torn(new char[]{'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X'}));
-        torns.add(new Torn(new char[]{'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N'}));
-        torns.add(new Torn(new char[]{'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T'}));
-        torns.add(new Torn(new char[]{'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M'}));
         torn1(any);
     }
 
     public List<Torn> getTorns() {
         return torns;
-    }
-
-    public List<Torn> getTornMod() {
-        return tornMod;
     }
 
     public int getAny() {
@@ -57,7 +60,7 @@ public class Tornservei implements Serializable {
     public void setAny(int any) {
         this.any = any;
         init();
-    }    
+    }
 
     public String torn1(int any) {
         GregorianCalendar anyInicial = new GregorianCalendar(2008, 0, 1);
@@ -69,79 +72,44 @@ public class Tornservei implements Serializable {
         long dies = (anyFinal.getTimeInMillis() - anyInicial.getTimeInMillis()) / (1000 * 3600 * 24);
 
         diaTornComença = (int) dies % 42;
-        
-        char[] tornA = torns.get(0).getSeq();
-        char[] tornA1 = Arrays.copyOfRange(tornA, diaTornComença, 42);
-        char[] tornA2 = Arrays.copyOfRange(tornA, 0, diaTornComença);
 
-        StringBuilder sb1 = new StringBuilder(42);
-        sb1.append(tornA1);
-        sb1.append(tornA2);
+        for (int i = 0; i < 366; i++) {
+            if (i == 59) {
+                if (anyTrespas.isLeapYear(any)) {
+                    seq1[i] = tornA[diaTornComença];
+                    seq2[i] = tornB[diaTornComença];
+                    seq3[i] = tornC[diaTornComença];
+                    seq4[i] = tornD[diaTornComença];
+                    seq5[i] = tornE[diaTornComença];
+                    seq6[i] = tornF[diaTornComença];
+                } else {
+                    seq1[i] = ' ';
+                    seq2[i] = ' ';
+                    seq3[i] = ' ';
+                    seq4[i] = ' ';
+                    seq5[i] = ' ';
+                    seq6[i] = ' ';
+                }
+            } else {
 
-        tornA = sb1.toString().toCharArray();
-
-        tornMod.add(new Torn(tornA));
-        
-        char[] tornB = torns.get(1).getSeq();
-        char[] tornB1 = Arrays.copyOfRange(tornB, diaTornComença, 42);
-        char[] tornB2 = Arrays.copyOfRange(tornB, 0, diaTornComença);
-        
-        StringBuilder sb2 = new StringBuilder(42);
-        sb2.append(tornB1);
-        sb2.append(tornB2);
-
-        tornB = sb2.toString().toCharArray();
-
-        tornMod.add(new Torn(tornB));
-        
-        char[] tornC = torns.get(2).getSeq();
-        char[] tornC1 = Arrays.copyOfRange(tornC, diaTornComença, 42);
-        char[] tornC2 = Arrays.copyOfRange(tornC, 0, diaTornComença);
-
-        StringBuilder sb3 = new StringBuilder(42);
-        sb3.append(tornC1);
-        sb3.append(tornC2);
-
-        tornC = sb3.toString().toCharArray();
-
-        tornMod.add(new Torn(tornC));
-        
-        char[] tornD = torns.get(3).getSeq();
-        char[] tornD1 = Arrays.copyOfRange(tornD, diaTornComença, 42);
-        char[] tornD2 = Arrays.copyOfRange(tornD, 0, diaTornComença);
-
-        StringBuilder sb4 = new StringBuilder(42);
-        sb4.append(tornD1);
-        sb4.append(tornD2);
-
-        tornD = sb4.toString().toCharArray();
-
-        tornMod.add(new Torn(tornD));
-        
-        char[] tornE = torns.get(4).getSeq();
-        char[] tornE1 = Arrays.copyOfRange(tornE, diaTornComença, 42);
-        char[] tornE2 = Arrays.copyOfRange(tornE, 0, diaTornComença);
-
-        StringBuilder sb5 = new StringBuilder(42);
-        sb5.append(tornE1);
-        sb5.append(tornE2);
-
-        tornE = sb5.toString().toCharArray();
-
-        tornMod.add(new Torn(tornE));
-        
-        char[] tornF = torns.get(5).getSeq();
-        char[] tornF1 = Arrays.copyOfRange(tornF, diaTornComença, 42);
-        char[] tornF2 = Arrays.copyOfRange(tornF, 0, diaTornComença);
-
-        StringBuilder sb6 = new StringBuilder(42);
-        sb6.append(tornF1);
-        sb6.append(tornF2);
-
-        tornF = sb6.toString().toCharArray();
-
-        tornMod.add(new Torn(tornF));
-        
+                seq1[i] = tornA[diaTornComença];
+                seq2[i] = tornB[diaTornComença];
+                seq3[i] = tornC[diaTornComença];
+                seq4[i] = tornD[diaTornComença];
+                seq5[i] = tornE[diaTornComença];
+                seq6[i] = tornF[diaTornComença];
+                diaTornComença++;
+                if (diaTornComença == 42) {
+                    diaTornComença = 0;
+                }
+            }
+        }
+        torns.add(new Torn(seq1));
+        torns.add(new Torn(seq2));
+        torns.add(new Torn(seq3));
+        torns.add(new Torn(seq4));
+        torns.add(new Torn(seq5));
+        torns.add(new Torn(seq6));
         return "index";
     }
 
