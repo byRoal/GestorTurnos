@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta name="HTML_Retention_Review_Frequency" content="" />
+        <meta name="HTML_Last_Reviewed_Date" content="" />
+        <meta name="HTML_Initial_Creation_Date" content="01 Jun 2004 09:23:16 -0400" />
+        <meta name="HTML_Record_Title_ID" content="72" />
+        <meta name="HTML_Information_Classification" content="DOW RESTRICTED" />
+        <meta name="HTML_Retention_Period_Start_Date" content="7/08/2015" />
+        <meta name="HTML_Content_Steward" content="Ferket M u762818" />
+        <meta name="Author" content="Ferket M u762818" />
+        <link REL="stylesheet" HREF="http://usmdlcdoww001.intranet.dow.com/common/dow/includes/default.css" TYPE="text/css" />
+        <link REL="stylesheet" HREF="http://usmdlcdoww001.intranet.dow.com/common/dow/includes/hdr_n_nav.css" TYPE="text/css" />
+        <title>Gestor de turnos - Dow</title>
+    </h:head>
+    <h:body onload="SetMenu()">
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td name="HeaderCell" id="HeaderCell" colspan="3"><a name="Top"></a>
+                    <IFRAME scrolling="no" width="100%" height="94" frameborder="0" marginheight="0" src="http://usmdlcdoww001.intranet.dow.com/common/dow/dowheader.htm"></IFRAME>
+                </td>
+            </tr>
+            <tr>
+                <td width="81%" valign="top" style="border: 0" colspan="2">
+
+                    <table name="SiteheaderTable" id="SiteheaderTable" width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td name="SiteName" id="SiteName" height="48" background="http://usmdlcdoww001.intranet.dow.com/common/images/bg_dgy_gradient.jpg" align="left"><p class="SiteHeader">GESTOR DE TURNOS</p></td>
+                            <td name="SiteGraphic" id="SiteGraphic" height="48" background="http://usmdlcdoww001.intranet.dow.com/common/images/bg_dgy_gradient.jpg" align="right" valign="bottom"></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td name="RightMarginCell" id="RightMarginCell" width="19%" rowspan="2"><img src="http://usmdlcdoww001.intranet.dow.com/common/images/rightspacer.gif" width="78" hspace="60" height="1" /><p /></td>
+            </tr>
+            <tr>
+                <td name="MenuCell" id="MenuCell" valign="top" bgcolor="DDDDDD" style="border: 0">                    
+                    <table name="Menu" id="Menu" border="0" width="100px" cellspacing="0" cellpadding="0" >
+                        <tr class="menuhead">
+                            <td class="menuheadcell">
+                               <p:commandLink action="index">
+                                    <h:outputText value="Home" />
+                               </p:commandLink></td>
+                        </tr>
+
+                    </table>
+                    <script type="text/javascript" src="http://usmdlcdoww001.intranet.dow.com/common/scripts/menu.js"></script>
+
+
+                </td>
+                <td class="Content" name="ContentCell" id="ContentCell" width="80%" valign="top">
+
+
+                    <ui:insert name="title">Bienvenido,</ui:insert>
+                    <ui:insert name="keyword"><p >Gestor de turnos </p></ui:insert>
+                    <ui:insert name="body"><p>&nbsp;</p><p>BODY</p></ui:insert>
+
+                    <script>
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else
+        {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "http://usmdlcdoww002.intranet.dow.com/common/components/userinfo/UserInfoXml.asp?UserID=me", false);
+        xmlhttp.send();
+        xmlDoc = xmlhttp.responseXML;
+        document.getElementById("welcome").innerHTML =
+                xmlDoc.getElementsByTagName("givenName")[0].childNodes[0].nodeValue + " " + xmlDoc.getElementsByTagName("sn")[0].childNodes[0].nodeValue;
+        var dowId = xmlDoc.getElementsByTagName("uid")[0].childNodes[0].nodeValue;
+        document.cookie = "dowid=" + dowId + ";";
+        var x = document.cookie;
+        window.alert(x);
+                    </script>
+                    <p></p>
+
+                    <p>&nbsp;</p>
+                </td>
+            </tr>
+        </table>
+    </h:body>
+</html>
+
