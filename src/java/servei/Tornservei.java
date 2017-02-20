@@ -7,14 +7,12 @@ package servei;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import org.primefaces.util.ArrayUtils;
 
 /**
  *
@@ -39,14 +37,15 @@ public class Tornservei implements Serializable {
     private char[] seq6 = new char[366];
 
     private List<Torn> torns;
+    private int any= Calendar.getInstance().get(Calendar.YEAR);
 
-    private int any = Calendar.getInstance().get(Calendar.YEAR);
+    
     private int diaTornComença;
 
     @PostConstruct
     public void init() {
-        torns = new ArrayList(6);
-        torn1(any);
+        torns = new ArrayList(6);        
+        //torn1(any);
     }
 
     public List<Torn> getTorns() {
@@ -69,9 +68,12 @@ public class Tornservei implements Serializable {
 
         anyFinal.set(any, 0, 1);
         //anyFinal.set(2017, 0, 1);
+        System.out.println("passa");
         long dies = (anyFinal.getTimeInMillis() - anyInicial.getTimeInMillis()) / (1000 * 3600 * 24);
+        System.out.println(dies +"---");
 
         diaTornComença = (int) dies % 42;
+        System.out.println(diaTornComença);
 
         for (int i = 0; i < 366; i++) {
             if (i == 59) {

@@ -12,7 +12,7 @@
             <p:panel header="Cuadrante" style="margin-bottom:10px; background-color: #e9e9e9" >
                 <h:panelGrid columns="2">
                     <p:inputText id="any" size="4" value="#{tornservei.any}"/>
-                    <p:commandButton value="Mostrar"   action="#"  /> 
+                    <p:commandButton value="Mostrar"   action="#{tornservei.torn1(tornservei.any)}"  ajax="false"/> 
                 </h:panelGrid>
                 <h:panelGrid columns="2">
                     <p:column>
