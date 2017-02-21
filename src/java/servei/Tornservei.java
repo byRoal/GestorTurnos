@@ -62,12 +62,12 @@ public class Tornservei implements Serializable {
     }
     public void torn2(int any1){
         torn1(any1);
-        any=any++;
+        any=any+1;
     }
     
     public void torn3(int any1){
         torn1(any1);
-        any=any--;
+        any=any-1;
     }
 
     public String torn1(int any) {
