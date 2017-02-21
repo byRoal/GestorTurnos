@@ -60,6 +60,15 @@ public class Tornservei implements Serializable {
         this.any = any;
         init();
     }
+    public void torn2(int any1){
+        torn1(any1);
+        any=any++;
+    }
+    
+    public void torn3(int any1){
+        torn1(any1);
+        any=any--;
+    }
 
     public String torn1(int any) {
         GregorianCalendar anyInicial = new GregorianCalendar(2008, 0, 1);

@@ -1,22 +1,1613 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./template_usuari.xhtml">
 
             <ui:define name="title">
-                title
+
             </ui:define>
 
             <ui:define name="keyword">
-                keyword
+
             </ui:define>
 
             <ui:define name="body">
-                body
+                <h:form>
+                    <p:panel header="Cuadrante" style="margin-bottom:10px; background-color: #e9e9e9" >
+                        <h:panelGrid id="tres" columns="2">                            
+                            <p:inputText size="4" value="#{tornservei.any}" />               
+                                                       
+                            <h:panelGrid columns="1">
+                                <p:row>
+                                    <p:commandButton action="#{tornservei.torn2(tornservei.any+1)}" icon="ui-icon-arrowthick-1-n"  ajax="false" update="@parent"/>
+                                </p:row>
+                                <p:row>
+                                    <p:commandButton action="#{tornservei.torn3(tornservei.any-1)}" icon="ui-icon-arrowthick-1-s" ajax="false" update="tres"/>
+                                </p:row>
+                            </h:panelGrid>
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> ENERO</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="enero">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[0]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[1]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[2]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[3]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[4]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[5]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[6]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[7]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[8]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[9]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[10]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[11]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[12]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[13]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[14]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[15]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[16]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[17]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[18]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[19]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[20]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[21]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[22]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[23]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[24]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[25]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[26]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[27]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[28]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[29]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="#{torns.seq[30]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> FEBRERO</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="febrero">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[31]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[32]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[33]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[34]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[35]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[36]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[37]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[38]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[39]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[40]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[41]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[42]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[43]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[44]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[45]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[46]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[47]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[48]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[49]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[50]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[51]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[52]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[53]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[54]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[55]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[56]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[57]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[58]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[59]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> MARZO</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="marzo">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[60]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[61]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[62]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[63]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[64]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[65]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[66]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[67]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[68]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[69]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[70]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[71]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[72]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[73]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[74]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[75]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[76]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[77]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[78]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[79]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[80]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[81]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[82]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[83]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[84]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[85]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[86]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[87]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[88]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[89]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="#{torns.seq[90]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> ABRIL</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="abril">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[91]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[92]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[93]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[94]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[95]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[96]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[97]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[98]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[99]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[100]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[101]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[102]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[103]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[104]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[105]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[106]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[107]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[108]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[109]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[110]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[111]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[112]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[113]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[114]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[115]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[116]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[117]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[118]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[119]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[120]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> MAYO</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="mayo">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[121]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[122]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[123]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[124]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[125]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[126]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[127]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[128]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[129]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[130]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[131]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[132]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[133]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[134]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[135]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[136]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[137]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[138]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[139]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[140]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[141]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[142]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[143]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[144]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[145]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[146]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[147]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[148]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[149]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[150]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="#{torns.seq[151]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> JUNIO</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="junio">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[152]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[153]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[154]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[155]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[156]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[157]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[158]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[159]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[160]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[161]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[162]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[163]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[164]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[165]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[166]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[167]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[168]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[169]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[170]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[171]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[172]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[173]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[174]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[175]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[176]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[177]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[178]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[179]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[180]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[181]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> JULIO</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="julio">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[182]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[183]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[184]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[185]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[186]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[187]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[188]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[189]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[190]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[191]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[192]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[193]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[194]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[195]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[196]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[197]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[198]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[199]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[200]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[201]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[202]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[203]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[204]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[205]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[206]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[207]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[208]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[209]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[210]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[211]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="#{torns.seq[212]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> AGOSTO</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="agosto">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[213]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[214]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[215]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[216]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[217]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[218]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[219]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[220]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[221]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[222]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[223]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[224]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[225]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[226]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[227]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[228]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[229]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[230]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[231]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[232]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[233]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[234]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[235]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[236]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[237]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[238]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[239]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[240]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[241]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[242]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="#{torns.seq[243]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> SETIEMBRE</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="setiembre">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[244]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[245]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[246]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[247]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[248]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[249]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[250]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[251]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[252]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[253]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[254]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[255]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[256]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[257]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[258]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[259]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[260]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[261]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[262]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[263]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[264]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[265]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[266]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[267]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[268]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[269]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[270]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[271]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[272]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[273]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> OCTUBRE</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="octubre">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[274]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[275]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[276]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[277]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[278]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[279]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[280]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[281]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[282]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[283]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[284]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[285]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[286]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[287]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[288]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[289]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[290]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[291]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[292]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[293]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[294]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[295]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[296]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[297]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[298]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[299]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[300]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[301]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[302]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[303]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="#{torns.seq[304]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> NOVIEMBRE</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="noviembre">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[305]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[306]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[307]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[308]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[309]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[310]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[311]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[312]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[313]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[314]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[315]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[316]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[317]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[318]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[319]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[320]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[321]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[322]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[323]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[324]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[325]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[326]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[327]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[328]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[329]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[330]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[331]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[332]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[333]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[334]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid>
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" ><p:outputLabel style="writing-mode: vertical-rl"> DICIEMBRE</p:outputLabel></p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="diciembre">
+                                    <p:column headerText="1">
+                                        <h:outputText value="#{torns.seq[335]}" />
+                                    </p:column>
+                                    <p:column headerText="2">
+                                        <h:outputText value="#{torns.seq[336]}" />
+                                    </p:column>
+                                    <p:column headerText="3">
+                                        <h:outputText value="#{torns.seq[337]}" />
+                                    </p:column>
+                                    <p:column headerText="4">
+                                        <h:outputText value="#{torns.seq[338]}" />
+                                    </p:column>
+                                    <p:column headerText="5">
+                                        <h:outputText value="#{torns.seq[339]}" />
+                                    </p:column>
+                                    <p:column headerText="6">
+                                        <h:outputText value="#{torns.seq[340]}" />
+                                    </p:column>
+                                    <p:column headerText="7">
+                                        <h:outputText value="#{torns.seq[341]}" />
+                                    </p:column>
+                                    <p:column headerText="8">
+                                        <h:outputText value="#{torns.seq[342]}" />
+                                    </p:column>
+                                    <p:column headerText="9">
+                                        <h:outputText value="#{torns.seq[343]}" />
+                                    </p:column>
+                                    <p:column headerText="10">
+                                        <h:outputText value="#{torns.seq[344]}" />
+                                    </p:column>
+                                    <p:column headerText="11">
+                                        <h:outputText value="#{torns.seq[345]}" />
+                                    </p:column>
+                                    <p:column headerText="12">
+                                        <h:outputText value="#{torns.seq[346]}" />
+                                    </p:column>
+                                    <p:column headerText="13">
+                                        <h:outputText value="#{torns.seq[347]}" />
+                                    </p:column>
+                                    <p:column headerText="14">
+                                        <h:outputText value="#{torns.seq[348]}" />
+                                    </p:column>
+                                    <p:column headerText="15">
+                                        <h:outputText value="#{torns.seq[349]}" />
+                                    </p:column>
+                                    <p:column headerText="16">
+                                        <h:outputText value="#{torns.seq[350]}" />
+                                    </p:column>
+                                    <p:column headerText="17">
+                                        <h:outputText value="#{torns.seq[351]}" />
+                                    </p:column>
+                                    <p:column headerText="18">
+                                        <h:outputText value="#{torns.seq[352]}" />
+                                    </p:column>
+                                    <p:column headerText="19">
+                                        <h:outputText value="#{torns.seq[353]}" />
+                                    </p:column>
+                                    <p:column headerText="20">
+                                        <h:outputText value="#{torns.seq[354]}" />
+                                    </p:column>
+                                    <p:column headerText="21">
+                                        <h:outputText value="#{torns.seq[355]}" />
+                                    </p:column>
+                                    <p:column headerText="22">
+                                        <h:outputText value="#{torns.seq[356]}" />
+                                    </p:column>
+                                    <p:column headerText="23">
+                                        <h:outputText value="#{torns.seq[357]}" />
+                                    </p:column>
+                                    <p:column headerText="24">
+                                        <h:outputText value="#{torns.seq[358]}" />
+                                    </p:column>
+                                    <p:column headerText="25">
+                                        <h:outputText value="#{torns.seq[359]}" />
+                                    </p:column>
+                                    <p:column headerText="26">
+                                        <h:outputText value="#{torns.seq[360]}" />
+                                    </p:column>
+                                    <p:column headerText="27">
+                                        <h:outputText value="#{torns.seq[361]}" />
+                                    </p:column>
+                                    <p:column headerText="28">
+                                        <h:outputText value="#{torns.seq[362]}" />
+                                    </p:column>
+                                    <p:column headerText="29">
+                                        <h:outputText value="#{torns.seq[363]}" />
+                                    </p:column>
+                                    <p:column headerText="30">
+                                        <h:outputText value="#{torns.seq[364]}" />
+                                    </p:column>
+                                    <p:column headerText="31">
+                                        <h:outputText value="#{torns.seq[365]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
             </ui:define>
 
         </ui:composition>
