@@ -36,15 +36,18 @@ public class Tornservei implements Serializable {
     private char[] seq5 = new char[366];
     private char[] seq6 = new char[366];
 
-    private List<Torn> torns;
-    private int any= Calendar.getInstance().get(Calendar.YEAR);
+    GregorianCalendar anyInicial = new GregorianCalendar(2008, 0, 1);
+    GregorianCalendar anyFinal = new GregorianCalendar();
+    GregorianCalendar anyTrespas = new GregorianCalendar();
 
-    
+    private List<Torn> torns;
+    private int any = Calendar.getInstance().get(Calendar.YEAR);
+
     private int diaTornComença;
 
     @PostConstruct
     public void init() {
-        torns = new ArrayList(6);        
+        torns = new ArrayList(6);
         //torn1(any);
     }
 
@@ -60,26 +63,24 @@ public class Tornservei implements Serializable {
         this.any = any;
         init();
     }
-    public void torn2(int any1){
+
+    public void torn2(int any1) {
         torn1(any1);
-        any=any+1;
+        any = any + 1;
     }
-    
-    public void torn3(int any1){
+
+    public void torn3(int any1) {
         torn1(any1);
-        any=any-1;
+        any = any - 1;
     }
 
     public String torn1(int any) {
-        GregorianCalendar anyInicial = new GregorianCalendar(2008, 0, 1);
-        GregorianCalendar anyFinal = new GregorianCalendar();
-        GregorianCalendar anyTrespas = new GregorianCalendar();
 
         anyFinal.set(any, 0, 1);
         //anyFinal.set(2017, 0, 1);
         System.out.println("passa");
         long dies = (anyFinal.getTimeInMillis() - anyInicial.getTimeInMillis()) / (1000 * 3600 * 24);
-        System.out.println(dies +"---");
+        System.out.println(dies + "---");
 
         diaTornComença = (int) dies % 42;
         System.out.println(diaTornComença);
@@ -122,6 +123,18 @@ public class Tornservei implements Serializable {
         torns.add(new Torn(seq5));
         torns.add(new Torn(seq6));
         return "index";
+    }
+
+    public String capSetmana(int dia, int mes) {
+        GregorianCalendar finde = new GregorianCalendar();
+        finde.set(any, mes, dia);
+        int day = finde.get(Calendar.DAY_OF_WEEK);
+        if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
+            return "vermell";
+        }else{
+            return "negre";
+        }
+
     }
 
 }
