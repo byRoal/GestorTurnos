@@ -12,6 +12,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -19,7 +20,7 @@ import javax.inject.Named;
  * @author nasty
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class Tornservei implements Serializable {
 
     private char[] tornA = {'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O'};
@@ -44,11 +45,15 @@ public class Tornservei implements Serializable {
     private int any = Calendar.getInstance().get(Calendar.YEAR);
 
     private int diaTornComença;
+    private boolean primer = true;
 
     @PostConstruct
     public void init() {
         torns = new ArrayList(6);
-        //torn1(any);
+        if (primer) {
+            torn1(any);
+            primer = false;
+        }
     }
 
     public List<Torn> getTorns() {
@@ -129,10 +134,15 @@ public class Tornservei implements Serializable {
         GregorianCalendar finde = new GregorianCalendar();
         finde.set(any, mes, dia);
         int day = finde.get(Calendar.DAY_OF_WEEK);
+        int month = finde.get(Calendar.DAY_OF_MONTH);
+        if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
+            return "negre";
+        } else {
         if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
             return "vermell";
-        }else{
+        } else {
             return "negre";
+            }
         }
 
     }

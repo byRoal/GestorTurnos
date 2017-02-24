@@ -9,7 +9,7 @@
         <link REL="stylesheet" HREF="vermell.css" TYPE="text/css" />
     </head>
 
-    <body>
+    <body onload="#{tornservei.torn1(tornservei.any)}">
 
         <ui:composition template="./template_usuari.xhtml">
 
@@ -27,18 +27,21 @@
                         <h:panelGrid  columns="2">                            
                             <p:inputText id="any" size="4" value="#{tornservei.any}" style="font-size: medium; font-weight: bold"> 
                                 <ajax listener="#{tornservei.any}" update="any" />
-                            </p:inputText>              
+                                <p:defaultCommand target="enter" />
+                            </p:inputText>          
 
-                            <h:panelGrid columns="1">
+                            <h:panelGrid>
                                 <p:row>
                                     <p:commandButton action="#{tornservei.torn2(tornservei.any+1)}" icon="ui-icon-arrowthick-1-n"  ajax="false" />
+                                </p:row>
+                                <p:row>
+                                    <p:commandButton id="enter" value="" action="#{tornservei.torn1(tornservei.any)}" ajax="false"/>
                                 </p:row>
                                 <p:row>
                                     <p:commandButton action="#{tornservei.torn3(tornservei.any-1)}" icon="ui-icon-arrowthick-1-s" ajax="false" />
                                 </p:row>
                             </h:panelGrid>
-
-                        </h:panelGrid>
+                        </h:panelGrid>                       
 
                         <h:panelGrid columns="2" >
                             <p:column>
@@ -74,7 +77,7 @@
                             </p:column>
                             <p:column>
                                 <p:dataTable var="torns" value="#{tornservei.torns}" style="text-align: center;">
-                                    <p:column headerText="1" style="font-weight: bold;;" styleClass="#{tornservei.capSetmana(1, 0)}">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 0)}">
                                         <h:outputText value="#{torns.seq[0]}" />
                                     </p:column>
                                     <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 0)}">
@@ -292,10 +295,10 @@
                                     <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 1)}">
                                         <h:outputText value="#{torns.seq[59]}" />
                                     </p:column>
-                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 1)}">
+                                    <p:column headerText="30" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
-                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 1)}">
+                                    <p:column headerText="31" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
                                 </p:dataTable>
@@ -557,7 +560,7 @@
                                     <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 3)}">
                                         <h:outputText value="#{torns.seq[120]}" />
                                     </p:column>
-                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 3)}">
+                                    <p:column headerText="31" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
                                 </p:dataTable>
@@ -819,7 +822,7 @@
                                     <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 5)}">
                                         <h:outputText value="#{torns.seq[181]}" />
                                     </p:column>
-                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 5)}">
+                                    <p:column headerText="31" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
                                 </p:dataTable>
@@ -1212,7 +1215,7 @@
                                     <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 8)}">
                                         <h:outputText value="#{torns.seq[273]}" />
                                     </p:column>
-                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 8)}">
+                                    <p:column headerText="31" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
                                 </p:dataTable>
@@ -1474,7 +1477,7 @@
                                     <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 10)}">
                                         <h:outputText value="#{torns.seq[334]}" />
                                     </p:column>
-                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 10)}">
+                                    <p:column headerText="31" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
                                 </p:dataTable>
@@ -1612,6 +1615,148 @@
                             </p:column>
                         </h:panelGrid>
                     </p:panel>                                        
+                </h:form>
+                <h:form>
+                    <p:panel header="Resumen dias y horas" style="margin-bottom:10px; background-color: #e9e9e9; font-size: 14px;" >
+                        <h:panelGrid columns="2" >
+                            <p:column>
+                                <p:panelGrid >
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>DIAS</p:column>                                            
+                                        </p:row>                                
+                                    </f:facet>
+                                     
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="" style="text-align: center;">
+                                    <p:column headerText="M" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="T" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="N" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="M+T+N+R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="DIAS TOT" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R F" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="X" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="O" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="Cursillos" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R Pres." style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h:panelGrid columns="2" >
+                            <p:column>
+                                <p:panelGrid >
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>HORAS</p:column>                                            
+                                        </p:row>                                
+                                    </f:facet>
+                                     
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="" style="text-align: center;">
+                                    <p:column headerText="M" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="T" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="N" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="M+T+N+R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="DIAS TOT" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R F" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="X" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="O" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="Cursillos" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R Pres." style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+                        
+                    </p:panel>
                 </h:form>
             </ui:define>
 
