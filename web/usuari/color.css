@@ -8,7 +8,8 @@ and open the template in the editor.
     Author     : ND17613
 */
 th.vermell{
-    color: red;
+    color: greenyellow;
+    background-color: red;
 }
 
 th.negre{
