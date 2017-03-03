@@ -8,12 +8,10 @@ and open the template in the editor.
     Author     : ND17613
 */
 th.vermell{
-    color: red !important;
+    color: red;
 }
 
-.hola{
-    background-color: blue;
-    color: yellow;
-    font-size: 35px;
+th.negre{
+    color: black;
 }
 

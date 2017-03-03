@@ -35,12 +35,13 @@ public class Tornservei implements Serializable {
     private char[] seq3 = new char[366];
     private char[] seq4 = new char[366];
     private char[] seq5 = new char[366];
-    private char[] seq6 = new char[366];
-
+    private char[] seq6 = new char[366];  
+    
     GregorianCalendar anyInicial = new GregorianCalendar(2008, 0, 1);
     GregorianCalendar anyFinal = new GregorianCalendar();
     GregorianCalendar anyTrespas = new GregorianCalendar();
 
+    private List<DiesTorns> diesTorns;
     private List<Torn> torns;
     private int any = Calendar.getInstance().get(Calendar.YEAR);
 
@@ -50,6 +51,7 @@ public class Tornservei implements Serializable {
     @PostConstruct
     public void init() {
         torns = new ArrayList(6);
+        diesTorns = new ArrayList(6);
         if (primer) {
             torn1(any);
             primer = false;
@@ -67,6 +69,10 @@ public class Tornservei implements Serializable {
     public void setAny(int any) {
         this.any = any;
         init();
+    }
+
+    public List<DiesTorns> getDiesTorns() {
+        return diesTorns;
     }
 
     public void torn2(int any1) {
@@ -137,14 +143,15 @@ public class Tornservei implements Serializable {
         int month = finde.get(Calendar.DAY_OF_MONTH);
         if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
             return "negre";
+        } else if(day == Calendar.SATURDAY || day == Calendar.SUNDAY){        
+//            System.out.println("vermell " +dia +" " +mes);
+            return "vermell ";
         } else {
-        if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
-            return "vermell";
-        } else {
+//            System.out.println("negre "  +dia +" " +mes);
             return "negre";
             }
         }
 
     }
 
-}
+
