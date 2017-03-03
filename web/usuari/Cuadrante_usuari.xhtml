@@ -1,0 +1,1768 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <!--<link REL="stylesheet" HREF="vermell.css" TYPE="text/css" />-->
+
+    </head>
+
+    <body>
+
+        <ui:composition template="./template_usuari.xhtml">
+
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                
+                <h:form>
+                    <p:panel header="Cuadrante" style="margin-bottom:10px; background-color: #e9e9e9; font-size: 14px;" >
+                        <h:panelGrid  columns="2">                            
+                            <p:inputText id="any" size="4" value="#{tornservei.any}" style="font-size: medium; font-weight: bold"> 
+                                <ajax listener="#{tornservei.any}" update="any" />
+                                <p:defaultCommand target="enter" />
+                            </p:inputText>          
+
+                            <h:panelGrid>
+                                <p:row>
+                                    <p:commandButton action="#{tornservei.torn2(tornservei.any+1)}" icon="ui-icon-arrowthick-1-n"  ajax="false" />
+                                </p:row>
+                                <p:row>
+                                    <p:commandButton id="enter" value="" action="#{tornservei.torn1(tornservei.any)}" ajax="false"/>
+                                </p:row>
+                                <p:row>
+                                    <p:commandButton action="#{tornservei.torn3(tornservei.any-1)}" icon="ui-icon-arrowthick-1-s" ajax="false" />
+                                </p:row>
+                            </h:panelGrid>
+                        </h:panelGrid>                       
+
+                        <h:panelGrid columns="2" >
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">ENERO</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" style="text-align: center;">
+                                    <p:column headerText="1" style="font-weight: bold; " styleClass="#{tornservei.capSetmana(1, 0)}">
+                                        <h:outputText value="#{torns.seq[0]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 0)}">
+                                        <h:outputText value="#{torns.seq[1]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 0)}">
+                                        <h:outputText value="#{torns.seq[2]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 0)}">
+                                        <h:outputText value="#{torns.seq[3]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 0)}">
+                                        <h:outputText value="#{torns.seq[4]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 0)}">
+                                        <h:outputText value="#{torns.seq[5]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 0)}">
+                                        <h:outputText value="#{torns.seq[6]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 0)}">
+                                        <h:outputText value="#{torns.seq[7]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 0)}">
+                                        <h:outputText value="#{torns.seq[8]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 0)}">
+                                        <h:outputText value="#{torns.seq[9]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 0)}">
+                                        <h:outputText value="#{torns.seq[10]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 0)}">
+                                        <h:outputText value="#{torns.seq[11]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 0)}">
+                                        <h:outputText value="#{torns.seq[12]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 0)}">
+                                        <h:outputText value="#{torns.seq[13]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 0)}">
+                                        <h:outputText value="#{torns.seq[14]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 0)}">
+                                        <h:outputText value="#{torns.seq[15]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 0)}">
+                                        <h:outputText value="#{torns.seq[16]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 0)}">
+                                        <h:outputText value="#{torns.seq[17]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 0)}">
+                                        <h:outputText value="#{torns.seq[18]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 0)}">
+                                        <h:outputText value="#{torns.seq[19]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 0)}">
+                                        <h:outputText value="#{torns.seq[20]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 0)}">
+                                        <h:outputText value="#{torns.seq[21]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 0)}">
+                                        <h:outputText value="#{torns.seq[22]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 0)}">
+                                        <h:outputText value="#{torns.seq[23]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 0)}">
+                                        <h:outputText value="#{torns.seq[24]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 0)}">
+                                        <h:outputText value="#{torns.seq[25]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 0)}">
+                                        <h:outputText value="#{torns.seq[26]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 0)}">
+                                        <h:outputText value="#{torns.seq[27]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 0)}">
+                                        <h:outputText value="#{torns.seq[28]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 0)}">
+                                        <h:outputText value="#{torns.seq[29]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 0)}">
+                                        <h:outputText value="#{torns.seq[30]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">FEBRERO</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}"  style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 1)}">
+                                        <h:outputText value="#{torns.seq[31]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 1)}">
+                                        <h:outputText value="#{torns.seq[32]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 1)}">
+                                        <h:outputText value="#{torns.seq[33]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 1)}">
+                                        <h:outputText value="#{torns.seq[34]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 1)}">
+                                        <h:outputText value="#{torns.seq[35]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 1)}">
+                                        <h:outputText value="#{torns.seq[36]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 1)}">
+                                        <h:outputText value="#{torns.seq[37]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 1)}">
+                                        <h:outputText value="#{torns.seq[38]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 1)}">
+                                        <h:outputText value="#{torns.seq[39]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 1)}">
+                                        <h:outputText value="#{torns.seq[40]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 1)}">
+                                        <h:outputText value="#{torns.seq[41]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 1)}">
+                                        <h:outputText value="#{torns.seq[42]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 1)}">
+                                        <h:outputText value="#{torns.seq[43]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 1)}">
+                                        <h:outputText value="#{torns.seq[44]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 1)}">
+                                        <h:outputText value="#{torns.seq[45]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 1)}">
+                                        <h:outputText value="#{torns.seq[46]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 1)}">
+                                        <h:outputText value="#{torns.seq[47]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 1)}">
+                                        <h:outputText value="#{torns.seq[48]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 1)}">
+                                        <h:outputText value="#{torns.seq[49]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 1)}">
+                                        <h:outputText value="#{torns.seq[50]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 1)}">
+                                        <h:outputText value="#{torns.seq[51]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 1)}">
+                                        <h:outputText value="#{torns.seq[52]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 1)}">
+                                        <h:outputText value="#{torns.seq[53]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 1)}">
+                                        <h:outputText value="#{torns.seq[54]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 1)}">
+                                        <h:outputText value="#{torns.seq[55]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 1)}">
+                                        <h:outputText value="#{torns.seq[56]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 1)}">
+                                        <h:outputText value="#{torns.seq[57]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 1)}">
+                                        <h:outputText value="#{torns.seq[58]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 1)}">
+                                        <h:outputText value="#{torns.seq[59]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row >
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">MARZO</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="marzo" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 2)}">
+                                        <h:outputText value="#{torns.seq[60]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 2)}">
+                                        <h:outputText value="#{torns.seq[61]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 2)}">
+                                        <h:outputText value="#{torns.seq[62]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 2)}">
+                                        <h:outputText value="#{torns.seq[63]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 2)}">
+                                        <h:outputText value="#{torns.seq[64]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 2)}">
+                                        <h:outputText value="#{torns.seq[65]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 2)}">
+                                        <h:outputText value="#{torns.seq[66]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 2)}">
+                                        <h:outputText value="#{torns.seq[67]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 2)}">
+                                        <h:outputText value="#{torns.seq[68]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 2)}">
+                                        <h:outputText value="#{torns.seq[69]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 2)}">
+                                        <h:outputText value="#{torns.seq[70]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 2)}">
+                                        <h:outputText value="#{torns.seq[71]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 2)}">
+                                        <h:outputText value="#{torns.seq[72]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 2)}">
+                                        <h:outputText value="#{torns.seq[73]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 2)}">
+                                        <h:outputText value="#{torns.seq[74]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 2)}">
+                                        <h:outputText value="#{torns.seq[75]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 2)}">
+                                        <h:outputText value="#{torns.seq[76]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 2)}">
+                                        <h:outputText value="#{torns.seq[77]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 2)}">
+                                        <h:outputText value="#{torns.seq[78]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 2)}">
+                                        <h:outputText value="#{torns.seq[79]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 2)}">
+                                        <h:outputText value="#{torns.seq[80]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 2)}">
+                                        <h:outputText value="#{torns.seq[81]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 2)}">
+                                        <h:outputText value="#{torns.seq[82]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 2)}">
+                                        <h:outputText value="#{torns.seq[83]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 2)}">
+                                        <h:outputText value="#{torns.seq[84]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 2)}">
+                                        <h:outputText value="#{torns.seq[85]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 2)}">
+                                        <h:outputText value="#{torns.seq[86]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 2)}">
+                                        <h:outputText value="#{torns.seq[87]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 2)}">
+                                        <h:outputText value="#{torns.seq[88]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 2)}">
+                                        <h:outputText value="#{torns.seq[89]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 2)}">
+                                        <h:outputText value="#{torns.seq[90]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">ABRIL</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="abril" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 3)}">
+                                        <h:outputText value="#{torns.seq[91]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 3)}">
+                                        <h:outputText value="#{torns.seq[92]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 3)}">
+                                        <h:outputText value="#{torns.seq[93]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 3)}">
+                                        <h:outputText value="#{torns.seq[94]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 3)}">
+                                        <h:outputText value="#{torns.seq[95]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 3)}">
+                                        <h:outputText value="#{torns.seq[96]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 3)}">
+                                        <h:outputText value="#{torns.seq[97]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 3)}">
+                                        <h:outputText value="#{torns.seq[98]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 3)}">
+                                        <h:outputText value="#{torns.seq[99]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 3)}">
+                                        <h:outputText value="#{torns.seq[100]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 3)}">
+                                        <h:outputText value="#{torns.seq[101]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 3)}">
+                                        <h:outputText value="#{torns.seq[102]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 3)}">
+                                        <h:outputText value="#{torns.seq[103]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 3)}">
+                                        <h:outputText value="#{torns.seq[104]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 3)}">
+                                        <h:outputText value="#{torns.seq[105]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 3)}">
+                                        <h:outputText value="#{torns.seq[106]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 3)}">
+                                        <h:outputText value="#{torns.seq[107]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 3)}">
+                                        <h:outputText value="#{torns.seq[108]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 3)}">
+                                        <h:outputText value="#{torns.seq[109]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 3)}">
+                                        <h:outputText value="#{torns.seq[110]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 3)}">
+                                        <h:outputText value="#{torns.seq[111]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 3)}">
+                                        <h:outputText value="#{torns.seq[112]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 3)}">
+                                        <h:outputText value="#{torns.seq[113]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 3)}">
+                                        <h:outputText value="#{torns.seq[114]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 3)}">
+                                        <h:outputText value="#{torns.seq[115]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 3)}">
+                                        <h:outputText value="#{torns.seq[116]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 3)}">
+                                        <h:outputText value="#{torns.seq[117]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 3)}">
+                                        <h:outputText value="#{torns.seq[118]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 3)}">
+                                        <h:outputText value="#{torns.seq[119]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 3)}">
+                                        <h:outputText value="#{torns.seq[120]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">MAYO</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="mayo" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 4)}">
+                                        <h:outputText value="#{torns.seq[121]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 4)}">
+                                        <h:outputText value="#{torns.seq[122]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 4)}">
+                                        <h:outputText value="#{torns.seq[123]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 4)}">
+                                        <h:outputText value="#{torns.seq[124]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 4)}">
+                                        <h:outputText value="#{torns.seq[125]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 4)}">
+                                        <h:outputText value="#{torns.seq[126]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 4)}">
+                                        <h:outputText value="#{torns.seq[127]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 4)}">
+                                        <h:outputText value="#{torns.seq[128]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 4)}">
+                                        <h:outputText value="#{torns.seq[129]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 4)}">
+                                        <h:outputText value="#{torns.seq[130]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 4)}">
+                                        <h:outputText value="#{torns.seq[131]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 4)}">
+                                        <h:outputText value="#{torns.seq[132]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 4)}">
+                                        <h:outputText value="#{torns.seq[133]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 4)}">
+                                        <h:outputText value="#{torns.seq[134]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 4)}">
+                                        <h:outputText value="#{torns.seq[135]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 4)}">
+                                        <h:outputText value="#{torns.seq[136]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 4)}">
+                                        <h:outputText value="#{torns.seq[137]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 4)}">
+                                        <h:outputText value="#{torns.seq[138]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 4)}">
+                                        <h:outputText value="#{torns.seq[139]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 4)}">
+                                        <h:outputText value="#{torns.seq[140]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 4)}">
+                                        <h:outputText value="#{torns.seq[141]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 4)}">
+                                        <h:outputText value="#{torns.seq[142]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 4)}">
+                                        <h:outputText value="#{torns.seq[143]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 4)}">
+                                        <h:outputText value="#{torns.seq[144]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 4)}">
+                                        <h:outputText value="#{torns.seq[145]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 4)}">
+                                        <h:outputText value="#{torns.seq[146]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 4)}">
+                                        <h:outputText value="#{torns.seq[147]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 4)}">
+                                        <h:outputText value="#{torns.seq[148]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 4)}">
+                                        <h:outputText value="#{torns.seq[149]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 4)}">
+                                        <h:outputText value="#{torns.seq[150]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 4)}">
+                                        <h:outputText value="#{torns.seq[151]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">JUNIO</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="junio" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 5)}">
+                                        <h:outputText value="#{torns.seq[152]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 5)}">
+                                        <h:outputText value="#{torns.seq[153]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 5)}">
+                                        <h:outputText value="#{torns.seq[154]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 5)}">
+                                        <h:outputText value="#{torns.seq[155]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 5)}">
+                                        <h:outputText value="#{torns.seq[156]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 5)}">
+                                        <h:outputText value="#{torns.seq[157]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 5)}">
+                                        <h:outputText value="#{torns.seq[158]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 5)}">
+                                        <h:outputText value="#{torns.seq[159]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 5)}">
+                                        <h:outputText value="#{torns.seq[160]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 5)}">
+                                        <h:outputText value="#{torns.seq[161]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 5)}">
+                                        <h:outputText value="#{torns.seq[162]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 5)}">
+                                        <h:outputText value="#{torns.seq[163]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 5)}">
+                                        <h:outputText value="#{torns.seq[164]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 5)}">
+                                        <h:outputText value="#{torns.seq[165]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 5)}">
+                                        <h:outputText value="#{torns.seq[166]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 5)}">
+                                        <h:outputText value="#{torns.seq[167]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 5)}">
+                                        <h:outputText value="#{torns.seq[168]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 5)}">
+                                        <h:outputText value="#{torns.seq[169]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 5)}">
+                                        <h:outputText value="#{torns.seq[170]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 5)}">
+                                        <h:outputText value="#{torns.seq[171]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 5)}">
+                                        <h:outputText value="#{torns.seq[172]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 5)}">
+                                        <h:outputText value="#{torns.seq[173]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 5)}">
+                                        <h:outputText value="#{torns.seq[174]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 5)}">
+                                        <h:outputText value="#{torns.seq[175]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 5)}">
+                                        <h:outputText value="#{torns.seq[176]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 5)}">
+                                        <h:outputText value="#{torns.seq[177]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 5)}">
+                                        <h:outputText value="#{torns.seq[178]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 5)}">
+                                        <h:outputText value="#{torns.seq[179]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 5)}">
+                                        <h:outputText value="#{torns.seq[180]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 5)}">
+                                        <h:outputText value="#{torns.seq[181]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">JULIO</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="julio" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 6)}">
+                                        <h:outputText value="#{torns.seq[182]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 6)}">
+                                        <h:outputText value="#{torns.seq[183]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 6)}">
+                                        <h:outputText value="#{torns.seq[184]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 6)}">
+                                        <h:outputText value="#{torns.seq[185]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 6)}">
+                                        <h:outputText value="#{torns.seq[186]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 6)}">
+                                        <h:outputText value="#{torns.seq[187]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 6)}">
+                                        <h:outputText value="#{torns.seq[188]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 6)}">
+                                        <h:outputText value="#{torns.seq[189]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 6)}">
+                                        <h:outputText value="#{torns.seq[190]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 6)}">
+                                        <h:outputText value="#{torns.seq[191]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 6)}">
+                                        <h:outputText value="#{torns.seq[192]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 6)}">
+                                        <h:outputText value="#{torns.seq[193]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 6)}">
+                                        <h:outputText value="#{torns.seq[194]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 6)}">
+                                        <h:outputText value="#{torns.seq[195]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 6)}">
+                                        <h:outputText value="#{torns.seq[196]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 6)}">
+                                        <h:outputText value="#{torns.seq[197]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 6)}">
+                                        <h:outputText value="#{torns.seq[198]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 6)}">
+                                        <h:outputText value="#{torns.seq[199]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 6)}">
+                                        <h:outputText value="#{torns.seq[200]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 6)}">
+                                        <h:outputText value="#{torns.seq[201]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 6)}">
+                                        <h:outputText value="#{torns.seq[202]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 6)}">
+                                        <h:outputText value="#{torns.seq[203]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 6)}">
+                                        <h:outputText value="#{torns.seq[204]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 6)}">
+                                        <h:outputText value="#{torns.seq[205]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 6)}">
+                                        <h:outputText value="#{torns.seq[206]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 6)}">
+                                        <h:outputText value="#{torns.seq[207]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 6)}">
+                                        <h:outputText value="#{torns.seq[208]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 6)}">
+                                        <h:outputText value="#{torns.seq[209]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 6)}">
+                                        <h:outputText value="#{torns.seq[210]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 6)}">
+                                        <h:outputText value="#{torns.seq[211]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 6)}">
+                                        <h:outputText value="#{torns.seq[212]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">AGOSTO</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="agosto" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 7)}">
+                                        <h:outputText value="#{torns.seq[213]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 7)}">
+                                        <h:outputText value="#{torns.seq[214]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 7)}">
+                                        <h:outputText value="#{torns.seq[215]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 7)}">
+                                        <h:outputText value="#{torns.seq[216]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 7)}">
+                                        <h:outputText value="#{torns.seq[217]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 7)}">
+                                        <h:outputText value="#{torns.seq[218]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 7)}">
+                                        <h:outputText value="#{torns.seq[219]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 7)}">
+                                        <h:outputText value="#{torns.seq[220]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 7)}">
+                                        <h:outputText value="#{torns.seq[221]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 7)}">
+                                        <h:outputText value="#{torns.seq[222]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 7)}">
+                                        <h:outputText value="#{torns.seq[223]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 7)}">
+                                        <h:outputText value="#{torns.seq[224]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 7)}">
+                                        <h:outputText value="#{torns.seq[225]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 7)}">
+                                        <h:outputText value="#{torns.seq[226]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 7)}">
+                                        <h:outputText value="#{torns.seq[227]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 7)}">
+                                        <h:outputText value="#{torns.seq[228]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 7)}">
+                                        <h:outputText value="#{torns.seq[229]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 7)}">
+                                        <h:outputText value="#{torns.seq[230]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 7)}">
+                                        <h:outputText value="#{torns.seq[231]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 7)}">
+                                        <h:outputText value="#{torns.seq[232]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 7)}">
+                                        <h:outputText value="#{torns.seq[233]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 7)}">
+                                        <h:outputText value="#{torns.seq[234]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 7)}">
+                                        <h:outputText value="#{torns.seq[235]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 7)}">
+                                        <h:outputText value="#{torns.seq[236]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 7)}">
+                                        <h:outputText value="#{torns.seq[237]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 7)}">
+                                        <h:outputText value="#{torns.seq[238]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 7)}">
+                                        <h:outputText value="#{torns.seq[239]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 7)}">
+                                        <h:outputText value="#{torns.seq[240]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 7)}">
+                                        <h:outputText value="#{torns.seq[241]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 7)}">
+                                        <h:outputText value="#{torns.seq[242]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 7)}">
+                                        <h:outputText value="#{torns.seq[243]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">SETIEMBRE</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="setiembre" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 8)}">
+                                        <h:outputText value="#{torns.seq[244]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 8)}">
+                                        <h:outputText value="#{torns.seq[245]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 8)}">
+                                        <h:outputText value="#{torns.seq[246]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 8)}">
+                                        <h:outputText value="#{torns.seq[247]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 8)}">
+                                        <h:outputText value="#{torns.seq[248]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 8)}">
+                                        <h:outputText value="#{torns.seq[249]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 8)}">
+                                        <h:outputText value="#{torns.seq[250]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 8)}">
+                                        <h:outputText value="#{torns.seq[251]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 8)}">
+                                        <h:outputText value="#{torns.seq[252]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 8)}">
+                                        <h:outputText value="#{torns.seq[253]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 8)}">
+                                        <h:outputText value="#{torns.seq[254]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 8)}">
+                                        <h:outputText value="#{torns.seq[255]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 8)}">
+                                        <h:outputText value="#{torns.seq[256]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 8)}">
+                                        <h:outputText value="#{torns.seq[257]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 8)}">
+                                        <h:outputText value="#{torns.seq[258]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 8)}">
+                                        <h:outputText value="#{torns.seq[259]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 8)}">
+                                        <h:outputText value="#{torns.seq[260]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 8)}">
+                                        <h:outputText value="#{torns.seq[261]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 8)}">
+                                        <h:outputText value="#{torns.seq[262]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 8)}">
+                                        <h:outputText value="#{torns.seq[263]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 8)}">
+                                        <h:outputText value="#{torns.seq[264]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 8)}">
+                                        <h:outputText value="#{torns.seq[265]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 8)}">
+                                        <h:outputText value="#{torns.seq[266]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 8)}">
+                                        <h:outputText value="#{torns.seq[267]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 8)}">
+                                        <h:outputText value="#{torns.seq[268]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 8)}">
+                                        <h:outputText value="#{torns.seq[269]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 8)}">
+                                        <h:outputText value="#{torns.seq[270]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 8)}">
+                                        <h:outputText value="#{torns.seq[271]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 8)}">
+                                        <h:outputText value="#{torns.seq[272]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 8)}">
+                                        <h:outputText value="#{torns.seq[273]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">OCTUBRE</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="octubre" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 9)}">
+                                        <h:outputText value="#{torns.seq[274]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 9)}">
+                                        <h:outputText value="#{torns.seq[275]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 9)}">
+                                        <h:outputText value="#{torns.seq[276]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 9)}">
+                                        <h:outputText value="#{torns.seq[277]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 9)}">
+                                        <h:outputText value="#{torns.seq[278]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 9)}">
+                                        <h:outputText value="#{torns.seq[279]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 9)}">
+                                        <h:outputText value="#{torns.seq[280]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 9)}">
+                                        <h:outputText value="#{torns.seq[281]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 9)}">
+                                        <h:outputText value="#{torns.seq[282]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 9)}">
+                                        <h:outputText value="#{torns.seq[283]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 9)}">
+                                        <h:outputText value="#{torns.seq[284]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 9)}">
+                                        <h:outputText value="#{torns.seq[285]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 9)}">
+                                        <h:outputText value="#{torns.seq[286]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 9)}">
+                                        <h:outputText value="#{torns.seq[287]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 9)}">
+                                        <h:outputText value="#{torns.seq[288]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 9)}">
+                                        <h:outputText value="#{torns.seq[289]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 9)}">
+                                        <h:outputText value="#{torns.seq[290]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 9)}">
+                                        <h:outputText value="#{torns.seq[291]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 9)}">
+                                        <h:outputText value="#{torns.seq[292]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 9)}">
+                                        <h:outputText value="#{torns.seq[293]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 9)}">
+                                        <h:outputText value="#{torns.seq[294]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 9)}">
+                                        <h:outputText value="#{torns.seq[295]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 9)}">
+                                        <h:outputText value="#{torns.seq[296]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 9)}">
+                                        <h:outputText value="#{torns.seq[297]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 9)}">
+                                        <h:outputText value="#{torns.seq[298]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 9)}">
+                                        <h:outputText value="#{torns.seq[299]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 9)}">
+                                        <h:outputText value="#{torns.seq[300]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 9)}">
+                                        <h:outputText value="#{torns.seq[301]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 9)}">
+                                        <h:outputText value="#{torns.seq[302]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 9)}">
+                                        <h:outputText value="#{torns.seq[303]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 9)}">
+                                        <h:outputText value="#{torns.seq[304]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">NOVIEMBRE</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="noviembre" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 10)}">
+                                        <h:outputText value="#{torns.seq[305]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 10)}">
+                                        <h:outputText value="#{torns.seq[306]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 10)}">
+                                        <h:outputText value="#{torns.seq[307]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 10)}">
+                                        <h:outputText value="#{torns.seq[308]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 10)}">
+                                        <h:outputText value="#{torns.seq[309]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 10)}">
+                                        <h:outputText value="#{torns.seq[310]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 10)}">
+                                        <h:outputText value="#{torns.seq[311]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 10)}">
+                                        <h:outputText value="#{torns.seq[312]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 10)}">
+                                        <h:outputText value="#{torns.seq[313]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 10)}">
+                                        <h:outputText value="#{torns.seq[314]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 10)}">
+                                        <h:outputText value="#{torns.seq[315]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 10)}">
+                                        <h:outputText value="#{torns.seq[316]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 10)}">
+                                        <h:outputText value="#{torns.seq[317]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 10)}">
+                                        <h:outputText value="#{torns.seq[318]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 10)}">
+                                        <h:outputText value="#{torns.seq[319]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 10)}">
+                                        <h:outputText value="#{torns.seq[320]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 10)}">
+                                        <h:outputText value="#{torns.seq[321]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 10)}">
+                                        <h:outputText value="#{torns.seq[322]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 10)}">
+                                        <h:outputText value="#{torns.seq[323]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 10)}">
+                                        <h:outputText value="#{torns.seq[324]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 10)}">
+                                        <h:outputText value="#{torns.seq[325]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 10)}">
+                                        <h:outputText value="#{torns.seq[326]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 10)}">
+                                        <h:outputText value="#{torns.seq[327]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 10)}">
+                                        <h:outputText value="#{torns.seq[328]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 10)}">
+                                        <h:outputText value="#{torns.seq[329]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 10)}">
+                                        <h:outputText value="#{torns.seq[330]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 10)}">
+                                        <h:outputText value="#{torns.seq[331]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 10)}">
+                                        <h:outputText value="#{torns.seq[332]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 10)}">
+                                        <h:outputText value="#{torns.seq[333]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 10)}">
+                                        <h:outputText value="#{torns.seq[334]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <p:column>
+                                <p:panelGrid style="width: 112px;">
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>&nbsp;</p:column>
+                                            <p:column>&nbsp;</p:column>
+                                        </p:row>                                
+                                    </f:facet>
+                                    <p:row>
+                                        <p:column rowspan="7" style="font-weight: bold; text-align: center; width: 130px">DICIEMBRE</p:column>
+                                    </p:row> 
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="#{tornservei.torns}" id="diciembre" style="text-align: center">
+                                    <p:column headerText="1" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(1, 11)}">
+                                        <h:outputText value="#{torns.seq[335]}" />
+                                    </p:column>
+                                    <p:column headerText="2" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(2, 11)}">
+                                        <h:outputText value="#{torns.seq[336]}" />
+                                    </p:column>
+                                    <p:column headerText="3" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(3, 11)}">
+                                        <h:outputText value="#{torns.seq[337]}" />
+                                    </p:column>
+                                    <p:column headerText="4" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(4, 11)}">
+                                        <h:outputText value="#{torns.seq[338]}" />
+                                    </p:column>
+                                    <p:column headerText="5" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(5, 11)}">
+                                        <h:outputText value="#{torns.seq[339]}" />
+                                    </p:column>
+                                    <p:column headerText="6" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(6, 11)}">
+                                        <h:outputText value="#{torns.seq[340]}" />
+                                    </p:column>
+                                    <p:column headerText="7" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(7, 11)}">
+                                        <h:outputText value="#{torns.seq[341]}" />
+                                    </p:column>
+                                    <p:column headerText="8" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(8, 11)}">
+                                        <h:outputText value="#{torns.seq[342]}" />
+                                    </p:column>
+                                    <p:column headerText="9" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(9, 11)}">
+                                        <h:outputText value="#{torns.seq[343]}" />
+                                    </p:column>
+                                    <p:column headerText="10" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(10, 11)}">
+                                        <h:outputText value="#{torns.seq[344]}" />
+                                    </p:column>
+                                    <p:column headerText="11" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(11, 11)}">
+                                        <h:outputText value="#{torns.seq[345]}" />
+                                    </p:column>
+                                    <p:column headerText="12" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(12, 11)}">
+                                        <h:outputText value="#{torns.seq[346]}" />
+                                    </p:column>
+                                    <p:column headerText="13" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(13, 11)}">
+                                        <h:outputText value="#{torns.seq[347]}" />
+                                    </p:column>
+                                    <p:column headerText="14" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(14, 11)}">
+                                        <h:outputText value="#{torns.seq[348]}" />
+                                    </p:column>
+                                    <p:column headerText="15" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(15, 11)}">
+                                        <h:outputText value="#{torns.seq[349]}" />
+                                    </p:column>
+                                    <p:column headerText="16" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(16, 11)}">
+                                        <h:outputText value="#{torns.seq[350]}" />
+                                    </p:column>
+                                    <p:column headerText="17" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(17, 11)}">
+                                        <h:outputText value="#{torns.seq[351]}" />
+                                    </p:column>
+                                    <p:column headerText="18" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(18, 11)}">
+                                        <h:outputText value="#{torns.seq[352]}" />
+                                    </p:column>
+                                    <p:column headerText="19" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(19, 11)}">
+                                        <h:outputText value="#{torns.seq[353]}" />
+                                    </p:column>
+                                    <p:column headerText="20" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(20, 11)}">
+                                        <h:outputText value="#{torns.seq[354]}" />
+                                    </p:column>
+                                    <p:column headerText="21" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(21, 11)}">
+                                        <h:outputText value="#{torns.seq[355]}" />
+                                    </p:column>
+                                    <p:column headerText="22" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(22, 11)}">
+                                        <h:outputText value="#{torns.seq[356]}" />
+                                    </p:column>
+                                    <p:column headerText="23" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(23, 11)}">
+                                        <h:outputText value="#{torns.seq[357]}" />
+                                    </p:column>
+                                    <p:column headerText="24" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(24, 11)}">
+                                        <h:outputText value="#{torns.seq[358]}" />
+                                    </p:column>
+                                    <p:column headerText="25" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(25, 11)}">
+                                        <h:outputText value="#{torns.seq[359]}" />
+                                    </p:column>
+                                    <p:column headerText="26" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(26, 11)}">
+                                        <h:outputText value="#{torns.seq[360]}" />
+                                    </p:column>
+                                    <p:column headerText="27" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(27, 11)}">
+                                        <h:outputText value="#{torns.seq[361]}" />
+                                    </p:column>
+                                    <p:column headerText="28" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(28, 11)}">
+                                        <h:outputText value="#{torns.seq[362]}" />
+                                    </p:column>
+                                    <p:column headerText="29" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(29, 11)}">
+                                        <h:outputText value="#{torns.seq[363]}" />
+                                    </p:column>
+                                    <p:column headerText="30" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(30, 11)}">
+                                        <h:outputText value="#{torns.seq[364]}" />
+                                    </p:column>
+                                    <p:column headerText="31" style="font-weight: bold;" styleClass="#{tornservei.capSetmana(31, 11)}">
+                                        <h:outputText value="#{torns.seq[365]}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+                    </p:panel>                                        
+                </h:form>
+                <h:form>
+                    <p:panel header="Resumen dias y horas" style="margin-bottom:10px; background-color: #e9e9e9; font-size: 14px;" >
+                        <h:panelGrid columns="2" >
+                            <p:column>
+                                <p:panelGrid >
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>DIAS</p:column>                                            
+                                        </p:row>                                
+                                    </f:facet>
+                                     
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="" style="text-align: center;">
+                                    <p:column headerText="M" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="T" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="N" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="M+T+N+R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="DIAS TOT" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R F" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="X" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="O" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="Cursillos" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R Pres." style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h:panelGrid columns="2" >
+                            <p:column>
+                                <p:panelGrid >
+                                    <f:facet name="header">                                               
+                                        <p:row>                            
+                                            <p:column>HORAS</p:column>                                            
+                                        </p:row>                                
+                                    </f:facet>
+                                     
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">A</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">B</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;  background-color: #ccccff; color: black">C</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">D</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">E</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold; background-color: #ccccff; color: black">F</p:column>
+                                    </p:row>
+                                </p:panelGrid>
+                            </p:column>
+                            <p:column>
+                                <p:dataTable var="torns" value="" style="text-align: center;">
+                                    <p:column headerText="M" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="T" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="N" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="M+T+N+R" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="DIAS TOT" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R F" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="X" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="O" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="Cursillos" style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                    <p:column headerText="R Pres." style="font-weight: bold;">
+                                        <h:outputText value="" />
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                        </h:panelGrid>
+                        
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
