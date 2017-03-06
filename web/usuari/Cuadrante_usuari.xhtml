@@ -1622,7 +1622,7 @@
                     <p:panel header="Resumen dias y horas" style="margin-bottom:10px; background-color: #e9e9e9; font-size: 14px;" >
                         <h:panelGrid columns="2" >
                             <p:column>
-                                <p:panelGrid >
+                                <p:panelGrid style="width: 58px">
                                     <f:facet name="header">                                               
                                         <p:row>                            
                                             <p:column>DIAS</p:column>                                            
@@ -1670,18 +1670,21 @@
                                         <h:outputText value="#{torns.diesTOT}" />
                                     </p:column>
                                     <p:column headerText="R F" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.diesRF}" />
                                     </p:column>
-                                    <p:column headerText="X" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                    <p:column headerText="X" style="font-weight: bold;" class="rosa">
+                                        <h:outputText value="#{torns.diesX}" />
                                     </p:column>
                                     <p:column headerText="O" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.diesO}" />
                                     </p:column>
                                     <p:column headerText="Cursillos" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.diesCurs}" />
                                     </p:column>
                                     <p:column headerText="R Pres." style="font-weight: bold;">
+                                        <h:outputText value="#{torns.diesRPres}" />
+                                    </p:column>
+                                    <p:column headerText="" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
                                 </p:dataTable>
@@ -1720,39 +1723,42 @@
                                 </p:panelGrid>
                             </p:column>
                             <p:column>
-                                <p:dataTable var="torns" value="" style="text-align: center;">
+                                <p:dataTable var="torns" value="#{tornServei.horesTorns}" style="text-align: center;">
                                     <p:column headerText="M" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.horesM}" />
                                     </p:column>
                                     <p:column headerText="T" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.horesT}" />
                                     </p:column>
                                     <p:column headerText="N" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.horesN}" />
                                     </p:column>
                                     <p:column headerText="R" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.horesR}" />
                                     </p:column>
-                                    <p:column headerText="M+T+N+R" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                    <p:column headerText="M+T+N+R+C" style="font-weight: bold;">
+                                        <h:outputText value="#{torns.horesMTNRC}" />
                                     </p:column>
-                                    <p:column headerText="DIAS TOT" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                    <p:column headerText="HORAS TOT" style="font-weight: bold;">
+                                        <h:outputText value="#{torns.horesTOT}" />
                                     </p:column>
-                                    <p:column headerText="R F" style="font-weight: bold;">
+                                    <p:column headerText="" style="font-weight: bold;">
                                         <h:outputText value="" />
                                     </p:column>
                                     <p:column headerText="X" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.horesX}" />
                                     </p:column>
                                     <p:column headerText="O" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.horesO}" />
                                     </p:column>
                                     <p:column headerText="Cursillos" style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                        <h:outputText value="#{torns.horesCurs}" />
                                     </p:column>
-                                    <p:column headerText="R Pres." style="font-weight: bold;">
-                                        <h:outputText value="" />
+                                    <p:column headerText="Vac" style="font-weight: bold;">
+                                        <h:outputText value="#{torns.horesVac}" />
+                                    </p:column>
+                                    <p:column headerText="Dif." style="font-weight: bold;">
+                                        <h:outputText value="#{torns.horesDif}" />
                                     </p:column>
                                 </p:dataTable>
                             </p:column>

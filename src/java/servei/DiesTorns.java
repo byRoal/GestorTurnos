@@ -22,14 +22,21 @@ public class DiesTorns {
     private int diesCurs;
     private int diesRPres;
 
-    public DiesTorns(int diesM, int diesT, int diesN, int diesR, int diesMTNR, int diesTOT) {
+    public DiesTorns(int diesM, int diesT, int diesN, int diesR, int diesMTNR, int diesTOT, int diesRF, int diesX, int diesO, int diesCurs, int diesRPres) {
         this.diesM = diesM;
         this.diesT = diesT;
         this.diesN = diesN;
         this.diesR = diesR;
         this.diesMTNR = diesMTNR;
         this.diesTOT = diesTOT;
+        this.diesRF = diesRF;
+        this.diesX = diesX;
+        this.diesO = diesO;
+        this.diesCurs = diesCurs;
+        this.diesRPres = diesRPres;
     }
+
+    
 
     public int getDiesM() {
         return diesM;
