@@ -144,7 +144,7 @@ public class Tornservei implements Serializable {
         if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
             return "negre";
         } else if(day == Calendar.SATURDAY || day == Calendar.SUNDAY){        
-//            System.out.println("vermell " +dia +" " +mes);
+            System.out.println("vermell " +dia +" " +mes);
             return "vermell ";
         } else {
 //            System.out.println("negre "  +dia +" " +mes);
