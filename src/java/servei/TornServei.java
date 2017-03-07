@@ -70,6 +70,7 @@ public class TornServei implements Serializable {
 
     public void setAny(int any) {
         this.any = any;
+        primer = false;
         init();
     }
 
@@ -82,13 +83,15 @@ public class TornServei implements Serializable {
     }
 
     public void torn2(int any1) {
-        torn1(any1);
         any = any + 1;
+        torn1(any1);
+
     }
 
     public void torn3(int any1) {
-        torn1(any1);
         any = any - 1;
+        torn1(any1);
+
     }
 
     public void torn1(int any) {
@@ -156,7 +159,7 @@ public class TornServei implements Serializable {
         if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
             return "negre";
         } else if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
-            System.out.println("vermell " +dia +" " +mes);
+            System.out.println("vermell " + dia + " " + mes);
             return "vermell ";
         } else {
 //            System.out.println("negre "  +dia +" " +mes);
@@ -166,8 +169,10 @@ public class TornServei implements Serializable {
 
     private void contaDies(char[] seq) {
         final int HORES = 8;
+        int horesAny = 1712;
+        int diesAny = 214;
         int diesM = 0, diesT = 0, diesN = 0, diesR = 0, diesMTNR = 0, diesTOT = 0, diesRF = 0, diesX = 0, diesO = 0, diesCurs = 10, diesRPres = 0;
-        int horesM = 0, horesT = 0, horesN = 0, horesR = 0, horesMTNRC = 0, horesTOT = 0, horesX = 0, horesO = 0, horesCurs = 0,horesVac=0, horesDif = 0;
+        int horesM = 0, horesT = 0, horesN = 0, horesR = 0, horesMTNRC = 0, horesTOT = 0, horesX = 0, horesO = 0, horesCurs = 0, horesVac = 0, horesDif = 0;
 
         for (int i = 0; i < seq.length; i++) {
             switch (seq[i]) {
@@ -192,16 +197,21 @@ public class TornServei implements Serializable {
             }
         }
 
+        diesTOT = diesM + diesT + diesN; 
         diesMTNR = diesM + diesT + diesN + diesR;
-        horesM=diesM*HORES;
-        horesT=diesT*HORES;
-        horesN=diesN*HORES;
-        horesR=diesR*HORES;
-        horesMTNRC=(diesMTNR+diesCurs)*HORES;
-        horesX=diesX*HORES;
-        horesO=diesO*HORES;
-        horesCurs=diesCurs*HORES;
-        
+        diesRF=diesMTNR-diesAny;
+        diesRPres=diesR-(diesRF+diesCurs);
+        horesM = diesM * HORES;
+        horesT = diesT * HORES;
+        horesN = diesN * HORES;
+        horesR = diesR * HORES;
+        horesMTNRC = (diesMTNR + diesCurs) * HORES;
+        horesX = diesX * HORES;
+        horesO = diesO * HORES;
+        horesCurs = diesCurs * HORES;
+        horesTOT=horesM+horesT+horesN;
+        horesVac=diesRPres*8;
+        horesDif=horesAny-(horesMTNRC-horesVac);
         
 
         diesTorns.add(new DiesTorns(diesM, diesT, diesN, diesR, diesMTNR, diesTOT, diesRF, diesX, diesO, diesCurs, diesRPres));

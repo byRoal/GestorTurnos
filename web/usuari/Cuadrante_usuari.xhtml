@@ -10,7 +10,7 @@
         <h:outputStylesheet name="css/color.css" />
     </h:head>
 
-    <body>
+    <h:body>
 
         <ui:composition template="./template_usuari.xhtml">
 
@@ -34,7 +34,7 @@
 
                             <h:panelGrid>
                                 <p:row>
-                                    <p:commandButton action="#{tornServei.torn2(tornServei.any+1)}" icon="ui-icon-arrowthick-1-n"  ajax="false" />
+                                    <p:commandButton action="#{tornServei.torn2(tornServei.any+1)}" icon="ui-icon-arrowthick-1-n" ajax="false"/>
                                 </p:row>
                                 <p:row>
                                     <p:commandButton id="enter" value="" action="#{tornServei.torn1(tornServei.any)}" ajax="false"/>
@@ -1672,7 +1672,7 @@
                                     <p:column headerText="R F" style="font-weight: bold;">
                                         <h:outputText value="#{torns.diesRF}" />
                                     </p:column>
-                                    <p:column headerText="X" style="font-weight: bold;" class="rosa">
+                                    <p:column headerText="X" style="font-weight: bold;">
                                         <h:outputText value="#{torns.diesX}" />
                                     </p:column>
                                     <p:column headerText="O" style="font-weight: bold;">
@@ -1770,5 +1770,5 @@
 
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>
