@@ -23,7 +23,7 @@
             </ui:define>
 
             <ui:define name="body">
-                
+
                 <h:form>
                     <p:panel header="Cuadrante" style="margin-bottom:10px; background-color: #e9e9e9; font-size: 14px;" >
                         <h:panelGrid  columns="2">                            
@@ -1620,15 +1620,38 @@
                 </h:form>
                 <h:form>
                     <p:panel header="Resumen dias y horas" style="margin-bottom:10px; background-color: #e9e9e9; font-size: 14px;" >
-                        <h:panelGrid columns="2" >
+                        <br/>
+                        <h:panelGrid columns="1" style="width: 1000px">
                             <p:column>
+                                <h:outputText value="&nbsp; DIAS AÑO &nbsp;&nbsp;&nbsp;" style="font-size: 12px; text-decoration: underline;font-weight: bold"/>
+                                <h:outputText value="#{tornServei.diesAny} &nbsp;" style="font-size: 12px;text-decoration: underline;font-weight: bold"/>
+                            </p:column>
+                        </h:panelGrid>
+                        <!--                        <h:panelGrid columns="3" style="width: 1000px">
+                                                    <p:column style="width: min-content">
+                                                        <h:outputText value="&nbsp; HORAS AÑO &nbsp;&nbsp;&nbsp;" style="font-size: 12px; text-decoration: underline;font-weight: bold"/>
+                                                        <h:outputText value="#{tornServei.horesAny} &nbsp;" style="font-size: 12px;text-decoration: underline;font-weight: bold"/>
+                                                    </p:column>
+                                                    
+                                                    <p:column style="width: max-content">
+                                                        &nbsp;
+                                                    </p:column>
+                                                    
+                                                    <p:column style="width: min-content">
+                                                        <h:outputText value="&nbsp; DIAS AÑO &nbsp;&nbsp;&nbsp;" style="font-size: 12px; text-decoration: underline;font-weight: bold"/>
+                                                        <h:outputText value="#{tornServei.diesAny} &nbsp;" style="font-size: 12px;text-decoration: underline;font-weight: bold"/>
+                                                    </p:column>
+                                                </h:panelGrid>-->
+                        <br/>
+                        <h:panelGrid columns="2" >
+                            <p:column>                                
                                 <p:panelGrid style="width: 58px">
                                     <f:facet name="header">                                               
                                         <p:row>                            
                                             <p:column>DIAS</p:column>                                            
                                         </p:row>                                
                                     </f:facet>
-                                     
+
                                     <p:row>
                                         <p:column style="font-weight: bold; text-align: center; background-color: #ccccff; color: black">A</p:column>
                                     </p:row>
@@ -1691,8 +1714,14 @@
                             </p:column>
                         </h:panelGrid>
                         <br/>
-                        <br/>
-                        <br/>
+                        <br/>                        
+                        <h:panelGrid columns="1" style="width: 1000px">
+                            <p:column>
+                                <h:outputText value="&nbsp; HORAS AÑO &nbsp;&nbsp;&nbsp;" style="font-size: 12px; text-decoration: underline;font-weight: bold"/>
+                                <h:outputText value="#{tornServei.horesAny} &nbsp;" style="font-size: 12px;text-decoration: underline;font-weight: bold"/>
+                            </p:column>
+                        </h:panelGrid>
+                        <br />
                         <h:panelGrid columns="2" >
                             <p:column>
                                 <p:panelGrid >
@@ -1701,7 +1730,7 @@
                                             <p:column>HORAS</p:column>                                            
                                         </p:row>                                
                                     </f:facet>
-                                     
+
                                     <p:row>
                                         <p:column style="font-weight: bold; text-align: center; background-color: #ccccff; color: black">A</p:column>
                                     </p:row>
@@ -1763,7 +1792,7 @@
                                 </p:dataTable>
                             </p:column>
                         </h:panelGrid>
-                        
+
                     </p:panel>
                 </h:form>
             </ui:define>

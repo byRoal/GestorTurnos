@@ -48,6 +48,8 @@ public class TornServei implements Serializable {
 
     private int diaTornComença;
     private boolean primer = true;
+    private int horesAny = 1712;
+    private int diesAny = horesAny / 8;
 
     @PostConstruct
     public void init() {
@@ -58,6 +60,14 @@ public class TornServei implements Serializable {
             torn1(any);
             primer = false;
         }
+    }
+
+    public int getHoresAny() {
+        return horesAny;
+    }
+
+    public int getDiesAny() {
+        return diesAny;
     }
 
     public List<Torn> getTorns() {
@@ -169,8 +179,6 @@ public class TornServei implements Serializable {
 
     private void contaDies(char[] seq) {
         final int HORES = 8;
-        int horesAny = 1712;
-        int diesAny = 214;
         int diesM = 0, diesT = 0, diesN = 0, diesR = 0, diesMTNR = 0, diesTOT = 0, diesRF = 0, diesX = 0, diesO = 0, diesCurs = 10, diesRPres = 0;
         int horesM = 0, horesT = 0, horesN = 0, horesR = 0, horesMTNRC = 0, horesTOT = 0, horesX = 0, horesO = 0, horesCurs = 0, horesVac = 0, horesDif = 0;
 
@@ -197,10 +205,10 @@ public class TornServei implements Serializable {
             }
         }
 
-        diesTOT = diesM + diesT + diesN; 
+        diesTOT = diesM + diesT + diesN;
         diesMTNR = diesM + diesT + diesN + diesR;
-        diesRF=diesMTNR-diesAny;
-        diesRPres=diesR-(diesRF+diesCurs);
+        diesRF = diesMTNR - diesAny;
+        diesRPres = diesR - (diesRF + diesCurs);
         horesM = diesM * HORES;
         horesT = diesT * HORES;
         horesN = diesN * HORES;
@@ -209,10 +217,9 @@ public class TornServei implements Serializable {
         horesX = diesX * HORES;
         horesO = diesO * HORES;
         horesCurs = diesCurs * HORES;
-        horesTOT=horesM+horesT+horesN;
-        horesVac=diesRPres*8;
-        horesDif=horesAny-(horesMTNRC-horesVac);
-        
+        horesTOT = horesM + horesT + horesN;
+        horesVac = diesRPres * 8;
+        horesDif = horesAny - (horesMTNRC - horesVac);
 
         diesTorns.add(new DiesTorns(diesM, diesT, diesN, diesR, diesMTNR, diesTOT, diesRF, diesX, diesO, diesCurs, diesRPres));
         horesTorns.add(new HoresTorns(horesM, horesT, horesN, horesR, horesMTNRC, horesTOT, horesX, horesO, horesCurs, horesVac, horesDif));
