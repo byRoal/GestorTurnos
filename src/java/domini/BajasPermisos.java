@@ -31,9 +31,9 @@ import javax.validation.constraints.Size;
 @Table(name = "bajas_permisos")
 @NamedQueries({
     @NamedQuery(name = "BajasPermisos.findAll", query = "SELECT b FROM BajasPermisos b")
-    , @NamedQuery(name = "BajasPermisos.findByPermisos", query = "SELECT b FROM BajasPermisos b WHERE b.permisos = :permisos")
+    , @NamedQuery(name = "BajasPermisos.findByIDbajaspermisos", query = "SELECT b FROM BajasPermisos b WHERE b.iDbajaspermisos = :iDbajaspermisos")
     , @NamedQuery(name = "BajasPermisos.findByBaja", query = "SELECT b FROM BajasPermisos b WHERE b.baja = :baja")
-    , @NamedQuery(name = "BajasPermisos.findByPermisos1", query = "SELECT b FROM BajasPermisos b WHERE b.permisos1 = :permisos1")
+    , @NamedQuery(name = "BajasPermisos.findByPermisos", query = "SELECT b FROM BajasPermisos b WHERE b.permisos = :permisos")
     , @NamedQuery(name = "BajasPermisos.findByDataInicio", query = "SELECT b FROM BajasPermisos b WHERE b.dataInicio = :dataInicio")
     , @NamedQuery(name = "BajasPermisos.findByDataFin", query = "SELECT b FROM BajasPermisos b WHERE b.dataFin = :dataFin")
     , @NamedQuery(name = "BajasPermisos.findByDiasTotales", query = "SELECT b FROM BajasPermisos b WHERE b.diasTotales = :diasTotales")
@@ -44,12 +44,12 @@ public class BajasPermisos implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "permisos")
-    private Integer permisos;
+    @Column(name = "IDbajas_permisos")
+    private Integer iDbajaspermisos;
     @Column(name = "baja")
     private Boolean baja;
     @Column(name = "permisos")
-    private Boolean permisos1;
+    private Boolean permisos;
     @Basic(optional = false)
     @NotNull
     @Column(name = "dataInicio")
@@ -74,23 +74,23 @@ public class BajasPermisos implements Serializable {
     public BajasPermisos() {
     }
 
-    public BajasPermisos(Integer permisos) {
-        this.permisos = permisos;
+    public BajasPermisos(Integer iDbajaspermisos) {
+        this.iDbajaspermisos = iDbajaspermisos;
     }
 
-    public BajasPermisos(Integer permisos, Date dataInicio, Date dataFin, int diasTotales) {
-        this.permisos = permisos;
+    public BajasPermisos(Integer iDbajaspermisos, Date dataInicio, Date dataFin, int diasTotales) {
+        this.iDbajaspermisos = iDbajaspermisos;
         this.dataInicio = dataInicio;
         this.dataFin = dataFin;
         this.diasTotales = diasTotales;
     }
 
-    public Integer getPermisos() {
-        return permisos;
+    public Integer getIDbajaspermisos() {
+        return iDbajaspermisos;
     }
 
-    public void setPermisos(Integer permisos) {
-        this.permisos = permisos;
+    public void setIDbajaspermisos(Integer iDbajaspermisos) {
+        this.iDbajaspermisos = iDbajaspermisos;
     }
 
     public Boolean getBaja() {
@@ -101,12 +101,12 @@ public class BajasPermisos implements Serializable {
         this.baja = baja;
     }
 
-    public Boolean getPermisos1() {
-        return permisos1;
+    public Boolean getPermisos() {
+        return permisos;
     }
 
-    public void setPermisos1(Boolean permisos1) {
-        this.permisos1 = permisos1;
+    public void setPermisos(Boolean permisos) {
+        this.permisos = permisos;
     }
 
     public Date getDataInicio() {
@@ -152,7 +152,7 @@ public class BajasPermisos implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (permisos != null ? permisos.hashCode() : 0);
+        hash += (iDbajaspermisos != null ? iDbajaspermisos.hashCode() : 0);
         return hash;
     }
 
@@ -163,7 +163,7 @@ public class BajasPermisos implements Serializable {
             return false;
         }
         BajasPermisos other = (BajasPermisos) object;
-        if ((this.permisos == null && other.permisos != null) || (this.permisos != null && !this.permisos.equals(other.permisos))) {
+        if ((this.iDbajaspermisos == null && other.iDbajaspermisos != null) || (this.iDbajaspermisos != null && !this.iDbajaspermisos.equals(other.iDbajaspermisos))) {
             return false;
         }
         return true;
@@ -171,7 +171,7 @@ public class BajasPermisos implements Serializable {
 
     @Override
     public String toString() {
-        return "domini.BajasPermisos[ permisos=" + permisos + " ]";
+        return "domini.BajasPermisos[ iDbajaspermisos=" + iDbajaspermisos + " ]";
     }
     
 }

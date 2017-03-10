@@ -33,19 +33,19 @@ import javax.persistence.TemporalType;
     , @NamedQuery(name = "Polivalencias.findByPanelZC", query = "SELECT p FROM Polivalencias p WHERE p.panelZC = :panelZC")
     , @NamedQuery(name = "Polivalencias.findByFechaPanelZC", query = "SELECT p FROM Polivalencias p WHERE p.fechaPanelZC = :fechaPanelZC")
     , @NamedQuery(name = "Polivalencias.findByA", query = "SELECT p FROM Polivalencias p WHERE p.a = :a")
+    , @NamedQuery(name = "Polivalencias.findByFecha111", query = "SELECT p FROM Polivalencias p WHERE p.fecha111 = :fecha111")
     , @NamedQuery(name = "Polivalencias.findByA1", query = "SELECT p FROM Polivalencias p WHERE p.a1 = :a1")
-    , @NamedQuery(name = "Polivalencias.findByA2", query = "SELECT p FROM Polivalencias p WHERE p.a2 = :a2")
     , @NamedQuery(name = "Polivalencias.findByFecha2", query = "SELECT p FROM Polivalencias p WHERE p.fecha2 = :fecha2")
-    , @NamedQuery(name = "Polivalencias.findByA3", query = "SELECT p FROM Polivalencias p WHERE p.a3 = :a3")
+    , @NamedQuery(name = "Polivalencias.findByA2", query = "SELECT p FROM Polivalencias p WHERE p.a2 = :a2")
     , @NamedQuery(name = "Polivalencias.findByFecha3", query = "SELECT p FROM Polivalencias p WHERE p.fecha3 = :fecha3")
-    , @NamedQuery(name = "Polivalencias.findByA4", query = "SELECT p FROM Polivalencias p WHERE p.a4 = :a4")
-    , @NamedQuery(name = "Polivalencias.findByA5", query = "SELECT p FROM Polivalencias p WHERE p.a5 = :a5")
+    , @NamedQuery(name = "Polivalencias.findByA3", query = "SELECT p FROM Polivalencias p WHERE p.a3 = :a3")
+    , @NamedQuery(name = "Polivalencias.findByFecha4510", query = "SELECT p FROM Polivalencias p WHERE p.fecha4510 = :fecha4510")
     , @NamedQuery(name = "Polivalencias.findByPanelZF", query = "SELECT p FROM Polivalencias p WHERE p.panelZF = :panelZF")
     , @NamedQuery(name = "Polivalencias.findByFechaPanelZF", query = "SELECT p FROM Polivalencias p WHERE p.fechaPanelZF = :fechaPanelZF")
-    , @NamedQuery(name = "Polivalencias.findByA6", query = "SELECT p FROM Polivalencias p WHERE p.a6 = :a6")
-    , @NamedQuery(name = "Polivalencias.findByA7", query = "SELECT p FROM Polivalencias p WHERE p.a7 = :a7")
-    , @NamedQuery(name = "Polivalencias.findByA8", query = "SELECT p FROM Polivalencias p WHERE p.a8 = :a8")
-    , @NamedQuery(name = "Polivalencias.findByA9", query = "SELECT p FROM Polivalencias p WHERE p.a9 = :a9")
+    , @NamedQuery(name = "Polivalencias.findByA4", query = "SELECT p FROM Polivalencias p WHERE p.a4 = :a4")
+    , @NamedQuery(name = "Polivalencias.findByFecha67", query = "SELECT p FROM Polivalencias p WHERE p.fecha67 = :fecha67")
+    , @NamedQuery(name = "Polivalencias.findByA5", query = "SELECT p FROM Polivalencias p WHERE p.a5 = :a5")
+    , @NamedQuery(name = "Polivalencias.findByFecha89", query = "SELECT p FROM Polivalencias p WHERE p.fecha89 = :fecha89")
     , @NamedQuery(name = "Polivalencias.findByPanelOcteno", query = "SELECT p FROM Polivalencias p WHERE p.panelOcteno = :panelOcteno")
     , @NamedQuery(name = "Polivalencias.findByFechaPanelOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaPanelOcteno = :fechaPanelOcteno")
     , @NamedQuery(name = "Polivalencias.findByCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.campoOcteno = :campoOcteno")
@@ -63,41 +63,41 @@ public class Polivalencias implements Serializable {
     @Column(name = "fechaPanelZC")
     @Temporal(TemporalType.DATE)
     private Date fechaPanelZC;
-    @Column(name = "11")
+    @Column(name = "1_11")
     private Boolean a;
-    @Column(name = "11")
+    @Column(name = "fecha1_11")
     @Temporal(TemporalType.DATE)
-    private Date a1;
+    private Date fecha111;
     @Column(name = "2")
-    private Boolean a2;
+    private Boolean a1;
     @Column(name = "fecha2")
     @Temporal(TemporalType.DATE)
     private Date fecha2;
     @Column(name = "3")
-    private Boolean a3;
+    private Boolean a2;
     @Column(name = "fecha3")
     @Temporal(TemporalType.DATE)
     private Date fecha3;
-    @Column(name = "10")
-    private Boolean a4;
-    @Column(name = "10")
+    @Column(name = "4_5_10")
+    private Boolean a3;
+    @Column(name = "fecha4_5_10")
     @Temporal(TemporalType.DATE)
-    private Date a5;
+    private Date fecha4510;
     @Column(name = "panelZF")
     private Boolean panelZF;
     @Column(name = "fechaPanelZF")
     @Temporal(TemporalType.DATE)
     private Date fechaPanelZF;
-    @Column(name = "7")
-    private Boolean a6;
-    @Column(name = "7")
+    @Column(name = "6_7")
+    private Boolean a4;
+    @Column(name = "fecha6_7")
     @Temporal(TemporalType.DATE)
-    private Date a7;
-    @Column(name = "9")
-    private Boolean a8;
-    @Column(name = "9")
+    private Date fecha67;
+    @Column(name = "8_9")
+    private Boolean a5;
+    @Column(name = "fecha8_9")
     @Temporal(TemporalType.DATE)
-    private Date a9;
+    private Date fecha89;
     @Column(name = "panelOcteno")
     private Boolean panelOcteno;
     @Column(name = "fechaPanelOcteno")
@@ -151,20 +151,20 @@ public class Polivalencias implements Serializable {
         this.a = a;
     }
 
-    public Date getA1() {
+    public Date getFecha111() {
+        return fecha111;
+    }
+
+    public void setFecha111(Date fecha111) {
+        this.fecha111 = fecha111;
+    }
+
+    public Boolean getA1() {
         return a1;
     }
 
-    public void setA1(Date a1) {
+    public void setA1(Boolean a1) {
         this.a1 = a1;
-    }
-
-    public Boolean getA2() {
-        return a2;
-    }
-
-    public void setA2(Boolean a2) {
-        this.a2 = a2;
     }
 
     public Date getFecha2() {
@@ -175,12 +175,12 @@ public class Polivalencias implements Serializable {
         this.fecha2 = fecha2;
     }
 
-    public Boolean getA3() {
-        return a3;
+    public Boolean getA2() {
+        return a2;
     }
 
-    public void setA3(Boolean a3) {
-        this.a3 = a3;
+    public void setA2(Boolean a2) {
+        this.a2 = a2;
     }
 
     public Date getFecha3() {
@@ -191,20 +191,20 @@ public class Polivalencias implements Serializable {
         this.fecha3 = fecha3;
     }
 
-    public Boolean getA4() {
-        return a4;
+    public Boolean getA3() {
+        return a3;
     }
 
-    public void setA4(Boolean a4) {
-        this.a4 = a4;
+    public void setA3(Boolean a3) {
+        this.a3 = a3;
     }
 
-    public Date getA5() {
-        return a5;
+    public Date getFecha4510() {
+        return fecha4510;
     }
 
-    public void setA5(Date a5) {
-        this.a5 = a5;
+    public void setFecha4510(Date fecha4510) {
+        this.fecha4510 = fecha4510;
     }
 
     public Boolean getPanelZF() {
@@ -223,36 +223,36 @@ public class Polivalencias implements Serializable {
         this.fechaPanelZF = fechaPanelZF;
     }
 
-    public Boolean getA6() {
-        return a6;
+    public Boolean getA4() {
+        return a4;
     }
 
-    public void setA6(Boolean a6) {
-        this.a6 = a6;
+    public void setA4(Boolean a4) {
+        this.a4 = a4;
     }
 
-    public Date getA7() {
-        return a7;
+    public Date getFecha67() {
+        return fecha67;
     }
 
-    public void setA7(Date a7) {
-        this.a7 = a7;
+    public void setFecha67(Date fecha67) {
+        this.fecha67 = fecha67;
     }
 
-    public Boolean getA8() {
-        return a8;
+    public Boolean getA5() {
+        return a5;
     }
 
-    public void setA8(Boolean a8) {
-        this.a8 = a8;
+    public void setA5(Boolean a5) {
+        this.a5 = a5;
     }
 
-    public Date getA9() {
-        return a9;
+    public Date getFecha89() {
+        return fecha89;
     }
 
-    public void setA9(Date a9) {
-        this.a9 = a9;
+    public void setFecha89(Date fecha89) {
+        this.fecha89 = fecha89;
     }
 
     public Boolean getPanelOcteno() {
