@@ -21,7 +21,7 @@ import javax.inject.Named;
  */
 @Named
 @ViewScoped
-public class Tornservei implements Serializable {
+public class TornServei implements Serializable {
 
     private char[] tornA = {'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O'};
     private char[] tornB = {'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R'};
@@ -35,27 +35,39 @@ public class Tornservei implements Serializable {
     private char[] seq3 = new char[366];
     private char[] seq4 = new char[366];
     private char[] seq5 = new char[366];
-    private char[] seq6 = new char[366];  
-    
+    private char[] seq6 = new char[366];
+
     GregorianCalendar anyInicial = new GregorianCalendar(2008, 0, 1);
     GregorianCalendar anyFinal = new GregorianCalendar();
     GregorianCalendar anyTrespas = new GregorianCalendar();
 
     private List<DiesTorns> diesTorns;
+    private List<HoresTorns> horesTorns;
     private List<Torn> torns;
     private int any = Calendar.getInstance().get(Calendar.YEAR);
 
     private int diaTornComença;
     private boolean primer = true;
+    private int horesAny = 1712;
+    private int diesAny = horesAny / 8;
 
     @PostConstruct
     public void init() {
         torns = new ArrayList(6);
         diesTorns = new ArrayList(6);
+        horesTorns = new ArrayList(6);
         if (primer) {
             torn1(any);
             primer = false;
         }
+    }
+
+    public int getHoresAny() {
+        return horesAny;
+    }
+
+    public int getDiesAny() {
+        return diesAny;
     }
 
     public List<Torn> getTorns() {
@@ -68,6 +80,7 @@ public class Tornservei implements Serializable {
 
     public void setAny(int any) {
         this.any = any;
+        primer = false;
         init();
     }
 
@@ -75,17 +88,23 @@ public class Tornservei implements Serializable {
         return diesTorns;
     }
 
+    public List<HoresTorns> getHoresTorns() {
+        return horesTorns;
+    }
+
     public void torn2(int any1) {
-        torn1(any1);
         any = any + 1;
+        torn1(any1);
+
     }
 
     public void torn3(int any1) {
-        torn1(any1);
         any = any - 1;
+        torn1(any1);
+
     }
 
-    public String torn1(int any) {
+    public void torn1(int any) {
 
         anyFinal.set(any, 0, 1);
         //anyFinal.set(2017, 0, 1);
@@ -133,7 +152,13 @@ public class Tornservei implements Serializable {
         torns.add(new Torn(seq4));
         torns.add(new Torn(seq5));
         torns.add(new Torn(seq6));
-        return "index";
+
+        contaDies(seq1);
+        contaDies(seq2);
+        contaDies(seq3);
+        contaDies(seq4);
+        contaDies(seq5);
+        contaDies(seq6);
     }
 
     public String capSetmana(int dia, int mes) {
@@ -143,15 +168,62 @@ public class Tornservei implements Serializable {
         int month = finde.get(Calendar.DAY_OF_MONTH);
         if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
             return "negre";
-        } else if(day == Calendar.SATURDAY || day == Calendar.SUNDAY){        
-//            System.out.println("vermell " +dia +" " +mes);
+        } else if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
+            System.out.println("vermell " + dia + " " + mes);
             return "vermell ";
         } else {
 //            System.out.println("negre "  +dia +" " +mes);
             return "negre";
+        }
+    }
+
+    private void contaDies(char[] seq) {
+        final int HORES = 8;
+        int diesM = 0, diesT = 0, diesN = 0, diesR = 0, diesMTNR = 0, diesTOT = 0, diesRF = 0, diesX = 0, diesO = 0, diesCurs = 10, diesRPres = 0;
+        int horesM = 0, horesT = 0, horesN = 0, horesR = 0, horesMTNRC = 0, horesTOT = 0, horesX = 0, horesO = 0, horesCurs = 0, horesVac = 0, horesDif = 0;
+
+        for (int i = 0; i < seq.length; i++) {
+            switch (seq[i]) {
+                case 'M':
+                    diesM = diesM + 1;
+                    break;
+                case 'T':
+                    diesT = diesT + 1;
+                    break;
+                case 'N':
+                    diesN = diesN + 1;
+                    break;
+                case 'R':
+                    diesR = diesR + 1;
+                    break;
+                case 'X':
+                    diesX = diesX + 1;
+                    break;
+                case 'O':
+                    diesO = diesO + 1;
+                    break;
             }
         }
 
+        diesTOT = diesM + diesT + diesN;
+        diesMTNR = diesM + diesT + diesN + diesR;
+        diesRF = diesMTNR - diesAny;
+        diesRPres = diesR - (diesRF + diesCurs);
+        horesM = diesM * HORES;
+        horesT = diesT * HORES;
+        horesN = diesN * HORES;
+        horesR = diesR * HORES;
+        horesMTNRC = (diesMTNR + diesCurs) * HORES;
+        horesX = diesX * HORES;
+        horesO = diesO * HORES;
+        horesCurs = diesCurs * HORES;
+        horesTOT = horesM + horesT + horesN;
+        horesVac = diesRPres * 8;
+        horesDif = horesAny - (horesMTNRC - horesVac);
+
+        diesTorns.add(new DiesTorns(diesM, diesT, diesN, diesR, diesMTNR, diesTOT, diesRF, diesX, diesO, diesCurs, diesRPres));
+        horesTorns.add(new HoresTorns(horesM, horesT, horesN, horesR, horesMTNRC, horesTOT, horesX, horesO, horesCurs, horesVac, horesDif));
+
     }
 
-
+}

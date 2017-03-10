@@ -7,11 +7,15 @@ and open the template in the editor.
     Created on : Feb 23, 2017, 3:29:09 PM
     Author     : ND17613
 */
-th.vermell{
-    color: red;
+th.vermell {
+    color: red !important;    
 }
 
 th.negre{
     color: black;
+}
+
+td.rosa {
+    background-color: #ff6666 !important;
 }
 
