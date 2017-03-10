@@ -1,24 +1,266 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./template_su.xhtml">
 
             <ui:define name="title">
-                title
+
             </ui:define>
 
             <ui:define name="keyword">
-                keyword
+
             </ui:define>
 
             <ui:define name="body">
-                body
-            </ui:define>
 
+                <p:panel style="margin-top:20px; width: 420px; margin: 0 auto">
+                    <f:facet name="header">
+                        <p:row>
+                            <!-- Nombre usuario -->
+                            <p:column>
+                                <p:inputText value=""/>
+                                <p:button value="Cambiar">
+
+                                </p:button>
+                            </p:column>
+                        </p:row>
+
+
+                    </f:facet>
+                    <p:panelGrid style=" text-align: center">
+                        <p:row>
+                            <p:column colspan="6" rowspan="8" style="font-weight: bold; width:140px "></p:column>
+
+                        </p:row>
+
+                        <p:row>
+
+                            <p:column  style="font-weight: bold;">Nombre: </p:column>
+                            <p:column  style="font-weight: bold;">Pepe</p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Apellido: </p:column>
+                            <p:column  style="font-weight: bold;">Garcia</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">I.D. </p:column>
+                            <p:column  style="font-weight: bold;">u378958</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Departamento: </p:column>
+                            <p:column  style="font-weight: bold;">LHC Tarragona Operations</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Supervisor: </p:column>
+                            <p:column  style="font-weight: bold;">Javier Rubio</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Turno: </p:column>
+                            <p:column  style="font-weight: bold;">CRACKER TURNO A</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">E-mail: </p:column>
+                            <p:column  style="font-weight: bold;">gtodira@dow.com</p:column>
+                        </p:row>
+
+
+                    </p:panelGrid>
+
+                    <p:panelGrid style="width: 399px; text-align: center">
+                        <p:row>
+                            <p:column colspan="8" styleClass="ui-widget-header">
+                                <p:spacer height="2"/>
+                            </p:column>
+                        </p:row> 
+                    </p:panelGrid>
+
+
+                    <p:dataTable var="pol" value="" >
+                        <p:column headerText="Polivalencias">
+                            <h:outputText value="" />
+                        </p:column>
+
+                        <p:column headerText="Fecha">
+                            <h:outputText value="" />
+                        </p:column>
+                    </p:dataTable>
+
+                </p:panel>
+
+                <p:panel style="width: 420px; margin: 0 auto">
+                    <p:panelGrid style="width: 400px; text-align: center">
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Telefono </p:column>
+                            <p:column  style="font-weight: bold;width: 150px">123456789</p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Movil </p:column>
+                            <p:column  style="font-weight: bold;width: 150px">987654321</p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Turno </p:column>
+                            <p:column  style="font-weight: bold;width: 150px">B</p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                </p:panel>
+
+                <p:panel style="width: 420px; margin: 0 auto">
+                    <p:panelGrid style="width: 400px; text-align: center">
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Fecha Incorporacion </p:column>
+                            <p:column  style="font-weight: bold;width: 150px">12/02/2004</p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Nuevo usuario"></p:button>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Años antiguedad </p:column>
+                            <p:column  style="font-weight: bold;width: 150px">13</p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar datos"></p:button>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Sexo </p:column>
+                            <p:column  style="font-weight: bold;width: 150px">Hombre</p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Guardar datos"></p:button>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                </p:panel>
+
+
+                <p:panel style="width: 420px; margin: 0 auto">
+                    <p:panelGrid style="width: 400px">
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Garcia, Pepe" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Turno D" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Tarragona Norte" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Polivalencias" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Dias 12 horas" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Dias baja" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Dias permiso" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Informe completo" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+
+
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Exportar a Excel" />
+                            </p:column>
+
+                            <p:column>
+
+                                <p:commandLink id="xls"  >  
+                                    <p:graphicImage value="resources/excel.png"/>  
+                                    <f:setPropertyActionListener value="true" target="" />  
+
+                                </p:commandLink>  
+                            </p:column>
+
+
+                        </p:row>
+
+
+
+
+                    </p:panelGrid>
+                </p:panel>
+
+
+
+
+            </ui:define>
         </ui:composition>
 
     </body>
