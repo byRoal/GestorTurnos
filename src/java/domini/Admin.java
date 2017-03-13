@@ -60,6 +60,13 @@ public class Admin implements Serializable {
         this.iDadmin = iDadmin;
     }
 
+    public Admin(String dowID, String nombre, String apellidos, Character nivelAdmin) {
+        this.dowID = dowID;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nivelAdmin = nivelAdmin;
+    }
+
     public Admin(Integer iDadmin, String dowID) {
         this.iDadmin = iDadmin;
         this.dowID = dowID;
