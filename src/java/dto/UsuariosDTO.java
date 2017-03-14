@@ -13,6 +13,8 @@ import domini.Vacaciones;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -29,7 +31,8 @@ public class UsuariosDTO {
     private String telefono;
     private String movil;
     private String email;
-    private String foto;
+    private StreamedContent foto;
+    private UploadedFile arxiuFoto;
     private String planta;
     private String departamento;
     private Character turno;
@@ -119,12 +122,20 @@ public class UsuariosDTO {
         this.email = email;
     }
 
-    public String getFoto() {
+    public StreamedContent getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(StreamedContent foto) {
         this.foto = foto;
+    }
+
+    public UploadedFile getArxiuFoto() {
+        return arxiuFoto;
+    }
+
+    public void setArxiuFoto(UploadedFile arxiuFoto) {
+        this.arxiuFoto = arxiuFoto;
     }
 
     public String getPlanta() {

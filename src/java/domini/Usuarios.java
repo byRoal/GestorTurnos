@@ -12,9 +12,11 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -44,7 +46,7 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Usuarios.findByDepartamento", query = "SELECT u FROM Usuarios u WHERE u.departamento = :departamento")
     , @NamedQuery(name = "Usuarios.findByTurno", query = "SELECT u FROM Usuarios u WHERE u.turno = :turno")
     , @NamedQuery(name = "Usuarios.findBySupervisor", query = "SELECT u FROM Usuarios u WHERE u.supervisor = :supervisor")
-    , @NamedQuery(name = "Usuarios.findByA\u00f1oIncorporacion", query = "SELECT u FROM Usuarios u WHERE u.a\u00f1oIncorporacion = :a\u00f1oIncorporacion")
+    , @NamedQuery(name = "Usuarios.findByAnoIncorporacion", query = "SELECT u FROM Usuarios u WHERE u.anoIncorporacion = :anoIncorporacion")
     , @NamedQuery(name = "Usuarios.findByVacacionesHechas", query = "SELECT u FROM Usuarios u WHERE u.vacacionesHechas = :vacacionesHechas")
     , @NamedQuery(name = "Usuarios.findByVacacionesPendientes", query = "SELECT u FROM Usuarios u WHERE u.vacacionesPendientes = :vacacionesPendientes")
     , @NamedQuery(name = "Usuarios.findByVacacionesArrastradas", query = "SELECT u FROM Usuarios u WHERE u.vacacionesArrastradas = :vacacionesArrastradas")})
@@ -82,9 +84,11 @@ public class Usuarios implements Serializable {
     @Size(max = 45)
     @Column(name = "email")
     private String email;
-    @Size(max = 100)
+    
     @Column(name = "foto")
-    private String foto;
+    @Lob
+    @Basic(fetch= FetchType.EAGER)
+    private byte[] foto;
     @Size(max = 45)
     @Column(name = "planta")
     private String planta;
@@ -97,7 +101,7 @@ public class Usuarios implements Serializable {
     @Column(name = "supervisor")
     private String supervisor;
     @Size(max = 45)
-    @Column(name = "a\u00f1oIncorporacion")
+    @Column(name = "anoIncorporacion")
     private String añoIncorporacion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "vacacionesHechas")
@@ -123,6 +127,27 @@ public class Usuarios implements Serializable {
     public Usuarios(Integer iDusuarios) {
         this.iDusuarios = iDusuarios;
     }
+
+    public Usuarios(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, byte[] foto, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+        this.dowID = dowID;
+        this.nombre = nombre;
+        this.sexo = sexo;
+        this.edad = edad;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.movil = movil;
+        this.email = email;
+        this.foto = foto;
+        this.planta = planta;
+        this.departamento = departamento;
+        this.turno = turno;
+        this.supervisor = supervisor;
+        this.añoIncorporacion = añoIncorporacion;
+        this.vacacionesHechas = vacacionesHechas;
+        this.vacacionesPendientes = vacacionesPendientes;
+        this.vacacionesArrastradas = vacacionesArrastradas;
+    }
+    
 
     public Usuarios(Integer iDusuarios, String dowID) {
         this.iDusuarios = iDusuarios;
@@ -201,11 +226,11 @@ public class Usuarios implements Serializable {
         this.email = email;
     }
 
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 

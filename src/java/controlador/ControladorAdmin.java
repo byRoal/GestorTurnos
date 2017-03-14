@@ -8,6 +8,7 @@ package controlador;
 import domini.Admin;
 import dto.AdminDTO;
 import java.io.Serializable;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -103,6 +104,10 @@ public class ControladorAdmin implements Serializable {
     public String eliminarAdmin(String dowId) {
         serveiAdmin.eliminarAdmin(dowId);
         return "index";
+    }
+    
+    public List<Admin> llistarAdmins(){
+        return serveiAdmin.llistarAdmins();
     }
 
 }
