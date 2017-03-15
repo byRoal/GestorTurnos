@@ -56,7 +56,7 @@ public class ControladorAdmin implements Serializable {
         adminActual.setNivelAdmin(null);
     }
 
-    private String crearAdmin(String dowId, String nom, String cognom, char nivellAdmin) {
+    public String crearAdmin(String dowId, String nom, String cognom, char nivellAdmin) {
         Admin a = new Admin(dowId, nom, cognom, nivellAdmin);
         serveiAdmin.inserirAdmin(a);
         return "index";
@@ -87,7 +87,7 @@ public class ControladorAdmin implements Serializable {
         return "Eliminacio";
     }
 
-    public void passarAdminDTOAdmin(Admin a) {
+    private void passarAdminDTOAdmin(Admin a) {
         a.setDowID(adminActual.getDowID());
         a.setNombre(adminActual.getNombre());
         a.setApellidos(adminActual.getApellidos());

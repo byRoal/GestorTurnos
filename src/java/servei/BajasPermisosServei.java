@@ -35,12 +35,12 @@ public class BajasPermisosServei implements Serializable{
     }
 
     @Transactional
-    public void eliminarBajasPermiso(int id) {
+    public void eliminarBajasPermiso(Object id) {
         bajasPermisosDao.remove(bajasPermisosDao.find(id));
     }
 
     @Transactional
-    public BajasPermisos obtenirBajasPermiso(int id) {
+    public BajasPermisos obtenirBajasPermiso(Object id) {
         return bajasPermisosDao.find(id);
     }
 

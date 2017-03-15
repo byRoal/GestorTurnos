@@ -35,12 +35,12 @@ public class ContabilidadhorasServei implements Serializable{
     }
 
     @Transactional
-    public void eliminarContabilidadhoras(String dowId) {
+    public void eliminarContabilidadhoras(Object dowId) {
         contabilidadhorasDao.remove(contabilidadhorasDao.find(dowId));
     }
 
     @Transactional
-    public Contabilidadhoras obtenirContabilidadhoras(String dowId) {
+    public Contabilidadhoras obtenirContabilidadhoras(Object dowId) {
         return contabilidadhorasDao.find(dowId);
     }
 

@@ -8,6 +8,7 @@ package servei;
 import dao.DiasfestivosFacade;
 import domini.Diasfestivos;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -35,12 +36,12 @@ public class DiasFestivosServei implements Serializable{
     }
 
     @Transactional
-    public void eliminarDiaFestivo(int id) {
+    public void eliminarDiaFestivo(Object id) {
         diasfestivosDao.remove(diasfestivosDao.find(id));
     }
 
     @Transactional
-    public Diasfestivos obtenirDiaFestivo(int id) {
+    public Diasfestivos obtenirDiaFestivo(Object id) {
         return diasfestivosDao.find(id);
     }
 

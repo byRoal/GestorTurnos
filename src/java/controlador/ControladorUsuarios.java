@@ -77,7 +77,7 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setTelefono(null);
     }
 
-    private String crearUsuari(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+    public String crearUsuari(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
         byte[] foto = null;
         try {
             foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
@@ -136,7 +136,7 @@ public class ControladorUsuarios implements Serializable {
         return "Eliminacio";
     }
     
-    public void passarUsuarioDTOUsuario(Usuarios u){
+    private void passarUsuarioDTOUsuario(Usuarios u){
         u.setAñoIncorporacion(usuariActual.getAñoIncorporacion());
         u.setDepartamento(usuariActual.getDepartamento());
         u.setDireccion(usuariActual.getDepartamento());
