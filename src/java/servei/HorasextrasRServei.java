@@ -35,12 +35,12 @@ public class HorasextrasRServei implements Serializable{
     }
     
     @Transactional
-    public void eliminarHorasextrasR(int id) {
+    public void eliminarHorasextrasR(Object id) {
         horasextrasRDao.remove(horasextrasRDao.find(id));
     }
     
     @Transactional
-    public HorasextrasR obtenirHorasextrasR(int id) {
+    public HorasextrasR obtenirHorasextrasR(Object id) {
         return horasextrasRDao.find(id);
     }
     

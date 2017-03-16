@@ -72,6 +72,13 @@ public class HorasextrasR implements Serializable {
         this.horasExtras = horasExtras;
     }
 
+    public HorasextrasR(Date dia, int horasExtras, String comentario, Usuarios dowID) {
+        this.dia = dia;
+        this.horasExtras = horasExtras;
+        this.comentario = comentario;
+        this.dowID = dowID;
+    }
+
     public Integer getIDHorasExtras() {
         return iDHorasExtras;
     }

@@ -18,7 +18,9 @@ public class PolivalenciasDTO {
     private Integer iDpolivalencias;
     private Boolean panelZC;
     private Date fechaPanelZC;
+    private Boolean a;
     private Date fecha111;
+    private Boolean a1;
     private Date fecha2;
     private Boolean a2;
     private Date fecha3;
@@ -35,7 +37,7 @@ public class PolivalenciasDTO {
     private Boolean campoOcteno;
     private Date fechaCampoOcteno;
     private Usuarios dowID;
-
+    
     public PolivalenciasDTO() {
     }
 
@@ -63,12 +65,28 @@ public class PolivalenciasDTO {
         this.fechaPanelZC = fechaPanelZC;
     }
 
+    public Boolean getA() {
+        return a;
+    }
+
+    public void setA(Boolean a) {
+        this.a = a;
+    }
+
     public Date getFecha111() {
         return fecha111;
     }
 
     public void setFecha111(Date fecha111) {
         this.fecha111 = fecha111;
+    }
+
+    public Boolean getA1() {
+        return a1;
+    }
+
+    public void setA1(Boolean a1) {
+        this.a1 = a1;
     }
 
     public Date getFecha2() {
@@ -198,5 +216,5 @@ public class PolivalenciasDTO {
     public void setDowID(Usuarios dowID) {
         this.dowID = dowID;
     }
-    
+
 }
