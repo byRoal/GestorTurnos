@@ -72,6 +72,14 @@ public class Vacaciones implements Serializable {
         this.iDVacaciones = iDVacaciones;
     }
 
+    public Vacaciones(Date fechaInicio, Date fechaFinal, BigDecimal diasTotales, Boolean medioDia, Usuarios dowID) {
+        this.fechaInicio = fechaInicio;
+        this.fechaFinal = fechaFinal;
+        this.diasTotales = diasTotales;
+        this.medioDia = medioDia;
+        this.dowID = dowID;
+    }
+
     public Vacaciones(Integer iDVacaciones, Date fechaInicio, Date fechaFinal, BigDecimal diasTotales) {
         this.iDVacaciones = iDVacaciones;
         this.fechaInicio = fechaInicio;

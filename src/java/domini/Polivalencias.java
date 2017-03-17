@@ -115,6 +115,30 @@ public class Polivalencias implements Serializable {
     public Polivalencias() {
     }
 
+    public Polivalencias(Boolean panelZC, Date fechaPanelZC, Boolean a, Date fecha111, Boolean a1, Date fecha2, Boolean a2, Date fecha3, Boolean a3, Date fecha4510, Boolean panelZF, Date fechaPanelZF, Boolean a4, Date fecha67, Boolean a5, Date fecha89, Boolean panelOcteno, Date fechaPanelOcteno, Boolean campoOcteno, Date fechaCampoOcteno, Usuarios dowID) {
+        this.panelZC = panelZC;
+        this.fechaPanelZC = fechaPanelZC;
+        this.a = a;
+        this.fecha111 = fecha111;
+        this.a1 = a1;
+        this.fecha2 = fecha2;
+        this.a2 = a2;
+        this.fecha3 = fecha3;
+        this.a3 = a3;
+        this.fecha4510 = fecha4510;
+        this.panelZF = panelZF;
+        this.fechaPanelZF = fechaPanelZF;
+        this.a4 = a4;
+        this.fecha67 = fecha67;
+        this.a5 = a5;
+        this.fecha89 = fecha89;
+        this.panelOcteno = panelOcteno;
+        this.fechaPanelOcteno = fechaPanelOcteno;
+        this.campoOcteno = campoOcteno;
+        this.fechaCampoOcteno = fechaCampoOcteno;
+        this.dowID = dowID;
+    }
+
     public Polivalencias(Integer iDpolivalencias) {
         this.iDpolivalencias = iDpolivalencias;
     }

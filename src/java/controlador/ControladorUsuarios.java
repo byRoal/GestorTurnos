@@ -110,6 +110,7 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setVacacionesArrastradas(u.getVacacionesArrastradas());
         usuariActual.setVacacionesPendientes(u.getVacacionesPendientes());
         usuariActual.setVacacionesHechas(u.getVacacionesHechas());
+        usuariActual.setiDusuarios(u.getIDusuarios());
 
         if (u.getFoto() != null) {
             ByteArrayInputStream fotoStream = new ByteArrayInputStream(u.getFoto());
@@ -119,18 +120,18 @@ public class ControladorUsuarios implements Serializable {
     }
 
     public String obtenirUsuarioConsulta(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
+        Usuarios u = serveiUsuarios.obtenirUsuario(1);
         passarUsuariosUsuariosDTO(u);
-        return "Consulta";
+        return "Ficha_su";
     }
     
-    public String obtenirUsuarioModificacio(String dowId) {
+    public String obtenirUsuarioModificacio(int dowId) {
         Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuariosUsuariosDTO(u);
         return "Modificacio";
     }
     
-    public String obtenirUsuarioEliminacio(String dowId) {
+    public String obtenirUsuarioEliminacio(int dowId) {
         Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuariosUsuariosDTO(u);
         return "Eliminacio";
@@ -153,16 +154,17 @@ public class ControladorUsuarios implements Serializable {
         u.setVacacionesArrastradas(usuariActual.getVacacionesArrastradas());
         u.setVacacionesHechas(usuariActual.getVacacionesHechas());
         u.setVacacionesPendientes(usuariActual.getVacacionesPendientes());
+        u.setIDusuarios(usuariActual.getiDusuarios());
     }
     
-    public String modificarUsuario(String dowId) {
+    public String modificarUsuario(int dowId) {
         Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuarioDTOUsuario(u);
         serveiUsuarios.modificarUsuario(u);
         return "index";
     }
     
-    public String eliminarUsuario(String dowId) {
+    public String eliminarUsuario(int dowId) {
         serveiUsuarios.eliminarUsuario(dowId);
         return "index";
     }

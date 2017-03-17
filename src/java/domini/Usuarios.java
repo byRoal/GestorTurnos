@@ -46,7 +46,7 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Usuarios.findByDepartamento", query = "SELECT u FROM Usuarios u WHERE u.departamento = :departamento")
     , @NamedQuery(name = "Usuarios.findByTurno", query = "SELECT u FROM Usuarios u WHERE u.turno = :turno")
     , @NamedQuery(name = "Usuarios.findBySupervisor", query = "SELECT u FROM Usuarios u WHERE u.supervisor = :supervisor")
-    , @NamedQuery(name = "Usuarios.findByAnoIncorporacion", query = "SELECT u FROM Usuarios u WHERE u.anoIncorporacion = :anoIncorporacion")
+    , @NamedQuery(name = "Usuarios.findByA\u00f1oIncorporacion", query = "SELECT u FROM Usuarios u WHERE u.a\u00f1oIncorporacion = :a\u00f1oIncorporacion")
     , @NamedQuery(name = "Usuarios.findByVacacionesHechas", query = "SELECT u FROM Usuarios u WHERE u.vacacionesHechas = :vacacionesHechas")
     , @NamedQuery(name = "Usuarios.findByVacacionesPendientes", query = "SELECT u FROM Usuarios u WHERE u.vacacionesPendientes = :vacacionesPendientes")
     , @NamedQuery(name = "Usuarios.findByVacacionesArrastradas", query = "SELECT u FROM Usuarios u WHERE u.vacacionesArrastradas = :vacacionesArrastradas")})
@@ -101,7 +101,7 @@ public class Usuarios implements Serializable {
     @Column(name = "supervisor")
     private String supervisor;
     @Size(max = 45)
-    @Column(name = "anoIncorporacion")
+    @Column(name = "a\u00f1oIncorporacion")
     private String añoIncorporacion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "vacacionesHechas")

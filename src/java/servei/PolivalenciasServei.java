@@ -33,12 +33,12 @@ public class PolivalenciasServei implements Serializable{
         polivalenciasDao.edit(entity);
     }
 
-    public void eliminarPolivalencia(String dowId) {
-        polivalenciasDao.remove(polivalenciasDao.find(dowId));
+    public void eliminarPolivalencia(Object id) {
+        polivalenciasDao.remove(polivalenciasDao.find(id));
     }
 
-    public Polivalencias obtenirPolivalencia(String dowId) {
-        return polivalenciasDao.find(dowId);
+    public Polivalencias obtenirPolivalencia(Object id) {
+        return polivalenciasDao.find(id);
     }
 
     public List<Polivalencias> llistarPolivalencia() {

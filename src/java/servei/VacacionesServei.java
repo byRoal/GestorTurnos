@@ -35,12 +35,12 @@ public class VacacionesServei implements Serializable{
     }
     
     @Transactional
-    public void eliminarVacaciones(int id) {
+    public void eliminarVacaciones(Object id) {
         vacacionesDao.remove(vacacionesDao.find(id));
     }
     
     @Transactional
-    public Vacaciones obtenirVacaciones(int id) {
+    public Vacaciones obtenirVacaciones(Object id) {
         return vacacionesDao.find(id);
     }
     
