@@ -26,7 +26,7 @@
                             <p:outputLabel for="c1" value="Consulta per DOW ID: " style="font-weight: bold"/>
                             <p:selectOneMenu id="c1" value="#{controladorUsuarios.usuariActual.dowID}" style="width:300px">
                                 <f:selectItem itemLabel="-- Selecciona un usuari --" itemValue="" noSelectionOption="true" />                    
-                                <f:selectItems value="#{controladorUsuarios.llistarUsuarios()}" var="usuari" itemLabel="#{usuari.nombre}" itemValue="#{usuari.IDusuarios}"/>
+                                <f:selectItems value="#{controladorUsuarios.llistarUsuarios()}" var="usuari" itemLabel="#{usuari.nombre}" itemValue="#{usuari.dowID}"/>
                             </p:selectOneMenu>
                             <p:commandButton value="Acceptar" action="#{controladorUsuarios.obtenirUsuarioConsulta(controladorUsuarios.usuariActual.dowID)}" icon="ui-icon-check" />
                         </h:panelGrid>

@@ -120,18 +120,18 @@ public class ControladorUsuarios implements Serializable {
     }
 
     public String obtenirUsuarioConsulta(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(1);
+        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuariosUsuariosDTO(u);
         return "Ficha_su";
     }
     
-    public String obtenirUsuarioModificacio(int dowId) {
+    public String obtenirUsuarioModificacio(String dowId) {
         Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuariosUsuariosDTO(u);
         return "Modificacio";
     }
     
-    public String obtenirUsuarioEliminacio(int dowId) {
+    public String obtenirUsuarioEliminacio(String dowId) {
         Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuariosUsuariosDTO(u);
         return "Eliminacio";
@@ -157,14 +157,14 @@ public class ControladorUsuarios implements Serializable {
         u.setIDusuarios(usuariActual.getiDusuarios());
     }
     
-    public String modificarUsuario(int dowId) {
+    public String modificarUsuario(String dowId) {
         Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuarioDTOUsuario(u);
         serveiUsuarios.modificarUsuario(u);
         return "index";
     }
     
-    public String eliminarUsuario(int dowId) {
+    public String eliminarUsuario(String dowId) {
         serveiUsuarios.eliminarUsuario(dowId);
         return "index";
     }
