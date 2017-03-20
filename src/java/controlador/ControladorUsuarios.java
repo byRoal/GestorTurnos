@@ -119,8 +119,8 @@ public class ControladorUsuarios implements Serializable {
         }
     }
 
-    public String obtenirUsuarioConsulta(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
+    public String obtenirUsuarioConsulta(int id) {
+        Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
         return "Ficha_su";
     }
