@@ -12,9 +12,11 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -82,9 +84,11 @@ public class Usuarios implements Serializable {
     @Size(max = 45)
     @Column(name = "email")
     private String email;
-    @Size(max = 100)
+    
     @Column(name = "foto")
-    private String foto;
+    @Lob
+    @Basic(fetch= FetchType.EAGER)
+    private byte[] foto;
     @Size(max = 45)
     @Column(name = "planta")
     private String planta;
@@ -123,6 +127,27 @@ public class Usuarios implements Serializable {
     public Usuarios(Integer iDusuarios) {
         this.iDusuarios = iDusuarios;
     }
+
+    public Usuarios(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, byte[] foto, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+        this.dowID = dowID;
+        this.nombre = nombre;
+        this.sexo = sexo;
+        this.edad = edad;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.movil = movil;
+        this.email = email;
+        this.foto = foto;
+        this.planta = planta;
+        this.departamento = departamento;
+        this.turno = turno;
+        this.supervisor = supervisor;
+        this.añoIncorporacion = añoIncorporacion;
+        this.vacacionesHechas = vacacionesHechas;
+        this.vacacionesPendientes = vacacionesPendientes;
+        this.vacacionesArrastradas = vacacionesArrastradas;
+    }
+    
 
     public Usuarios(Integer iDusuarios, String dowID) {
         this.iDusuarios = iDusuarios;
@@ -201,11 +226,11 @@ public class Usuarios implements Serializable {
         this.email = email;
     }
 
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 

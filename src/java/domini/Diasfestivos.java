@@ -61,6 +61,11 @@ public class Diasfestivos implements Serializable {
         this.fechaFestivo = fechaFestivo;
     }
 
+    public Diasfestivos(Date fechaFestivo, String comentario) {
+        this.fechaFestivo = fechaFestivo;
+        this.comentario = comentario;
+    }
+
     public Integer getIDDiasFestivos() {
         return iDDiasFestivos;
     }

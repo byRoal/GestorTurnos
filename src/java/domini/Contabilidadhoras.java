@@ -58,6 +58,14 @@ public class Contabilidadhoras implements Serializable {
         this.iDContabilidad = iDContabilidad;
     }
 
+    public Contabilidadhoras(Integer horasAnuales, Integer horasTurno, Integer horasRestantes, Integer horasHechas, Usuarios dowID) {
+        this.horasAnuales = horasAnuales;
+        this.horasTurno = horasTurno;
+        this.horasRestantes = horasRestantes;
+        this.horasHechas = horasHechas;
+        this.dowID = dowID;
+    }
+
     public Integer getIDContabilidad() {
         return iDContabilidad;
     }

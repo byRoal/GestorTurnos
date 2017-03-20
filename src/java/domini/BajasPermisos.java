@@ -78,11 +78,14 @@ public class BajasPermisos implements Serializable {
         this.iDbajaspermisos = iDbajaspermisos;
     }
 
-    public BajasPermisos(Integer iDbajaspermisos, Date dataInicio, Date dataFin, int diasTotales) {
-        this.iDbajaspermisos = iDbajaspermisos;
+    public BajasPermisos(Boolean baja, Boolean permisos, Date dataInicio, Date dataFin, int diasTotales, String comentario, Usuarios dowID) {
+        this.baja = baja;
+        this.permisos = permisos;
         this.dataInicio = dataInicio;
         this.dataFin = dataFin;
         this.diasTotales = diasTotales;
+        this.comentario = comentario;
+        this.dowID = dowID;
     }
 
     public Integer getIDbajaspermisos() {
