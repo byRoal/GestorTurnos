@@ -21,7 +21,7 @@ import javax.persistence.PersistenceContext;
 @SessionScoped
 public class PolivalenciasFacade extends AbstractFacade<Polivalencias> implements Serializable{
 
-    @PersistenceContext(unitName = "GestorTurnosPU2")
+    @PersistenceContext(unitName = "GestorTurnosPU")
     private EntityManager em;
 
     @Override

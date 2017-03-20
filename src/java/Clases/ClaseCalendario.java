@@ -37,15 +37,15 @@ public class ClaseCalendario implements Serializable {
         eventModel.addEvent(new DefaultScheduleEvent("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am()));
         eventModel.addEvent(new DefaultScheduleEvent("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm()));
          
-        lazyEventModel = new LazyScheduleModel() {
-             
+        lazyEventModel = new LazyScheduleModel() {             
             @Override
             public void loadEvents(Date start, Date end) {
                 Date random = getRandomDate(start);
-                addEvent(new DefaultScheduleEvent("Lazy Event 1", random, random));
+                Date avui = Calendar.getInstance().getTime();
+                addEvent(new DefaultScheduleEvent("Lazy Event 1", avui, avui));
                  
                 random = getRandomDate(start);
-                addEvent(new DefaultScheduleEvent("Lazy Event 2", random, random));
+                addEvent(new DefaultScheduleEvent("Festa", random, random));
             }   
         };
     }
