@@ -38,7 +38,7 @@
                         </p:row>
 
                         <p:row>
-                            <p:column  style="font-weight: bold;">I.D. </p:column>
+                            <p:column  style="font-weight: bold;">ID </p:column>
                             <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.dowID}" style="font-weight: bold"/></p:column>
                         </p:row>
                         <p:row>
@@ -63,20 +63,20 @@
 
                     <p:panelGrid style="width: 399px; text-align: center">
                         <p:row>
-                            <p:column colspan="8" styleClass="ui-widget-header">
+                            <p:column colspan="6" styleClass="ui-widget-header">
                                 <p:spacer height="2"/>
                             </p:column>
                         </p:row> 
                     </p:panelGrid>
 
 
-                    <p:dataTable var="pol" value="" >
+                    <p:dataTable var="pol" value="#{controladorPolivalencias.llistarPolivalencias()}" >
                         <p:column headerText="Polivalencias">
-                            <h:outputText value="" />
+                            <h:outputText value="#" />
                         </p:column>
 
                         <p:column headerText="Fecha">
-                            <h:outputText value="" />
+                            <h:outputText value="#" />
                         </p:column>
                     </p:dataTable>
 
@@ -141,7 +141,7 @@
                     <p:panelGrid style="width: 400px">
                         <p:row>
                             <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Garcia, Pepe" />
+                                <p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" />
                             </p:column>
 
                             <p:column style="width: 100px; text-align: center">
@@ -151,7 +151,7 @@
                         </p:row>
                         <p:row>
                             <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Turno" />
+                                <p:outputLabel value="Turno #{controladorUsuarios.usuariActual.turno}" />
                             </p:column>
 
                             <p:column style="width: 100px; text-align: center">
