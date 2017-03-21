@@ -49,7 +49,8 @@ import javax.persistence.TemporalType;
     , @NamedQuery(name = "Polivalencias.findByPanelOcteno", query = "SELECT p FROM Polivalencias p WHERE p.panelOcteno = :panelOcteno")
     , @NamedQuery(name = "Polivalencias.findByFechaPanelOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaPanelOcteno = :fechaPanelOcteno")
     , @NamedQuery(name = "Polivalencias.findByCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.campoOcteno = :campoOcteno")
-    , @NamedQuery(name = "Polivalencias.findByFechaCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaCampoOcteno = :fechaCampoOcteno")})
+    , @NamedQuery(name = "Polivalencias.findByFechaCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaCampoOcteno = :fechaCampoOcteno")
+    , @NamedQuery(name = "Polivalencias.findByDowID", query = "SELECT p FROM Polivalencias p WHERE p.dowID = :dowID")})
 public class Polivalencias implements Serializable {
 
     private static final long serialVersionUID = 1L;

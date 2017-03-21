@@ -49,5 +49,9 @@ public class UsuariosServei implements Serializable{
         return usuariosDao.findAll();
     }
     
+    @Transactional
+    public Usuarios obtenirUsuariDowId(Object id){
+        return  (Usuarios) usuariosDao.findByDowID(id);
+    }
     
 }

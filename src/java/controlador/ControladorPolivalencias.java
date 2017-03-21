@@ -9,6 +9,7 @@ import domini.Polivalencias;
 import domini.Usuarios;
 import dto.PolivalenciasDTO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
@@ -168,5 +169,19 @@ public class ControladorPolivalencias implements Serializable{
     
     public List<Polivalencias> llistarPolivalencias(){
         return serveiPolivalencias.llistarPolivalencia();
+    }
+    
+    public List<String[]> llistarPoli(String id){
+        List<String[]> llistaP = new ArrayList<>();
+        Usuarios usuari = serveiUsuarios.obtenirUsuariDowId(id);
+        Polivalencias p = serveiPolivalencias.obtenirPolivalenciaDowId(usuari);
+        
+        //FALTA ETIQUETA TRANSACTIONAL A SERVEIPOLIVALENCIES.OBTENIRPERDOWID
+        
+        //if(p.getA()==true){
+            llistaP.add(new String[]{"1/11","1"});
+        //}
+        
+        return llistaP;
     }
 }

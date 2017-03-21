@@ -29,19 +29,28 @@ public class PolivalenciasServei implements Serializable{
         polivalenciasDao.create(entity);
     }
 
+    @Transactional
     public void modificarPolivalencia(Polivalencias entity) {
         polivalenciasDao.edit(entity);
     }
 
+    @Transactional
     public void eliminarPolivalencia(Object id) {
         polivalenciasDao.remove(polivalenciasDao.find(id));
     }
 
+    @Transactional
     public Polivalencias obtenirPolivalencia(Object id) {
         return polivalenciasDao.find(id);
     }
 
+    @Transactional
     public List<Polivalencias> llistarPolivalencia() {
         return polivalenciasDao.findAll();
+    }
+  
+    //@Transactional
+    public Polivalencias obtenirPolivalenciaDowId(Object id){
+        return (Polivalencias) polivalenciasDao.findByDowID(id);
     }
 }

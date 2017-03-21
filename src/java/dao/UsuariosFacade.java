@@ -33,8 +33,8 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Serializ
         super(Usuarios.class);
     }
     
-    public Usuarios findByDowID(String dowId){
-        return (Usuarios) getEntityManager().createNamedQuery("Usuarios.findByDowID").setParameter("dowId", dowId).getSingleResult();
+    public Object findByDowID(Object dowID){
+        return getEntityManager().createNamedQuery("Usuarios.findByDowID").setParameter("dowID", dowID ).getSingleResult();
     }
     
 }

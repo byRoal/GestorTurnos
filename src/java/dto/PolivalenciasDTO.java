@@ -7,6 +7,7 @@ package dto;
 
 import domini.Usuarios;
 import java.util.Date;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 
 /**
@@ -37,6 +38,7 @@ public class PolivalenciasDTO {
     private Boolean campoOcteno;
     private Date fechaCampoOcteno;
     private Usuarios dowID;
+    private List<String[]> llistaP;
     
     public PolivalenciasDTO() {
     }
