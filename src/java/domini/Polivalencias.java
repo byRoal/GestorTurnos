@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,7 +51,7 @@ import javax.persistence.TemporalType;
     , @NamedQuery(name = "Polivalencias.findByFechaPanelOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaPanelOcteno = :fechaPanelOcteno")
     , @NamedQuery(name = "Polivalencias.findByCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.campoOcteno = :campoOcteno")
     , @NamedQuery(name = "Polivalencias.findByFechaCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaCampoOcteno = :fechaCampoOcteno")
-    , @NamedQuery(name = "Polivalencias.findByDowID", query = "SELECT p FROM Polivalencias p WHERE p.dowID = :dowID")})
+    , @NamedQuery(name = "Polivalencias.findByDowID", query = "SELECT p FROM Polivalencias p WHERE p.dowID.iDusuarios = :id ")})
 public class Polivalencias implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -110,7 +111,7 @@ public class Polivalencias implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaCampoOcteno;
     @JoinColumn(name = "dowID", referencedColumnName = "dowID")
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch=FetchType.LAZY, optional = false)
     private Usuarios dowID;
 
     public Polivalencias() {

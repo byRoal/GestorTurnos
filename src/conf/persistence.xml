@@ -5,10 +5,10 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
-<!--  <persistence-unit name="GestorTurnosPU2" transaction-type="JTA">
+  <persistence-unit name="GestorTurnosPU2" transaction-type="JTA">
     <jta-data-source>java:app/GestorTurnosDS2</jta-data-source>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
-  </persistence-unit>-->
+  </persistence-unit>
 </persistence>

@@ -24,13 +24,14 @@ import servei.UsuariosServei;
  */
 @Named
 @SessionScoped
-public class ControladorPolivalencias implements Serializable{
+public class ControladorPolivalencias implements Serializable {
+
     @Inject
     private PolivalenciasServei serveiPolivalencias;
-    
+
     @Inject
     private PolivalenciasDTO polivalenciasActual;
-    
+
     @Inject
     private UsuariosServei serveiUsuarios;
 
@@ -49,13 +50,13 @@ public class ControladorPolivalencias implements Serializable{
     public void setPolivalenciasActual(PolivalenciasDTO polivalenciasActual) {
         this.polivalenciasActual = polivalenciasActual;
     }
-    
-    public String prepararInsercio(){
+
+    public String prepararInsercio() {
         netejarFormulari();
         return "FormulariInsercio";
     }
-    
-    private void netejarFormulari(){
+
+    private void netejarFormulari() {
         polivalenciasActual.setA2(null);
         polivalenciasActual.setA3(null);
         polivalenciasActual.setA4(null);
@@ -78,15 +79,15 @@ public class ControladorPolivalencias implements Serializable{
         polivalenciasActual.setA(null);
         polivalenciasActual.setA1(null);
     }
-    
-    public String crearPolivalencias(Boolean panelZC, Date fechaPanelZC, Boolean a, Date fecha111, Boolean a1, Date fecha2, Boolean a2, Date fecha3, Boolean a3, Date fecha4510, Boolean panelZF, Date fechaPanelZF, Boolean a4, Date fecha67, Boolean a5, Date fecha89, Boolean panelOcteno, Date fechaPanelOcteno, Boolean campoOcteno, Date fechaCampoOcteno, String dowID){
+
+    public String crearPolivalencias(Boolean panelZC, Date fechaPanelZC, Boolean a, Date fecha111, Boolean a1, Date fecha2, Boolean a2, Date fecha3, Boolean a3, Date fecha4510, Boolean panelZF, Date fechaPanelZF, Boolean a4, Date fecha67, Boolean a5, Date fecha89, Boolean panelOcteno, Date fechaPanelOcteno, Boolean campoOcteno, Date fechaCampoOcteno, String dowID) {
         Usuarios usuari = serveiUsuarios.obtenirUsuario(dowID);
-        Polivalencias p = new Polivalencias( panelZC,  fechaPanelZC,  a,  fecha111,  a1,  fecha2,  a2,  fecha3,  a3,  fecha4510,  panelZF,  fechaPanelZF,  a4,  fecha67,  a5,  fecha89,  panelOcteno,  fechaPanelOcteno,  campoOcteno,  fechaCampoOcteno, usuari);
+        Polivalencias p = new Polivalencias(panelZC, fechaPanelZC, a, fecha111, a1, fecha2, a2, fecha3, a3, fecha4510, panelZF, fechaPanelZF, a4, fecha67, a5, fecha89, panelOcteno, fechaPanelOcteno, campoOcteno, fechaCampoOcteno, usuari);
         serveiPolivalencias.inserirPolivalencia(p);
         return "index";
     }
-    
-    private void passarPolivalenciasPolivalenciasDTO(Polivalencias p){
+
+    private void passarPolivalenciasPolivalenciasDTO(Polivalencias p) {
         polivalenciasActual.setA(p.getA());
         polivalenciasActual.setA1(p.getA1());
         polivalenciasActual.setA2(p.getA2());
@@ -107,31 +108,31 @@ public class ControladorPolivalencias implements Serializable{
         polivalenciasActual.setFechaPanelZF(p.getFechaPanelZF());
         polivalenciasActual.setPanelOcteno(p.getPanelOcteno());
         polivalenciasActual.setPanelZC(p.getPanelZC());
-        polivalenciasActual.setPanelZF(p.getPanelZF());        
+        polivalenciasActual.setPanelZF(p.getPanelZF());
     }
-    
-    public String obtenirPolivalenciasConsulta(String dowId){
+
+    public String obtenirPolivalenciasConsulta(String dowId) {
         Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
         Polivalencias p = serveiPolivalencias.obtenirPolivalencia(usuari);
         passarPolivalenciasPolivalenciasDTO(p);
         return "Consulta";
     }
-    
-    public String obtenirPolivalenciasModificacio(String dowId){
+
+    public String obtenirPolivalenciasModificacio(String dowId) {
         Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
         Polivalencias p = serveiPolivalencias.obtenirPolivalencia(usuari);
         passarPolivalenciasPolivalenciasDTO(p);
         return "Modificacio";
     }
-    
-    public String obtenirPolivalenciasEliminacio(String dowId){
+
+    public String obtenirPolivalenciasEliminacio(String dowId) {
         Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
         Polivalencias p = serveiPolivalencias.obtenirPolivalencia(usuari);
         passarPolivalenciasPolivalenciasDTO(p);
         return "Eliminacio";
     }
-    
-    private void passarPolivalenciasDTOPolivalencias(Polivalencias p){
+
+    private void passarPolivalenciasDTOPolivalencias(Polivalencias p) {
         p.setA(polivalenciasActual.getA());
         p.setA1(polivalenciasActual.getA1());
         p.setA2(polivalenciasActual.getA2());
@@ -151,37 +152,37 @@ public class ControladorPolivalencias implements Serializable{
         p.setFechaPanelZC(polivalenciasActual.getFechaPanelZC());
         p.setFechaPanelZF(polivalenciasActual.getFechaPanelZF());
     }
-    
-    public String modificarPolivalencias(String dowId){
+
+    public String modificarPolivalencias(String dowId) {
         Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
         Polivalencias p = serveiPolivalencias.obtenirPolivalencia(usuari);
         passarPolivalenciasDTOPolivalencias(p);
         serveiPolivalencias.modificarPolivalencia(p);
         return "index";
     }
-    
-    public String eliminarPolivalencias(String dowId){
+
+    public String eliminarPolivalencias(String dowId) {
         Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
         Polivalencias p = serveiPolivalencias.obtenirPolivalencia(usuari);
         serveiPolivalencias.eliminarPolivalencia(p);
         return "index";
     }
-    
-    public List<Polivalencias> llistarPolivalencias(){
+
+    public List<Polivalencias> llistarPolivalencias() {
         return serveiPolivalencias.llistarPolivalencia();
     }
-    
-    public List<String[]> llistarPoli(String id){
+
+    public void llistarPoli(String id) {
         List<String[]> llistaP = new ArrayList<>();
         Usuarios usuari = serveiUsuarios.obtenirUsuariDowId(id);
-        Polivalencias p = serveiPolivalencias.obtenirPolivalenciaDowId(usuari);
-        
-        //FALTA ETIQUETA TRANSACTIONAL A SERVEIPOLIVALENCIES.OBTENIRPERDOWID
+        List<Polivalencias> pl = new ArrayList<>();
+        pl = serveiPolivalencias.obtenirPolivalenciaDowId(1);        
+        //Polivalencias p = serveiPolivalencias.obtenirPolivalencia(1);
+        System.out.println("holaaaaaaaaaa    " +pl.get(0));
         
         //if(p.getA()==true){
-            llistaP.add(new String[]{"1/11","1"});
+        //llistaP.add(new String[]{"1/11",""});
         //}
-        
-        return llistaP;
+        //return llistaP;
     }
 }

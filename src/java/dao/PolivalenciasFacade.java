@@ -7,6 +7,7 @@ package dao;
 
 import domini.Polivalencias;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -33,7 +34,7 @@ public class PolivalenciasFacade extends AbstractFacade<Polivalencias> implement
         super(Polivalencias.class);
     }
     
-    public Object findByDowID(Object dowID){        
-        return getEntityManager().createNamedQuery("Polivalencias.findByDowID").setParameter("dowID", dowID ).getSingleResult();
+    public List<Polivalencias> findByDowID(Object id){
+        return getEntityManager().createNamedQuery("Polivalencias.findByDowID").setParameter("id", id ).getResultList();
     }
 }
