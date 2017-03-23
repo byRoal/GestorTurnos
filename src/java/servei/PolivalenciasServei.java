@@ -52,8 +52,8 @@ public class PolivalenciasServei implements Serializable{
         return polivalenciasDao.findAll();
     }
   
-    @TransactionAttribute
-    public List<Polivalencias> obtenirPolivalenciaDowId(Object id){
+    @Transactional
+    public Polivalencias obtenirPolivalenciaDowId(Object id){
         return  polivalenciasDao.findByDowID(id);
     }
 }

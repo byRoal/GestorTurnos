@@ -46,12 +46,18 @@ public class UsuariosServei implements Serializable{
 
     @Transactional
     public List<Usuarios> llistarUsuarios() {
-        return usuariosDao.findAll();
+        List<Usuarios> p = usuariosDao.findAll();
+        return p;
     }
     
     @Transactional
     public Usuarios obtenirUsuariDowId(Object id){
         return  (Usuarios) usuariosDao.findByDowID(id);
+    }
+    
+    @Transactional
+    public List<Usuarios> llistarUsuariosAsc(){
+        return usuariosDao.findAllAsc();
     }
     
 }

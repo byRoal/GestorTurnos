@@ -23,10 +23,10 @@
                 <h:form>
                     <p:panel header="Consultar usuaris" style="margin-bottom:10px; background-color: #e9e9e9">
                         <h:panelGrid columns="3" cellpadding="5">
-                            <p:outputLabel for="c1" value="Consulta per DOW ID: " style="font-weight: bold"/>
-                            <p:selectOneMenu id="c1" value="#{idUsuari}" style="width:300px">
+                            <p:outputLabel for="c1" value="Consulta fitxa: " style="font-weight: bold"/>
+                            <p:selectOneMenu id="c1" value="#{idUsuari}" style="width:300px" >
                                 <f:selectItem itemLabel="-- Selecciona un usuari --" itemValue="" noSelectionOption="true" />                    
-                                <f:selectItems value="#{controladorUsuarios.llistarUsuarios()}" var="usuari" itemLabel="#{usuari.nombre}" itemValue="#{usuari.IDusuarios}"/>
+                                <f:selectItems value="#{controladorUsuarios.llistarUsuariosAsc()}" var="usuari" itemLabel="#{usuari.nombre}" itemValue="#{usuari.IDusuarios}" />
                             </p:selectOneMenu>
                             <p:commandButton value="Acceptar" action="#{controladorUsuarios.obtenirUsuarioConsulta(idUsuari)}" icon="ui-icon-check"/>
                         </h:panelGrid>

@@ -71,12 +71,12 @@
 
 
                     <p:dataTable var="pol" value="#{controladorPolivalencias.llistarPoli(controladorUsuarios.usuariActual.dowID)}" >
-                        <p:column headerText="Polivalencias">
-                            <h:outputText value="#" />
+                        <p:column headerText="Polivalencias" style="text-align: center">
+                            <h:outputText value="#{pol[0]}"/>
                         </p:column>
 
-                        <p:column headerText="Fecha">
-                            <h:outputText value="#" />
+                        <p:column headerText="Fecha" style="text-align: center">
+                            <h:outputText value="#{pol[1]}"/> 
                         </p:column>
                     </p:dataTable>
 

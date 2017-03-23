@@ -172,4 +172,8 @@ public class ControladorUsuarios implements Serializable {
     public List<Usuarios> llistarUsuarios(){
         return serveiUsuarios.llistarUsuarios();
     }
+    
+    public List<Usuarios> llistarUsuariosAsc(){
+        return serveiUsuarios.llistarUsuariosAsc();
+    }
 }

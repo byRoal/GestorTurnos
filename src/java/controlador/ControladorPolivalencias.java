@@ -8,7 +8,9 @@ package controlador;
 import domini.Polivalencias;
 import domini.Usuarios;
 import dto.PolivalenciasDTO;
+import dto.UsuariosDTO;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +36,9 @@ public class ControladorPolivalencias implements Serializable {
 
     @Inject
     private UsuariosServei serveiUsuarios;
+
+    @Inject
+    private UsuariosDTO usuariActual;
 
     public PolivalenciasServei getServeiPolivalencias() {
         return serveiPolivalencias;
@@ -172,17 +177,19 @@ public class ControladorPolivalencias implements Serializable {
         return serveiPolivalencias.llistarPolivalencia();
     }
 
-    public void llistarPoli(String id) {
+    public List<String[]> llistarPoli(String id) {
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         List<String[]> llistaP = new ArrayList<>();
         Usuarios usuari = serveiUsuarios.obtenirUsuariDowId(id);
-        List<Polivalencias> pl = new ArrayList<>();
-        pl = serveiPolivalencias.obtenirPolivalenciaDowId(1);        
-        //Polivalencias p = serveiPolivalencias.obtenirPolivalencia(1);
-        System.out.println("holaaaaaaaaaa    " +pl.get(0));
-        
-        //if(p.getA()==true){
-        //llistaP.add(new String[]{"1/11",""});
-        //}
-        //return llistaP;
+        System.out.println(usuari.getDowID() + "     " + id);
+        Polivalencias pl = serveiPolivalencias.obtenirPolivalenciaDowId(id);
+
+        //System.out.println("holaaaaaaaaaa    " +pl.getFecha111());
+        if (pl.getA() == true) {
+            String data = df.format(pl.getFecha111());
+            llistaP.add(new String[]{"1/11", data});
+        }
+        return llistaP;
     }
+
 }

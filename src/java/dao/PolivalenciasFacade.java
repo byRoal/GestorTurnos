@@ -34,7 +34,7 @@ public class PolivalenciasFacade extends AbstractFacade<Polivalencias> implement
         super(Polivalencias.class);
     }
     
-    public List<Polivalencias> findByDowID(Object id){
-        return getEntityManager().createNamedQuery("Polivalencias.findByDowID").setParameter("id", id ).getResultList();
+    public Polivalencias findByDowID(Object id){
+        return (Polivalencias) getEntityManager().createNamedQuery("Polivalencias.findByDowID").setParameter("id", id).getSingleResult();
     }
 }

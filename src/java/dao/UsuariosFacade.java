@@ -7,6 +7,7 @@ package dao;
 
 import domini.Usuarios;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -35,6 +36,10 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Serializ
     
     public Object findByDowID(Object dowID){
         return getEntityManager().createNamedQuery("Usuarios.findByDowID").setParameter("dowID", dowID ).getSingleResult();
+    }
+    
+    public List<Usuarios> findAllAsc(){
+        return getEntityManager().createNamedQuery("Usuarios.findAllAsc").getResultList();
     }
     
 }
