@@ -66,7 +66,7 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setDowID(null);
         usuariActual.setEdad(0);
         usuariActual.setEmail(null);
-        usuariActual.setFoto(null);
+        //usuariActual.setFoto(null);
         usuariActual.setHorasextrasRList(null);
         usuariActual.setMovil(null);
         usuariActual.setNombre(null);
@@ -113,9 +113,12 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setiDusuarios(u.getIDusuarios());
 
         if (u.getFoto() != null) {
+            System.out.println("aaaaaaaaaaaa      " +u.getFoto().toString());
             ByteArrayInputStream fotoStream = new ByteArrayInputStream(u.getFoto());
+            System.out.println("eeeeeeeeeeee     " +fotoStream.toString());
             StreamedContent streamFoto = new DefaultStreamedContent(fotoStream, "image/png");
-            usuariActual.setFoto(streamFoto);
+            System.out.println("iiiiiiiiiiiiiii    " +streamFoto.getContentEncoding());
+            usuariActual.setFoto(streamFoto);            
         }
     }
 
@@ -125,10 +128,10 @@ public class ControladorUsuarios implements Serializable {
         return "Ficha_su";
     }
     
-    public String obtenirUsuarioModificacio(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
+    public String obtenirUsuarioModificacio(int id) {
+        Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
-        return "Modificacio";
+        return "Foto";
     }
     
     public String obtenirUsuarioEliminacio(String dowId) {
@@ -138,6 +141,7 @@ public class ControladorUsuarios implements Serializable {
     }
     
     private void passarUsuarioDTOUsuario(Usuarios u){
+        byte[] foto = null;
         u.setAñoIncorporacion(usuariActual.getAñoIncorporacion());
         u.setDepartamento(usuariActual.getDepartamento());
         u.setDireccion(usuariActual.getDepartamento());
@@ -154,14 +158,22 @@ public class ControladorUsuarios implements Serializable {
         u.setVacacionesArrastradas(usuariActual.getVacacionesArrastradas());
         u.setVacacionesHechas(usuariActual.getVacacionesHechas());
         u.setVacacionesPendientes(usuariActual.getVacacionesPendientes());
-        u.setIDusuarios(usuariActual.getiDusuarios());
+        u.setIDusuarios(usuariActual.getiDusuarios());        
+        
+        try {
+            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        u.setFoto(foto);
     }
     
-    public String modificarUsuario(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
+    public String modificarUsuario(String id) {
+        Usuarios u = serveiUsuarios.obtenirUsuariDowId(id);
         passarUsuarioDTOUsuario(u);
         serveiUsuarios.modificarUsuario(u);
-        return "index";
+        return "/index1";
     }
     
     public String eliminarUsuario(String dowId) {

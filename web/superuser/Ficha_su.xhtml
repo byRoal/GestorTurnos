@@ -19,234 +19,240 @@
             </ui:define>
 
             <ui:define name="body">
+                <h:form enctype="multipart/form-data">
 
-                <p:panel style="margin-top:20px; width: 420px; margin: 0 auto">
-                    <f:facet name="header">
-
-
-                    </f:facet>
-                    <p:panelGrid style=" text-align: center">
-                        <p:row>
-                            <p:column colspan="6" rowspan="8" style="font-weight: bold; width:140px "></p:column>
-
-                        </p:row>
-
-                        <p:row>
-
-                            <p:column  style="font-weight: bold;">Nombre: </p:column>
-                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" style="font-weight: bold"/></p:column>
-                        </p:row>
-
-                        <p:row>
-                            <p:column  style="font-weight: bold;">ID </p:column>
-                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.dowID}" style="font-weight: bold"/></p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Departamento: </p:column>
-                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.departamento}" style="font-weight: bold"/></p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Supervisor: </p:column>
-                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.supervisor}" style="font-weight: bold"/></p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Turno: </p:column>
-                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">E-mail: </p:column>
-                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.email}" style="font-weight: bold"/></p:column>
-                        </p:row>
+                        <p:panel style="margin-top:20px; width: 420px; margin: 0 auto">
+                        <f:facet name="header">
 
 
-                    </p:panelGrid>
+                        </f:facet>
+                        <p:panelGrid style=" text-align: center">
+                            <p:row>
+                                <p:column colspan="6" rowspan="8" style="font-weight: bold; width:140px ">
+                                    <h:panelGrid>
+                                        <p:graphicImage value="#{controladorUsuarios.usuariActual.foto}" height="20" cache="false"></p:graphicImage>
+                                    </h:panelGrid>
+                                </p:column>
 
-                    <p:panelGrid style="width: 399px; text-align: center">
-                        <p:row>
-                            <p:column colspan="6" styleClass="ui-widget-header">
-                                <p:spacer height="2"/>
-                            </p:column>
-                        </p:row> 
-                    </p:panelGrid>
+                            </p:row>
 
+                            <p:row>
 
-                    <p:dataTable var="pol" value="#{controladorPolivalencias.llistarPoli(controladorUsuarios.usuariActual.dowID)}" >
-                        <p:column headerText="Polivalencias" style="text-align: center">
-                            <h:outputText value="#{pol[0]}"/>
-                        </p:column>
+                                <p:column  style="font-weight: bold;">Nombre: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" style="font-weight: bold"/></p:column>
+                            </p:row>
 
-                        <p:column headerText="Fecha" style="text-align: center">
-                            <h:outputText value="#{pol[1]}"/> 
-                        </p:column>
-                    </p:dataTable>
-
-                </p:panel>
-
-                <p:panel style="width: 420px; margin: 0 auto">
-                    <p:panelGrid style="width: 400px; text-align: center">
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Telefono </p:column>
-                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.telefono}" style="font-weight: bold"/></p:column>
-                            <p:column>
-                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
-                            </p:column>
-                        </p:row>
-
-                        <p:row>
-                            <p:column  style="font-weight: bold;width: 150px">Movil </p:column>
-                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.movil}" style="font-weight: bold"/></p:column>
-                            <p:column>
-                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;width: 150px">Turno </p:column>
-                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
-                            <p:column>
-                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
-                            </p:column>
-                        </p:row>
-                    </p:panelGrid>
-                </p:panel>
-
-                <p:panel style="width: 420px; margin: 0 auto">
-                    <p:panelGrid style="width: 400px; text-align: center">
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Fecha Incorporacion </p:column>
-                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.añoIncorporacion}" style="font-weight: bold"/></p:column>
-                            <p:column>
-                                <p:button style="padding-right: auto" value="Nuevo usuario"></p:button>
-                            </p:column>
-                        </p:row>
-
-                        <p:row>
-                            <p:column  style="font-weight: bold;width: 150px">Años antiguedad </p:column>
-                            <p:column  style="font-weight: bold;width: 150px">13</p:column>
-                            <p:column>
-                                <p:button style="padding-right: auto" value="Cambiar datos"></p:button>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;width: 150px">Sexo </p:column>
-                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.sexo}" style="font-weight: bold"/></p:column>
-                            <p:column>
-                                <p:button style="padding-right: auto" value="Guardar datos"></p:button>
-                            </p:column>
-                        </p:row>
-                    </p:panelGrid>
-                </p:panel>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">ID </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.dowID}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Departamento: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.departamento}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Supervisor: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.supervisor}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Turno: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">E-mail: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.email}" style="font-weight: bold"/></p:column>
+                            </p:row>
 
 
-                <p:panel style="width: 420px; margin: 0 auto">
-                    <p:panelGrid style="width: 400px">
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" />
+                        </p:panelGrid>
+
+                        <p:panelGrid style="width: 399px; text-align: center">
+                            <p:row>
+                                <p:column colspan="6" styleClass="ui-widget-header">
+                                    <p:spacer height="2"/>
+                                </p:column>
+                            </p:row> 
+                        </p:panelGrid>
+
+
+                        <p:dataTable var="pol" value="#{controladorPolivalencias.llistarPoli(controladorUsuarios.usuariActual.dowID)}" >
+                            <p:column headerText="Polivalencias" style="text-align: center">
+                                <h:outputText value="#{pol[0]}"/>
                             </p:column>
 
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
+                            <p:column headerText="Fecha" style="text-align: center">
+                                <h:outputText value="#{pol[1]}"/> 
                             </p:column>
+                        </p:dataTable>
 
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Turno #{controladorUsuarios.usuariActual.turno}" />
-                            </p:column>
+                    </p:panel>
 
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
-                            </p:column>
+                    <p:panel style="width: 420px; margin: 0 auto">
+                        <p:panelGrid style="width: 400px; text-align: center">
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Telefono </p:column>
+                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.telefono}" style="font-weight: bold"/></p:column>
+                                <p:column>
+                                    <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                                </p:column>
+                            </p:row>
 
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Tarragona Norte" />
-                            </p:column>
+                            <p:row>
+                                <p:column  style="font-weight: bold;width: 150px">Movil </p:column>
+                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.movil}" style="font-weight: bold"/></p:column>
+                                <p:column>
+                                    <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;width: 150px">Turno </p:column>
+                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
+                                <p:column>
+                                    <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </p:panel>
 
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
-                            </p:column>
+                    <p:panel style="width: 420px; margin: 0 auto">
+                        <p:panelGrid style="width: 400px; text-align: center">
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Fecha Incorporacion </p:column>
+                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.añoIncorporacion}" style="font-weight: bold"/></p:column>
+                                <p:column>
+                                    <p:button style="padding-right: auto" value="Nuevo usuario"></p:button>
+                                </p:column>
+                            </p:row>
 
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Polivalencias" />
-                            </p:column>
-
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
-                            </p:column>
-
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Dias 12 horas" />
-                            </p:column>
-
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
-                            </p:column>
-
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Dias baja" />
-                            </p:column>
-
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
-                            </p:column>
-
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Dias permiso" />
-                            </p:column>
-
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
-                            </p:column>
-
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Informe completo" />
-                            </p:column>
-
-                            <p:column style="width: 100px; text-align: center">
-                                <p:selectBooleanCheckbox value="" />
-                            </p:column>
-
-                        </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;width: 150px">Años antiguedad </p:column>
+                                <p:column  style="font-weight: bold;width: 150px">13</p:column>
+                                <p:column>
+                                    <p:button style="padding-right: auto" value="Cambiar datos"></p:button>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;width: 150px">Sexo </p:column>
+                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.sexo}" style="font-weight: bold"/></p:column>
+                                <p:column>
+                                    <p:button style="padding-right: auto" value="Guardar datos"></p:button>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </p:panel>
 
 
-                        <p:row>
-                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
-                                <p:outputLabel value="Exportar a Excel" />
-                            </p:column>
+                    <p:panel style="width: 420px; margin: 0 auto">
+                        <p:panelGrid style="width: 400px">
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" />
+                                </p:column>
 
-                            <p:column>
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
 
-                                <p:commandLink id="xls"  >  
-                                    <p:graphicImage value="resources/excel.png"/>  
-                                    <f:setPropertyActionListener value="true" target="" />  
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Turno #{controladorUsuarios.usuariActual.turno}" />
+                                </p:column>
 
-                                </p:commandLink>  
-                            </p:column>
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
+
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Tarragona Norte" />
+                                </p:column>
+
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
+
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Polivalencias" />
+                                </p:column>
+
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
+
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Dias 12 horas" />
+                                </p:column>
+
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
+
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Dias baja" />
+                                </p:column>
+
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
+
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Dias permiso" />
+                                </p:column>
+
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
+
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Informe completo" />
+                                </p:column>
+
+                                <p:column style="width: 100px; text-align: center">
+                                    <p:selectBooleanCheckbox value="" />
+                                </p:column>
+
+                            </p:row>
 
 
-                        </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                    <p:outputLabel value="Exportar a Excel" />
+                                </p:column>
+
+                                <p:column>
+
+                                    <p:commandLink id="xls"  >  
+                                        <p:graphicImage value="resources/excel.png"/>  
+                                        <f:setPropertyActionListener value="true" target="" />  
+
+                                    </p:commandLink>  
+                                </p:column>
+
+
+                            </p:row>
 
 
 
 
-                    </p:panelGrid>
-                </p:panel>
+                        </p:panelGrid>
+
+                    </p:panel>
 
 
 
-
+                </h:form>
             </ui:define>
         </ui:composition>
 
