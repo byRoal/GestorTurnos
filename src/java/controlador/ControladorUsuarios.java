@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,7 +55,7 @@ public class ControladorUsuarios implements Serializable {
 
     public String preprarInsercio() {
         netejarFormulari();
-        return "FormulariInsercio";
+        return "admin/InsercioUsuari";
     }
 
     public void netejarFormulari() {
@@ -66,7 +67,7 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setDowID(null);
         usuariActual.setEdad(0);
         usuariActual.setEmail(null);
-        //usuariActual.setFoto(null);
+        usuariActual.setFoto(null);
         usuariActual.setHorasextrasRList(null);
         usuariActual.setMovil(null);
         usuariActual.setNombre(null);
@@ -77,16 +78,20 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setTelefono(null);
     }
 
-    public String crearUsuari(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+    public String crearUsuari(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion) {
+        Integer iDusuarios = 104;
+        BigDecimal num = new BigDecimal("0");
+        char torn='A';
         byte[] foto = null;
-        try {
-            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
-        } catch (IOException ex) {
-            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Usuarios u = new Usuarios(dowID, nombre, sexo, edad, direccion, telefono, movil, email, foto, planta, departamento, turno, supervisor, añoIncorporacion, vacacionesHechas, vacacionesPendientes, vacacionesArrastradas);
+//        try {
+//            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
+//        } catch (IOException ex) {
+//            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        Usuarios u = new Usuarios(iDusuarios,dowID, nombre, "a", 0, "a", "a", "a", "a", "a", "a", torn, "a", "a",num , num, num);
+        u.setFoto(foto);
         serveiUsuarios.inserirUsuario(u);
-        return "index";
+        return "/index";
     }
 
     private void passarUsuariosUsuariosDTO(Usuarios u) {

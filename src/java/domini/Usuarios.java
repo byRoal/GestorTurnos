@@ -129,7 +129,8 @@ public class Usuarios implements Serializable {
         this.iDusuarios = iDusuarios;
     }
 
-    public Usuarios(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, byte[] foto, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+    public Usuarios(Integer iDusuarios, String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+        this.iDusuarios = iDusuarios;
         this.dowID = dowID;
         this.nombre = nombre;
         this.sexo = sexo;
@@ -137,8 +138,26 @@ public class Usuarios implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
         this.movil = movil;
-        this.email = email;
-        this.foto = foto;
+        this.email = email;        
+        this.planta = planta;
+        this.departamento = departamento;
+        this.turno = turno;
+        this.supervisor = supervisor;
+        this.añoIncorporacion = añoIncorporacion;
+        this.vacacionesHechas = vacacionesHechas;
+        this.vacacionesPendientes = vacacionesPendientes;
+        this.vacacionesArrastradas = vacacionesArrastradas;        
+    }
+
+    public Usuarios(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+        this.dowID = dowID;
+        this.nombre = nombre;
+        this.sexo = sexo;
+        this.edad = edad;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.movil = movil;
+        this.email = email;        
         this.planta = planta;
         this.departamento = departamento;
         this.turno = turno;
@@ -154,7 +173,7 @@ public class Usuarios implements Serializable {
         this.iDusuarios = iDusuarios;
         this.dowID = dowID;
     }
-
+   
     public Integer getIDusuarios() {
         return iDusuarios;
     }
