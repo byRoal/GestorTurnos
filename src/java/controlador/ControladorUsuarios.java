@@ -78,20 +78,21 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setTelefono(null);
     }
 
-    public String crearUsuari(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion) {
+    public String crearUsuari(String dowId) {
         Integer iDusuarios = 104;
         BigDecimal num = new BigDecimal("0");
-        char torn='A';
+        char torn = 'A';
         byte[] foto = null;
-//        try {
-//            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
-//        } catch (IOException ex) {
-//            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        Usuarios u = new Usuarios(iDusuarios,dowID, nombre, "a", 0, "a", "a", "a", "a", "a", "a", torn, "a", "a",num , num, num);
+        try {
+            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(dowId);
+        Usuarios u = new Usuarios(dowId);
         u.setFoto(foto);
         serveiUsuarios.inserirUsuario(u);
-        return "/index";
+        return "/index1";
     }
 
     private void passarUsuariosUsuariosDTO(Usuarios u) {
@@ -115,15 +116,12 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setVacacionesArrastradas(u.getVacacionesArrastradas());
         usuariActual.setVacacionesPendientes(u.getVacacionesPendientes());
         usuariActual.setVacacionesHechas(u.getVacacionesHechas());
-        usuariActual.setiDusuarios(u.getIDusuarios());
+        //usuariActual.setiDusuarios(u.getIDusuarios());
 
-        if (u.getFoto() != null) {
-            System.out.println("aaaaaaaaaaaa      " +u.getFoto().toString());
+        if (u.getFoto() != null) {            
             ByteArrayInputStream fotoStream = new ByteArrayInputStream(u.getFoto());
-            System.out.println("eeeeeeeeeeee     " +fotoStream.toString());
             StreamedContent streamFoto = new DefaultStreamedContent(fotoStream, "image/png");
-            System.out.println("iiiiiiiiiiiiiii    " +streamFoto.getContentEncoding());
-            usuariActual.setFoto(streamFoto);            
+            usuariActual.setFoto(streamFoto);
         }
     }
 
@@ -132,20 +130,20 @@ public class ControladorUsuarios implements Serializable {
         passarUsuariosUsuariosDTO(u);
         return "Ficha_su";
     }
-    
+
     public String obtenirUsuarioModificacio(int id) {
         Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
         return "Foto";
     }
-    
+
     public String obtenirUsuarioEliminacio(String dowId) {
         Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
         passarUsuariosUsuariosDTO(u);
         return "Eliminacio";
     }
-    
-    private void passarUsuarioDTOUsuario(Usuarios u){
+
+    private void passarUsuarioDTOUsuario(Usuarios u) {
         byte[] foto = null;
         u.setAñoIncorporacion(usuariActual.getAñoIncorporacion());
         u.setDepartamento(usuariActual.getDepartamento());
@@ -163,34 +161,35 @@ public class ControladorUsuarios implements Serializable {
         u.setVacacionesArrastradas(usuariActual.getVacacionesArrastradas());
         u.setVacacionesHechas(usuariActual.getVacacionesHechas());
         u.setVacacionesPendientes(usuariActual.getVacacionesPendientes());
-        u.setIDusuarios(usuariActual.getiDusuarios());        
-        
-        try {
-            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
-        } catch (IOException ex) {
-            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        u.setFoto(foto);
+        //u.setIDusuarios(usuariActual.getiDusuarios());
+
+//        try {
+//            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
+//        } catch (IOException ex) {
+//            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        u.setFoto(foto);
     }
-    
+
     public String modificarUsuario(String id) {
         Usuarios u = serveiUsuarios.obtenirUsuariDowId(id);
         passarUsuarioDTOUsuario(u);
         serveiUsuarios.modificarUsuario(u);
-        return "/index1";
+//        return "/index1";
+return "Ficha_su";
     }
-    
+
     public String eliminarUsuario(String dowId) {
         serveiUsuarios.eliminarUsuario(dowId);
         return "index";
     }
-    
-    public List<Usuarios> llistarUsuarios(){
+
+    public List<Usuarios> llistarUsuarios() {
         return serveiUsuarios.llistarUsuarios();
     }
-    
-    public List<Usuarios> llistarUsuariosAsc(){
+
+    public List<Usuarios> llistarUsuariosAsc() {
         return serveiUsuarios.llistarUsuariosAsc();
     }
 }

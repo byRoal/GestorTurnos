@@ -56,6 +56,7 @@ public class Usuarios implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue
     @Basic(optional = false)
     @Column(name = "IDusuarios")
     private Integer iDusuarios;
@@ -167,11 +168,15 @@ public class Usuarios implements Serializable {
         this.vacacionesPendientes = vacacionesPendientes;
         this.vacacionesArrastradas = vacacionesArrastradas;
     }
+
+    public Usuarios(String dowID) {
+        this.dowID = dowID;
+    }
     
 
-    public Usuarios(Integer iDusuarios, String dowID) {
-        this.iDusuarios = iDusuarios;
+    public Usuarios(String dowID,String nombre) {        
         this.dowID = dowID;
+        this.nombre = nombre;
     }
    
     public Integer getIDusuarios() {

@@ -178,58 +178,58 @@ public class ControladorPolivalencias implements Serializable {
     }
 
     public List<String[]> llistarPoli(String id) {
-        boolean fi =false;
+        //boolean fi = false;
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         List<String[]> llistaP = new ArrayList<>();
-        Usuarios usuari = serveiUsuarios.obtenirUsuariDowId(id);        
+        //Usuarios usuari = serveiUsuarios.obtenirUsuariDowId(id);        
         Polivalencias pl = serveiPolivalencias.obtenirPolivalenciaDowId(id);
-                
+
         if (pl.getA() == true) {
             String data = df.format(pl.getFecha111());
             llistaP.add(new String[]{"1/11", data});
         }
-        
-        if (pl.getA1()== true) {
+
+        if (pl.getA1() == true) {
             String data = df.format(pl.getFecha2());
             llistaP.add(new String[]{"2", data});
         }
-        
+
         if (pl.getA2() == true) {
             String data = df.format(pl.getFecha3());
             llistaP.add(new String[]{"3", data});
         }
-        
-        if (pl.getA3()== true) {
+
+        if (pl.getA3() == true) {
             String data = df.format(pl.getFecha4510());
             llistaP.add(new String[]{"4/5/10", data});
         }
-        
-        if (pl.getA4()== true) {
+
+        if (pl.getA4() == true) {
             String data = df.format(pl.getFecha67());
             llistaP.add(new String[]{"6/7", data});
         }
-        
-        if (pl.getA5()== true) {
+
+        if (pl.getA5() == true) {
             String data = df.format(pl.getFecha89());
             llistaP.add(new String[]{"8/9", data});
         }
-        
-        if (pl.getPanelZC()== true) {
+
+        if (pl.getPanelZC() == true) {
             String data = df.format(pl.getFechaPanelZC());
             llistaP.add(new String[]{"Panel ZC", data});
         }
-        
-        if (pl.getPanelZF()== true) {
+
+        if (pl.getPanelZF() == true) {
             String data = df.format(pl.getFechaPanelZF());
             llistaP.add(new String[]{"Panel ZF", data});
         }
-        
-        if (pl.getCampoOcteno()== true) {
+
+        if (pl.getCampoOcteno() == true) {
             String data = df.format(pl.getFechaCampoOcteno());
             llistaP.add(new String[]{"Campo Octeno", data});
         }
-        
-        if (pl.getPanelOcteno()== true) {
+
+        if (pl.getPanelOcteno() == true) {
             String data = df.format(pl.getFechaPanelOcteno());
             llistaP.add(new String[]{"Panel Octeno", data});
         }

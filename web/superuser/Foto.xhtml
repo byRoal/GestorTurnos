@@ -11,30 +11,32 @@
             <p:panel>
 
                 <h:panelGrid columns="2" border="0" cellpadding="10" cellspacing="1" >
+
+
+
+                    <h:outputLabel for="tel" value="Introduce el nuevo telefono" />
+                    <h:inputText id="tel" value="#{controladorUsuarios.usuariActual.telefono}" />
+
+                    <p:fileUpload value="#{controladorUsuarios.usuariActual.arxiuFoto}" mode="simple" label="Selecciona imatge"/>
+                    
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.añoIncorporacion}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.bajasPermisosList}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.contabilidadhorasList}" />
+
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.departamento}" />
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.direccion}" />
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.dowID}" />
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.edad}" />
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.email}" />                    
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.horasextrasRList}" />
+
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.movil}" />
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.nombre}" />
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.planta}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.polivalenciasList}" />
+
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.sexo}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.supervisor}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.telefono}" />
+                    <h:inputHidden value="#{controladorUsuarios.usuariActual.supervisor}" />                    
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.turno}" />
                     <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesArrastradas}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesList}" />
-                    <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" /> 
-                    <h:panelGrid columns="2" border="0" cellpadding="10" cellspacing="1" >
-                        <p:fileUpload value="#{controladorUsuarios.usuariActual.arxiuFoto}" mode="simple" label="Selecciona imatge"/>
-                    </h:panelGrid>
+                    <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />                    
+                    <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" />
                 </h:panelGrid>
 
                 <h:panelGrid columns="2" cellpadding="5">

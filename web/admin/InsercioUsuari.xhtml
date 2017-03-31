@@ -16,7 +16,7 @@
                     <p:inputText id="dowid" size="9" value="#{controladorUsuarios.usuariActual.dowID}" />
 
                     <p:outputLabel for="nom" value="Nombre:" style="font-weight: bold" />
-                    <p:inputText id="nom" size="9" value="#{controladorUsuarios.usuariActual.nombre}" />                              
+                    <p:inputText id="nom" size="9" value="#" />                              
                 </h:panelGrid>
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="Foto:" style="font-weight: bold" />
@@ -25,8 +25,8 @@
 
                 <p:separator />
                 <h:panelGrid columns="2" border="0" cellpadding="10" cellspacing="1">
-                    <p:commandButton value="Inserir" action="#{controladorUsuarios.crearUsuari(controladorUsuarios.usuariActual.dowID, controladorUsuarios.usuariActual.nombre,controladorUsuarios.usuariActual.nombre , 0, controladorUsuarios.usuariActual.nombre, controladorUsuarios.usuariActual.nombre, controladorUsuarios.usuariActual.nombre, controladorUsuarios.usuariActual.nombre, controladorUsuarios.usuariActual.nombre, controladorUsuarios.usuariActual.nombre, A, controladorUsuarios.usuariActual.nombre, controladorUsuarios.usuariActual.nombre)}" ajax="false" icon="ui-icon-check" immediate="true"/>
-                    <p:commandButton value="Cancelar" action="/index1" icon="ui-icon-cancel" ajax="false" immediate="true" />
+                    <p:commandButton value="Inserir" action="#{controladorUsuarios.crearUsuari(controladorUsuarios.usuariActual.dowID)}" ajax="false" icon="ui-icon-check"/>
+                    <p:button value="Cancelar" outcome="/index1" icon="ui-icon-cancel" />
                 </h:panelGrid>
             </p:panel>
         </h:form>

@@ -6,10 +6,11 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <body>
+    <h:head>
 
-        <ui:composition template="./template_su.xhtml">
-
+    </h:head>
+    <h:body>
+        <ui:composition template="./template_su.xhtml">    
             <ui:define name="title">
 
             </ui:define>
@@ -19,19 +20,49 @@
             </ui:define>
 
             <ui:define name="body">
-                <h:form enctype="multipart/form-data">
 
-                        <p:panel style="margin-top:20px; width: 420px; margin: 0 auto">
+                <p:dialog header="Cambiar telefono" widgetVar="dlg2" modal="true" height="100" resizable="false" draggable="false" >
+                    <h:form>
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.añoIncorporacion}" />
+
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.departamento}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.direccion}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.dowID}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.edad}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.email}" />                    
+
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.movil}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.nombre}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.planta}" />
+
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.sexo}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.supervisor}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.telefono}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.turno}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesArrastradas}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />                    
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" />
+                        <h:panelGrid>
+                            <h:outputText value="Introduce el nuevo telefono" />
+                            <h:inputText value="#{controladorUsuarios.usuariActual.telefono}" />
+                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:telf" oncomplete="PF('dlg2').hide();" />
+
+                        </h:panelGrid>
+                    </h:form>
+                </p:dialog>
+
+                <h:form id='datos' enctype="multipart/form-data">
+
+                    <p:panel style="margin-top:20px; width: 420px; margin: 0 auto">
                         <f:facet name="header">
 
 
                         </f:facet>
                         <p:panelGrid style=" text-align: center">
                             <p:row>
-                                <p:column colspan="6" rowspan="8" style="font-weight: bold; width:140px ">
-                                    <h:panelGrid>
-                                        <p:graphicImage value="#{controladorUsuarios.usuariActual.foto}" height="20" cache="false"></p:graphicImage>
-                                    </h:panelGrid>
+                                <p:column rowspan="7" style="font-weight: bold; width:150px ">
+                                    <p:graphicImage id="foto" value="#{controladorUsuarios.usuariActual.foto}" height="150" cache="false" >
+                                    </p:graphicImage>
                                 </p:column>
 
                             </p:row>
@@ -87,14 +118,20 @@
 
                     </p:panel>
 
-                    <p:panel style="width: 420px; margin: 0 auto">
-                        <p:panelGrid style="width: 400px; text-align: center">
-                            <p:row>
+                    <p:panel style="width: 420px; margin: 0 auto" >
+                        <p:panelGrid style="width: 400px; text-align: center" >
+                            <p:row >
                                 <p:column  style="font-weight: bold;">Telefono </p:column>
-                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.telefono}" style="font-weight: bold"/></p:column>
-                                <p:column>
-                                    <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                                <p:column  style="font-weight: bold;width: 150px" >
+                                    <p:outputLabel id="telf" value="#{controladorUsuarios.usuariActual.telefono}" style="font-weight: bold" />
+
                                 </p:column>
+                                <p:column>
+                                    <p:commandButton style="padding-right: auto" ajax="false" value="Cambiar" type="button" onclick="PF('dlg2').show();" />
+
+
+                                </p:column>
+
                             </p:row>
 
                             <p:row>
@@ -234,27 +271,17 @@
                                 <p:column>
 
                                     <p:commandLink id="xls"  >  
-                                        <p:graphicImage value="resources/excel.png"/>  
+                                        <p:graphicImage value="resources/excel.png" />  
                                         <f:setPropertyActionListener value="true" target="" />  
 
                                     </p:commandLink>  
                                 </p:column>
-
-
                             </p:row>
-
-
-
-
                         </p:panelGrid>
-
                     </p:panel>
-
-
-
                 </h:form>
             </ui:define>
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

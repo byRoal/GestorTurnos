@@ -70,12 +70,12 @@ public class Polivalencias implements Serializable {
     @Column(name = "fecha1_11")
     @Temporal(TemporalType.DATE)
     private Date fecha111;
-    @Column(name = "2")
+    @Column(name = "p2")
     private Boolean a1;
     @Column(name = "fecha2")
     @Temporal(TemporalType.DATE)
     private Date fecha2;
-    @Column(name = "3")
+    @Column(name = "p3")
     private Boolean a2;
     @Column(name = "fecha3")
     @Temporal(TemporalType.DATE)

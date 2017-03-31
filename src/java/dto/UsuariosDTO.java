@@ -10,9 +10,11 @@ import domini.Contabilidadhoras;
 import domini.HorasextrasR;
 import domini.Polivalencias;
 import domini.Vacaciones;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
@@ -20,8 +22,8 @@ import org.primefaces.model.UploadedFile;
  *
  * @author ND17613
  */
-@RequestScoped
-public class UsuariosDTO {
+@SessionScoped
+public class UsuariosDTO implements Serializable{
     private Integer iDusuarios;
     private String dowID;
     private String nombre;
