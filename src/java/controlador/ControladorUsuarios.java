@@ -53,9 +53,9 @@ public class ControladorUsuarios implements Serializable {
         this.usuariActual = usuariActual;
     }
 
-    public String preprarInsercio() {
+    public String prepararInsercio() {
         netejarFormulari();
-        return "admin/InsercioUsuari";
+        return "InsercioUsuari";
     }
 
     public void netejarFormulari() {
