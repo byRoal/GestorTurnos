@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>Inserir Usuari</title>
@@ -26,7 +27,36 @@
                             <p:inputText id="dowid" size="9" value="#{controladorUsuarios.usuariActual.dowID}" />
 
                             <p:outputLabel for="nom" value="Nombre:" style="font-weight: bold" />
-                            <p:inputText id="nom" size="9" value="#" />                              
+                            <p:inputText id="nom" size="9" value="#{controladorUsuarios.usuariActual.nombre}" /> 
+                            
+                            <p:outputLabel for="sexo" value="Sexo: " style="font-weight: bold" />
+                            <p:selectOneMenu id="sexo" value="#{controladorUsuarios.usuariActual.sexo}">
+                                <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
+                                <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
+                                <f:selectItem itemLabel="Mujer" itemValue="Mujer" />                                
+                            </p:selectOneMenu>
+                           
+                            <p:outputLabel for="nacimiento" value="Fecha nacimiento: " style="font-weight: bold" />
+                            <p:calendar id="nacimiento" pattern="dd/MM/yyyy" value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />
+                            
+                            <p:outputLabel for="direccion" value="Dirección:" style="font-weight: bold" />
+                            <p:inputText id="direccion" size="9" value="#{controladorUsuarios.usuariActual.direccion}" />
+                            
+                            <p:outputLabel for="telf" value="Telefono:" style="font-weight: bold" />
+                            <p:inputText id="telf" size="9" value="#{controladorUsuarios.usuariActual.telefono}" />
+                            
+                            <p:outputLabel for="movil" value="Movil:" style="font-weight: bold" />
+                            <p:inputText id="movil" size="9" value="#{controladorUsuarios.usuariActual.movil}" />
+                            
+                            <p:outputLabel for="email" value="Email:" style="font-weight: bold" />
+                            <p:inputText id="email" size="9" value="#{controladorUsuarios.usuariActual.email}" />
+                            
+                            <p:outputLabel for="planta" value="Planta: " style="font-weight: bold" />
+                            <p:selectOneMenu id="planta" value="#{controladorUsuarios.usuariActual.planta}">
+                                <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
+                                <f:selectItem itemLabel="Cracker" itemValue="Cracker" />
+                                <f:selectItem itemLabel="Octeno" itemValue="Octeno" />                                
+                            </p:selectOneMenu>
                         </h:panelGrid>
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel value="Foto:" style="font-weight: bold" />

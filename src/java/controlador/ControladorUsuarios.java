@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,7 +67,7 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setDepartamento(null);
         usuariActual.setDireccion(null);
         usuariActual.setDowID(null);
-        usuariActual.setEdad(0);
+        usuariActual.setFechaNacimiento(null);
         usuariActual.setEmail(null);
         usuariActual.setFoto(null);
         usuariActual.setHorasextrasRList(null);
@@ -102,7 +104,7 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setDepartamento(u.getDepartamento());
         usuariActual.setDireccion(u.getDireccion());
         usuariActual.setDowID(u.getDowID());
-        usuariActual.setEdad(u.getEdad());
+        usuariActual.setFechaNacimiento(u.getFechaNacimiento());
         usuariActual.setEmail(u.getEmail());
         usuariActual.setHorasextrasRList(u.getHorasextrasRList());
         usuariActual.setMovil(u.getMovil());
@@ -149,7 +151,7 @@ public class ControladorUsuarios implements Serializable {
         u.setDepartamento(usuariActual.getDepartamento());
         u.setDireccion(usuariActual.getDepartamento());
         u.setDowID(usuariActual.getDowID());
-        u.setEdad(usuariActual.getEdad());
+        u.setFechaNacimiento(usuariActual.getFechaNacimiento());
         u.setEmail(usuariActual.getEmail());
         u.setMovil(usuariActual.getMovil());
         u.setNombre(usuariActual.getNombre());
@@ -191,5 +193,13 @@ return "Ficha_su";
 
     public List<Usuarios> llistarUsuariosAsc() {
         return serveiUsuarios.llistarUsuariosAsc();
+    }
+    
+    public int añosAntiguedad(int incorporacion){
+        Calendar cal = new GregorianCalendar();
+        int antiguedad;
+        antiguedad = cal.getInstance().get(Calendar.YEAR) - incorporacion;
+        
+        return antiguedad;
     }
 }

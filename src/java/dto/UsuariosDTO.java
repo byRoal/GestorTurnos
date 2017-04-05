@@ -12,6 +12,7 @@ import domini.Polivalencias;
 import domini.Vacaciones;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
@@ -28,7 +29,7 @@ public class UsuariosDTO implements Serializable{
     private String dowID;
     private String nombre;
     private String sexo;
-    private Integer edad;
+    private Date fechaNacimiento;
     private String direccion;
     private String telefono;
     private String movil;
@@ -84,12 +85,12 @@ public class UsuariosDTO implements Serializable{
         this.sexo = sexo;
     }
 
-    public Integer getEdad() {
-        return edad;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getDireccion() {
