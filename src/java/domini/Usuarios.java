@@ -156,7 +156,7 @@ public class Usuarios implements Serializable {
         this.vacacionesArrastradas = vacacionesArrastradas;        
     }
 
-    public Usuarios(String dowID, String nombre, String sexo, Date fechaNacimiento, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+    public Usuarios(String dowID, String nombre, String sexo, Date fechaNacimiento, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion) {
         this.dowID = dowID;
         this.nombre = nombre;
         this.sexo = sexo;
@@ -170,9 +170,7 @@ public class Usuarios implements Serializable {
         this.turno = turno;
         this.supervisor = supervisor;
         this.añoIncorporacion = añoIncorporacion;
-        this.vacacionesHechas = vacacionesHechas;
-        this.vacacionesPendientes = vacacionesPendientes;
-        this.vacacionesArrastradas = vacacionesArrastradas;
+        
     }
 
     public Usuarios(String dowID) {

@@ -27,37 +27,62 @@
                             <p:inputText id="dowid" size="9" value="#{controladorUsuarios.usuariActual.dowID}" />
 
                             <p:outputLabel for="nom" value="Nombre:" style="font-weight: bold" />
-                            <p:inputText id="nom" size="9" value="#{controladorUsuarios.usuariActual.nombre}" /> 
-                            
+                            <p:inputText id="nom"  value="#{controladorUsuarios.usuariActual.nombre}" /> 
+
                             <p:outputLabel for="sexo" value="Sexo: " style="font-weight: bold" />
                             <p:selectOneMenu id="sexo" value="#{controladorUsuarios.usuariActual.sexo}">
                                 <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
                                 <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
                                 <f:selectItem itemLabel="Mujer" itemValue="Mujer" />                                
                             </p:selectOneMenu>
-                           
+
                             <p:outputLabel for="nacimiento" value="Fecha nacimiento: " style="font-weight: bold" />
                             <p:calendar id="nacimiento" pattern="dd/MM/yyyy" value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />
-                            
+
                             <p:outputLabel for="direccion" value="Dirección:" style="font-weight: bold" />
-                            <p:inputText id="direccion" size="9" value="#{controladorUsuarios.usuariActual.direccion}" />
-                            
+                            <p:inputText id="direccion"  value="#{controladorUsuarios.usuariActual.direccion}" />
+
                             <p:outputLabel for="telf" value="Telefono:" style="font-weight: bold" />
-                            <p:inputText id="telf" size="9" value="#{controladorUsuarios.usuariActual.telefono}" />
-                            
+                            <p:inputText id="telf"  value="#{controladorUsuarios.usuariActual.telefono}" />
+
                             <p:outputLabel for="movil" value="Movil:" style="font-weight: bold" />
-                            <p:inputText id="movil" size="9" value="#{controladorUsuarios.usuariActual.movil}" />
-                            
+                            <p:inputText id="movil"  value="#{controladorUsuarios.usuariActual.movil}" />
+
                             <p:outputLabel for="email" value="Email:" style="font-weight: bold" />
-                            <p:inputText id="email" size="9" value="#{controladorUsuarios.usuariActual.email}" />
-                            
+                            <p:inputText id="email"  value="#{controladorUsuarios.usuariActual.email}" />
+
                             <p:outputLabel for="planta" value="Planta: " style="font-weight: bold" />
                             <p:selectOneMenu id="planta" value="#{controladorUsuarios.usuariActual.planta}">
+                                <p:ajax event="change" update="departament"/>
                                 <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
                                 <f:selectItem itemLabel="Cracker" itemValue="Cracker" />
                                 <f:selectItem itemLabel="Octeno" itemValue="Octeno" />                                
                             </p:selectOneMenu>
+
+                            <p:outputLabel for="departament" value="Departament: " style="font-weight: bold" />
+                            <p:selectOneMenu id="departament" value="#{controladorUsuarios.usuariActual.departamento}">
+                                <f:selectItems  value="#{controladorUsuarios.departaments(controladorUsuarios.usuariActual.planta)}" var="dep" itemValue="#{dep}" itemLabel="#{dep}"/>                                
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="torn" value="Turno: " style="font-weight: bold" />
+                            <p:selectOneMenu id="torn" value="#{controladorUsuarios.usuariActual.turno}">                                
+                                <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
+                                <f:selectItem itemLabel="A" itemValue="A" />
+                                <f:selectItem itemLabel="B" itemValue="B" />
+                                <f:selectItem itemLabel="C" itemValue="C" />
+                                <f:selectItem itemLabel="D" itemValue="D" />
+                                <f:selectItem itemLabel="E" itemValue="E" />
+                                <f:selectItem itemLabel="F" itemValue="F" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="supervisor" value="Supervisor:" style="font-weight: bold" />
+                            <p:inputText id="supervisor"  value="#{controladorUsuarios.usuariActual.supervisor}" />
+
+                            <p:outputLabel for="anyInc" value="Año incorporación:" style="font-weight: bold" />
+                            <p:inputText id="anyInc"  value="#{controladorUsuarios.usuariActual.añoIncorporacion}" />
+
                         </h:panelGrid>
+                        
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel value="Foto:" style="font-weight: bold" />
                             <p:fileUpload value="#{controladorUsuarios.usuariActual.arxiuFoto}" mode="simple" label="Selecciona imagen" />
