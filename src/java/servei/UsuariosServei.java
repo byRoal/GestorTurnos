@@ -36,7 +36,7 @@ public class UsuariosServei implements Serializable{
 
     @Transactional
     public void eliminarUsuario(Object id) {
-        usuariosDao.remove(usuariosDao.find(id));
+        usuariosDao.remove((Usuarios)usuariosDao.findByDowID(id));
     }
 
     @Transactional

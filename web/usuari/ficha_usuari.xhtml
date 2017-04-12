@@ -3,13 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <body>
+    <h:head>
 
-        <ui:composition template="./template_usuari.xhtml">
-
+    </h:head>
+    <h:body>
+        <ui:composition template="./template_usuari.xhtml">    
             <ui:define name="title">
 
             </ui:define>
@@ -19,79 +20,75 @@
             </ui:define>
 
             <ui:define name="body">
-                <p:panel style="margin-top:20px; width: 420px">
-                    <f:facet name="header">
-                        <p:row>
-                            <!-- Nombre usuario -->
-                            <p:column>
+                <h:form id='datos' enctype="multipart/form-data">
 
-                            </p:column>
-                        </p:row>
+                    <p:panel style="margin-top:20px; width: 420px; margin: 0 auto">
+                        <f:facet name="header">
 
 
-                    </f:facet>
-                    <p:panelGrid>
-                        <p:row>
-                            <p:column colspan="6" rowspan="8" style="font-weight: bold; width:140px "></p:column>
+                        </f:facet>
+                        <p:panelGrid style=" text-align: center">
+                            <p:row>
+                                <p:column rowspan="7" style="font-weight: bold; width:150px ">
+                                    <p:graphicImage id="foto" value="#{controladorUsuarios.usuariActual.foto}" height="150" cache="false" >
+                                    </p:graphicImage>
+                                </p:column>
 
-                        </p:row>
+                            </p:row>
 
-                        <p:row>
+                            <p:row>
 
-                            <p:column  style="font-weight: bold;">Nombre: </p:column>
-                            <p:column  style="font-weight: bold;">Pepe</p:column>
-                        </p:row>
+                                <p:column  style="font-weight: bold;">Nombre: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" style="font-weight: bold"/></p:column>
+                            </p:row>
 
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Apellido: </p:column>
-                            <p:column  style="font-weight: bold;">Garcia</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">I.D. </p:column>
-                            <p:column  style="font-weight: bold;">u378958</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Departamento: </p:column>
-                            <p:column  style="font-weight: bold;">LHC Tarragona Operations</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Supervisor: </p:column>
-                            <p:column  style="font-weight: bold;">Javier Rubio</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">Turno: </p:column>
-                            <p:column  style="font-weight: bold;">CRACKER TURNO A</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column  style="font-weight: bold;">E-mail: </p:column>
-                            <p:column  style="font-weight: bold;">gtodira@dow.com</p:column>
-                        </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">ID </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.dowID}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Departamento: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.departamento}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Supervisor: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.supervisor}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">Turno: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column  style="font-weight: bold;">E-mail: </p:column>
+                                <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.email}" style="font-weight: bold"/></p:column>
+                            </p:row>
 
 
-                    </p:panelGrid>
+                        </p:panelGrid>
 
-                    <p:panelGrid style="width: 399px">
-                        <p:row>
-                            <p:column colspan="8" styleClass="ui-widget-header">
-                                <p:spacer height="2"/>
-                            </p:column>
-                        </p:row> 
-                    </p:panelGrid>
+                        <p:panelGrid style="width: 399px; text-align: center">
+                            <p:row>
+                                <p:column colspan="6" styleClass="ui-widget-header">
+                                    <p:spacer height="2"/>
+                                </p:column>
+                            </p:row> 
+                        </p:panelGrid>
 
-                  
-                        <p:dataTable var="pol" value="" >
-                            <p:column headerText="Polivalencias">
-                                <h:outputText value="" />
+
+                        <p:dataTable var="pol" value="#{controladorPolivalencias.llistarPoli(controladorUsuarios.usuariActual.dowID)}" style="width: 399px; text-align: center" >
+                            <p:column headerText="Polivalencias" style="text-align: center">
+                                <h:outputText value="#{pol[0]}"/>
                             </p:column>
 
-                            <p:column headerText="Fecha">
-                                <h:outputText value="" />
+                            <p:column headerText="Fecha" style="text-align: center">
+                                <h:outputText value="#{pol[1]}"/> 
                             </p:column>
                         </p:dataTable>
-                   
-                </p:panel>              
+
+                    </p:panel>
+                </h:form>
             </ui:define>
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

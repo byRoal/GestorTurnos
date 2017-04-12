@@ -7,13 +7,17 @@ package servei;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import static java.util.Collections.list;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.primefaces.event.ToggleEvent;
+import org.primefaces.model.Visibility;
 
 /**
  *
@@ -224,6 +228,15 @@ public class TornServei1 implements Serializable {
         diesTorns.add(new DiesTorns(diesM, diesT, diesN, diesR, diesMTNR, diesTOT, diesRF, diesX, diesO, diesCurs, diesRPres));
         horesTorns.add(new HoresTorns(horesM, horesT, horesN, horesR, horesMTNRC, horesTOT, horesX, horesO, horesCurs, horesVac, horesDif));
 
+    }
+private List<Boolean> list = Arrays.asList(true, true, true, true, true,true, true, true, true, true, true, true);
+
+    public List<Boolean> getList() {
+        return list;
+    }
+
+    public void onToggle(ToggleEvent e) {
+        list.set((Integer) e.getData(), e.getVisibility() == Visibility.VISIBLE);
     }
 
 }

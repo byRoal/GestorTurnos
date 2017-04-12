@@ -52,7 +52,7 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Usuarios.findByDepartamento", query = "SELECT u FROM Usuarios u WHERE u.departamento = :departamento")
     , @NamedQuery(name = "Usuarios.findByTurno", query = "SELECT u FROM Usuarios u WHERE u.turno = :turno")
     , @NamedQuery(name = "Usuarios.findBySupervisor", query = "SELECT u FROM Usuarios u WHERE u.supervisor = :supervisor")
-    , @NamedQuery(name = "Usuarios.findByA\u00f1oIncorporacion", query = "SELECT u FROM Usuarios u WHERE u.a\u00f1oIncorporacion = :a\u00f1oIncorporacion")
+    , @NamedQuery(name = "Usuarios.findByFechaIncorporacion", query = "SELECT u FROM Usuarios u WHERE u.fechaIncorporacion = :fechaIncorporacion")
     , @NamedQuery(name = "Usuarios.findByVacacionesHechas", query = "SELECT u FROM Usuarios u WHERE u.vacacionesHechas = :vacacionesHechas")
     , @NamedQuery(name = "Usuarios.findByVacacionesPendientes", query = "SELECT u FROM Usuarios u WHERE u.vacacionesPendientes = :vacacionesPendientes")
     , @NamedQuery(name = "Usuarios.findByVacacionesArrastradas", query = "SELECT u FROM Usuarios u WHERE u.vacacionesArrastradas = :vacacionesArrastradas")})
@@ -107,10 +107,10 @@ public class Usuarios implements Serializable {
     private Character turno;
     @Size(max = 45)
     @Column(name = "supervisor")
-    private String supervisor;
-    @Size(max = 45)
-    @Column(name = "a\u00f1oIncorporacion")
-    private String añoIncorporacion;
+    private String supervisor;    
+    @Column(name = "fechaIncorporacion")
+    @Temporal(TemporalType.DATE)
+    private Date fechaIncorporacion;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "vacacionesHechas")
     private BigDecimal vacacionesHechas;
@@ -136,7 +136,7 @@ public class Usuarios implements Serializable {
         this.iDusuarios = iDusuarios;
     }
 
-    public Usuarios(Integer iDusuarios, String dowID, String nombre, String sexo, Date fechaNacimiento, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+    public Usuarios(Integer iDusuarios, String dowID, String nombre, String sexo, Date fechaNacimiento, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, Date fechaIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
         this.iDusuarios = iDusuarios;
         this.dowID = dowID;
         this.nombre = nombre;
@@ -150,13 +150,13 @@ public class Usuarios implements Serializable {
         this.departamento = departamento;
         this.turno = turno;
         this.supervisor = supervisor;
-        this.añoIncorporacion = añoIncorporacion;
+        this.fechaIncorporacion = fechaIncorporacion;
         this.vacacionesHechas = vacacionesHechas;
         this.vacacionesPendientes = vacacionesPendientes;
         this.vacacionesArrastradas = vacacionesArrastradas;        
     }
 
-    public Usuarios(String dowID, String nombre, String sexo, Date fechaNacimiento, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion) {
+    public Usuarios(String dowID, String nombre, String sexo, Date fechaNacimiento, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, Date fechaIncorporacion) {
         this.dowID = dowID;
         this.nombre = nombre;
         this.sexo = sexo;
@@ -169,7 +169,7 @@ public class Usuarios implements Serializable {
         this.departamento = departamento;
         this.turno = turno;
         this.supervisor = supervisor;
-        this.añoIncorporacion = añoIncorporacion;
+        this.fechaIncorporacion = fechaIncorporacion;
         
     }
 
@@ -295,12 +295,12 @@ public class Usuarios implements Serializable {
         this.supervisor = supervisor;
     }
 
-    public String getAñoIncorporacion() {
-        return añoIncorporacion;
+    public Date getFechaIncorporacion() {
+        return fechaIncorporacion;
     }
 
-    public void setAñoIncorporacion(String añoIncorporacion) {
-        this.añoIncorporacion = añoIncorporacion;
+    public void setFechaIncorporacion(Date fechaIncorporacion) {
+        this.fechaIncorporacion = fechaIncorporacion;
     }
 
     public BigDecimal getVacacionesHechas() {
@@ -384,7 +384,7 @@ public class Usuarios implements Serializable {
         hash = 71 * hash + Objects.hashCode(this.departamento);
         hash = 71 * hash + Objects.hashCode(this.turno);
         hash = 71 * hash + Objects.hashCode(this.supervisor);
-        hash = 71 * hash + Objects.hashCode(this.añoIncorporacion);
+        hash = 71 * hash + Objects.hashCode(this.fechaIncorporacion);
         hash = 71 * hash + Objects.hashCode(this.vacacionesHechas);
         hash = 71 * hash + Objects.hashCode(this.vacacionesPendientes);
         hash = 71 * hash + Objects.hashCode(this.vacacionesArrastradas);
@@ -438,7 +438,7 @@ public class Usuarios implements Serializable {
         if (!Objects.equals(this.supervisor, other.supervisor)) {
             return false;
         }
-        if (!Objects.equals(this.añoIncorporacion, other.añoIncorporacion)) {
+        if (!Objects.equals(this.fechaIncorporacion, other.fechaIncorporacion)) {
             return false;
         }
         if (!Objects.equals(this.iDusuarios, other.iDusuarios)) {

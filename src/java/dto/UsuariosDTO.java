@@ -40,7 +40,7 @@ public class UsuariosDTO implements Serializable{
     private String departamento;
     private Character turno;
     private String supervisor;
-    private String añoIncorporacion;
+    private Date fechaIncorporacion;
     private BigDecimal vacacionesHechas;
     private BigDecimal vacacionesPendientes;
     private BigDecimal vacacionesArrastradas;
@@ -173,12 +173,12 @@ public class UsuariosDTO implements Serializable{
         this.supervisor = supervisor;
     }
 
-    public String getAñoIncorporacion() {
-        return añoIncorporacion;
+    public Date getFechaIncorporacion() {
+        return fechaIncorporacion;
     }
 
-    public void setAñoIncorporacion(String añoIncorporacion) {
-        this.añoIncorporacion = añoIncorporacion;
+    public void setFechaIncorporacion(Date fechaIncorporacion) {
+        this.fechaIncorporacion = fechaIncorporacion;
     }
 
     public BigDecimal getVacacionesHechas() {

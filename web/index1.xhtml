@@ -23,7 +23,7 @@
                         <p:submenu label="Usuarios">
                             <p:menuitem value="Planilla" ajax="false" outcome="usuari/plantilla_usuari" />
                             <p:menuitem value="Cuadrante" outcome="usuari/Cuadrante_usuari" ajax="false" />
-                            <p:menuitem value="Ficha" ajax="false" outcome="usuari/ficha_usuari" />
+                            <p:menuitem value="Ficha" ajax="false" outcome="usuari/SeleccioConsulta" />
                             <p:menuitem value="Calendario Laboral" ajax="false" outcome="usuari/CalendarioLaboral_usuari" />
                             <p:menuitem value="R y Vacaciones" ajax="false" outcome="usuari/RyVacaciones_usuari" />
                         </p:submenu>
@@ -31,23 +31,28 @@
                             <p:menuitem value="Cuadrante" ajax="false" outcome="RRHH/Cuadrante_RRHH" />
                             <p:menuitem value="Escribir en planilla" ajax="false" outcome="RRHH/Plantilla_RRHH" />
                             <p:menuitem value="Escribir en R y Vacaciones" ajax="false" outcome="RRHH/RyVacaciones_RRHH" />
-                            <p:menuitem value="Modificar Ficha" ajax="false" outcome="RRHH/Ficha_RRHH" />
+                            <p:menuitem value="Modificar Ficha" ajax="false" outcome="RRHH/SeleccioConsulta" />
                             <p:menuitem value="Calendario Laboral" ajax="false" outcome="RRHH/CalendarioLaboral_RRHH" />
                         </p:submenu>
                         <p:submenu label="Administradores">
                             <p:menuitem value="Planilla" ajax="false" outcome="admin/Plantilla_admin" />
                             <p:menuitem value="Cuadrante" ajax="false" outcome="admin/Cuadrante_admin" />
-                            <p:menuitem value="Ficha" ajax="false" outcome="admin/Ficha_admin" />                          
+                            <p:menuitem value="Ficha" ajax="false" outcome="admin/SeleccioConsulta" />                          
                             <p:menuitem value="R y Vacaciones" ajax="false" outcome="admin/RyVacaciones_admin" />
                             <p:menuitem value="Calendario Laboral" ajax="false" outcome="admin/CalendarioLaboral_admin" />                            
                         </p:submenu>
                         <p:submenu label="Super Usuario">
                             <p:menuitem value="Planilla" ajax="false" outcome="superuser/Plantilla_su" />
                             <p:menuitem value="Cuadrante" ajax="false" outcome="superuser/Cuadrante_su" />
-                            <p:menuitem value="Ficha" ajax="false" outcome="superuser/SeleccioConsulta" />
-                            <p:menuitem value="Modificar foto" ajax="false" outcome="superuser/SeleccioModificar" />
+                            <p:menuitem value="Ficha" ajax="false" outcome="superuser/SeleccioConsulta" />                            
                             <p:menuitem value="R y Vacaciones" ajax="false" outcome="superuser/RyVacaciones_su" />
                             <p:menuitem value="Calendario Laboral" ajax="false" outcome="superuser/CalendarioLaboral_su" />
+                            <p:submenu label="Gestion de usuarios" >
+                                <p:menuitem value="Alta usuario" ajax="false" outcome="#{controladorUsuarios.prepararInsercio()}" />
+                                <p:menuitem value="Listar usuarios" ajax="false" outcome="superuser/Llistar" />
+                                <p:menuitem value="Modificar usuario" ajax="false" outcome="superuser/SeleccioModificar" />
+                                <p:menuitem value="Eliminar usuario" ajax="false" outcome="superuser/SeleccioEliminacio" />
+                            </p:submenu>
                         </p:submenu>
                     </p:menubar>
                 </h:form>

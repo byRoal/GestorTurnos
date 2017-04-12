@@ -111,7 +111,7 @@ public class Polivalencias implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaCampoOcteno;
     @JoinColumn(name = "dowID", referencedColumnName = "dowID")
-    @ManyToOne(fetch=FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Usuarios dowID;
 
     public Polivalencias() {
@@ -147,6 +147,10 @@ public class Polivalencias implements Serializable {
 
     public Integer getIDpolivalencias() {
         return iDpolivalencias;
+    }
+
+    public Polivalencias(Usuarios dowID) {
+        this.dowID = dowID;
     }
 
     public void setIDpolivalencias(Integer iDpolivalencias) {
@@ -345,5 +349,5 @@ public class Polivalencias implements Serializable {
     public String toString() {
         return "domini.Polivalencias[ iDpolivalencias=" + iDpolivalencias + " ]";
     }
-    
+
 }

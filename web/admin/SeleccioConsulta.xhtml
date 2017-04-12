@@ -6,11 +6,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <!--    <h:head>
+        <h:head>
             <title>Formulari</title>
-        </h:head>-->
-    <body>
-        <ui:composition template="./template_su.xhtml">    
+        </h:head>
+    <h:body>
+        
+        <ui:composition template="./template_admin.xhtml">    
             <ui:define name="title">
 
             </ui:define>
@@ -20,21 +21,22 @@
             </ui:define>
             
             <ui:define name="body">
-                <h:form enctype="multipart/form-data">
-                    <p:panel header="Modificar usuario" style="margin-bottom:10px; background-color: #e9e9e9">
+                
+                <h:form>
+                    <p:panel header="Consultar usuaris" style="margin-bottom:10px; background-color: #e9e9e9">
                         <h:panelGrid columns="3" cellpadding="5">
-                            <p:outputLabel for="c1" value="Selecciona usuario: " style="font-weight: bold"/>
+                            <p:outputLabel for="c1" value="Consulta fitxa: " style="font-weight: bold"/>
                             <p:selectOneMenu id="c1" value="#{idUsuari}" style="width:300px" >
-                                <f:selectItem itemLabel="-- Selecciona un usuario --" itemValue="" noSelectionOption="true" />                    
+                                <f:selectItem itemLabel="-- Selecciona un usuari --" itemValue="" noSelectionOption="true" />                    
                                 <f:selectItems value="#{controladorUsuarios.llistarUsuariosAsc()}" var="usuari" itemLabel="#{usuari.nombre}" itemValue="#{usuari.IDusuarios}" />
                             </p:selectOneMenu>
-                            <p:commandButton value="Aceptar" ajax="false" action="#{controladorUsuarios.obtenirUsuarioModificacio(idUsuari)}" icon="ui-icon-check"/>
+                            <p:commandButton id="acceptar" ajax="false" value="Acceptar" action="#{controladorUsuarios.obtenirUsuarioFitxaAdmin(idUsuari)}" icon="ui-icon-check"/>
                         </h:panelGrid>
                         <p:separator />
-                        <p:button value="Volver" outcome="/index1" icon="ui-icon-arrowthick-1-w" />
+                        <p:button  value="Tornar" outcome="/index1" icon="ui-icon-arrowthick-1-w" />
                     </p:panel>
                 </h:form>
             </ui:define>
         </ui:composition>
-    </body>
+    </h:body>
 </html>
