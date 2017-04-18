@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template_su.xhtml">
+
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <p:panel header="Eliminar dia festivo">
+                        <h:panelGrid columns="3" cellpadding="5">
+                            <p:outputLabel for="id1" value="Titulo del dia festivo: " style="font-weight: bold" />
+                            <p:selectOneMenu id="id1" value="#{controladorDiasFestivos2.diasFestivosactual.titulo}" style="width: 125px" >
+                                <f:selectItem itemLabel="Selecciona un dia festivo" itemValue="" noSelectionOption="true" />
+                                <f:selectItems value="#{controladorDiasFestivos2.llistarDiasFestivos()}" var="diafest" itemValue="#{diafest.titulo}" />
+                            </p:selectOneMenu>
+                            <p:commandButton value="Eliminar" 
+                                             action="#{controladorDiasFestivos2.obtenirDiasFestivosEliminacio(controladorDiasFestivos2.diasFestivosactual.titulo)}"
+                                             icon="ui-icon-pencil" />
+                        </h:panelGrid>
+                        <p:separator/>
+                        <p:commandButton value="Atras" action="/index1" />
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

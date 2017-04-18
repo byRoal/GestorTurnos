@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template_su.xhtml">
+
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+
+                <p:panel style="margin-top:20px; width: 420px; margin: 0 auto">
+                    <f:facet name="header">
+
+
+                    </f:facet>
+                    <p:panelGrid style=" text-align: center">
+                        <p:row>
+                            <p:column colspan="6" rowspan="8" style="font-weight: bold; width:140px "></p:column>
+
+                        </p:row>
+
+                        <p:row>
+
+                            <p:column  style="font-weight: bold;">Nombre: </p:column>
+                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" style="font-weight: bold"/></p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column  style="font-weight: bold;">ID </p:column>
+                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.dowID}" style="font-weight: bold"/></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Departamento: </p:column>
+                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.departamento}" style="font-weight: bold"/></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Supervisor: </p:column>
+                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.supervisor}" style="font-weight: bold"/></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Turno: </p:column>
+                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">E-mail: </p:column>
+                            <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.email}" style="font-weight: bold"/></p:column>
+                        </p:row>
+
+
+                    </p:panelGrid>
+
+                    <p:panelGrid style="width: 399px; text-align: center">
+                        <p:row>
+                            <p:column colspan="6" styleClass="ui-widget-header">
+                                <p:spacer height="2"/>
+                            </p:column>
+                        </p:row> 
+                    </p:panelGrid>
+
+
+                    <p:dataTable var="pol" value="#{controladorPolivalencias.llistarPolivalencias()}" >
+                        <p:column headerText="Polivalencias">
+                            <h:outputText value="#" />
+                        </p:column>
+
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#" />
+                        </p:column>
+                    </p:dataTable>
+
+                </p:panel>
+
+                <p:panel style="width: 420px; margin: 0 auto">
+                    <p:panelGrid style="width: 400px; text-align: center">
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Telefono </p:column>
+                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.telefono}" style="font-weight: bold"/></p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Movil </p:column>
+                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.movil}" style="font-weight: bold"/></p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Turno </p:column>
+                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar"></p:button>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                </p:panel>
+
+                <p:panel style="width: 420px; margin: 0 auto">
+                    <p:panelGrid style="width: 400px; text-align: center">
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Fecha Incorporacion </p:column>
+                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.añoIncorporacion}" style="font-weight: bold"/></p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Nuevo usuario"></p:button>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Años antiguedad </p:column>
+                            <p:column  style="font-weight: bold;width: 150px">13</p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Cambiar datos"></p:button>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;width: 150px">Sexo </p:column>
+                            <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.sexo}" style="font-weight: bold"/></p:column>
+                            <p:column>
+                                <p:button style="padding-right: auto" value="Guardar datos"></p:button>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                </p:panel>
+
+
+                <p:panel style="width: 420px; margin: 0 auto">
+                    <p:panelGrid style="width: 400px">
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Turno #{controladorUsuarios.usuariActual.turno}" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Tarragona Norte" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Polivalencias" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Dias 12 horas" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Dias baja" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Dias permiso" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Informe completo" />
+                            </p:column>
+
+                            <p:column style="width: 100px; text-align: center">
+                                <p:selectBooleanCheckbox value="" />
+                            </p:column>
+
+                        </p:row>
+
+
+                        <p:row>
+                            <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                <p:outputLabel value="Exportar a Excel" />
+                            </p:column>
+
+                            <p:column>
+
+                                <p:commandLink id="xls"  >  
+                                    <p:graphicImage value="resources/excel.png"/>  
+                                    <f:setPropertyActionListener value="true" target="" />  
+
+                                </p:commandLink>  
+                            </p:column>
+
+
+                        </p:row>
+
+
+
+
+                    </p:panelGrid>
+                </p:panel>
+
+
+
+
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

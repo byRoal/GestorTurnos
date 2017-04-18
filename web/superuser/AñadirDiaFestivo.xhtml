@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./template_su.xhtml">
+
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form enctype="multipart/form-data">
+                    <p:panel>
+                        <h:panelGrid columns="2" >
+                            <p:outputLabel for="titulo" value="Titulo: " style="font-weight: bold"/>
+                            <p:inputText id="titulo" value="#{controladorDiasFestivos2.diasFestivosactual.titulo}" />
+                            <p:outputLabel value="Fecha festivo: " style="font-weight: bold"/>
+                            <h:panelGrid columns="2">
+                                <p:calendar id="fechafest" value="#{controladorDiasFestivos2.diasFestivosactual.fechaFestivo}"
+                                            pattern="dd/MM/yyyy" locale="es" navigator="true" yearRange="#{controladorDiasFestivos2.formataData()}"/>
+                                <p:watermark for="fechafest" value="dd/mm/yyyy" id="watermark" />
+
+                            </h:panelGrid>
+
+
+
+                            <p:outputLabel for="comen" value="Comentario: " style="font-weight: bold"/>
+                            <p:inputTextarea id="comen" value="#{controladorDiasFestivos2.diasFestivosactual.comentario}"/>
+
+                            <p:outputLabel for="cursillo" value="Cursillo: " style="font-weight: bold"/>
+                            <p:selectBooleanCheckbox id="cursillo" value="#{controladorDiasFestivos2.diasFestivosactual.esCursillo}"/>
+
+                        </h:panelGrid>
+                        <p:separator/>
+                        <h:panelGrid columns="2" border="0" cellpadding="10" cellspacing="1">
+                            <p:commandButton value="Inserir"
+                                             action="#{controladorDiasFestivos2.crearDiaFestivo(controladorDiasFestivos2.diasFestivosactual.titulo, 
+                                                       controladorDiasFestivos2.diasFestivosactual.fechaFestivo, controladorDiasFestivos2.diasFestivosactual.comentario,
+                                                       controladorDiasFestivos2.diasFestivosactual.esCursillo)}"
+                                             ajax="false" />
+                            <p:commandButton value="Cancelar" action="/index1" icon="ui-icon-cancel"/>
+                        </h:panelGrid>
+                    </p:panel>                  
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

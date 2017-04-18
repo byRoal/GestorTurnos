@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template_RRHH.xhtml">
+
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+
+
+                <h:form>
+                    <h:panelGrid>
+
+
+                        <h3>Calendario laboral</h3>
+                        <p:schedule value="#{controladorDiasFestivos.eventModel}" locale="es" style="width: 850px" widgetVar="myschedule" timeZone="GMT+2" draggable="false">
+
+                            <p:ajax event="dateSelect" listener="#{controladorDiasFestivos.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                            <p:ajax event="eventSelect" listener="#{controladorDiasFestivos.onEventSelect}" update=":newDialog:newDialog" oncomplete="PF('dialog').show();" />
+                            <p:ajax event="eventMove" listener="#{controladorDiasFestivos.onEventMove}" />
+                            <p:ajax event="eventResize" listener="#{controladorDiasFestivos.onEventResize}" />
+                        </p:schedule>
+                    </h:panelGrid>
+
+                    <p:dialog widgetVar="eventDialog" header="Detalle" showEffect="clip" hideEffect="clip">
+                        <h:panelGrid id="eventDetails" columns="2">
+                            <p:outputLabel for="title" value="Titulo:" />
+                            <p:inputText id="title" value="#{controladorDiasFestivos.event.title}" required="true" />
+
+                            <p:outputLabel for="from" value="Fecha:" />
+                            <p:calendar id="from" value="#{controladorDiasFestivos.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy"/>
+
+                            <p:outputLabel for="desc" value="Descripcion:" />
+                            <p:inputText id="desc" value="#{controladorDiasFestivos.event.description}" required="true" />
+
+                            <p:commandButton id="addButton" value="Guardar" actionListener="#{controladorDiasFestivos.addEvent(controladorDiasFestivos.event.title, controladorDiasFestivos.event.startDate, controladorDiasFestivos.event.description)}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" >
+                               
+                            </p:commandButton>
+                        </h:panelGrid>
+                    </p:dialog>
+
+
+
+                </h:form>
+                <p:dialog header="Datos del dia festivo" widgetVar="dialog" modal="true" height="100">
+                    <h:form id="newDialog">
+                        <h:panelGrid id="newDialog" columns="2">
+                            
+                            <p:outputLabel for="titol" value="Titol: " style="font-weight:bold"/>  
+                            <p:outputLabel id="titol" value="#{controladorDiasFestivos.event.title}"/>
+
+                            <p:outputLabel for="fecha" value="Fecha: " style="font-weight:bold"/>
+                            <p:outputLabel id="fecha" value="#{controladorDiasFestivos.event.startDate}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </p:outputLabel>
+
+                            <p:outputLabel for="desc" value="Descripcion: " style="font-weight:bold"/>
+                            <p:outputLabel id="desc" value="#{controladorDiasFestivos.event.description}"/>
+                        </h:panelGrid> 
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

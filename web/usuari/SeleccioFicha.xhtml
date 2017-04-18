@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template_usuari.xhtml">
+
+            <ui:define name="title">
+                
+            </ui:define>
+
+            <ui:define name="keyword">
+               
+            </ui:define>
+
+            <ui:define name="body">
+
+                <h:form>
+                    <p:panel header="Consultar usuaris" style="margin-bottom:10px; background-color: #e9e9e9">
+                        <h:panelGrid columns="3" cellpadding="5">
+                            <p:outputLabel for="c1" value="Consulta per DOW ID: " style="font-weight: bold"/>
+                            <p:selectOneMenu id="c1" value="" style="width:300px">
+                                <f:selectItem itemLabel="-- Selecciona un usuari --" itemValue="" noSelectionOption="true" />                    
+                                <f:selectItems value="" var="usuari" itemLabel=", " itemValue=""/>
+                            </p:selectOneMenu>
+                            <p:commandButton value="Acceptar" action="" icon="ui-icon-check" />
+                        </h:panelGrid>
+                        <p:separator />
+                        <p:commandButton value="Tornar" action="index2" icon="ui-icon-arrowthick-1-w" />
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

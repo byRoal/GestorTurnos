@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="template.xhtml">
+
+            <ui:define name="title">
+                <h1>Bienvenido <span id="welcome"></span>,</h1><br />
+            </ui:define>
+
+            <ui:define name="keyword">
+                <p class="Keyword">Gestor de turnos </p>                
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <p:menubar>
+                        <p:submenu label="Usuarios">
+                            <p:menuitem value="Planilla" action="usuari/plantilla_usuari" />
+                            <p:menuitem value="Cuadrante" action="usuari/Cuadrante_usuari" />
+                            <p:menuitem value="Ficha" action="usuari/ficha_usuari" />
+                            <p:menuitem value="Calendario Laboral" action="usuari/CalendarioLaboral_usuari" />
+                            <p:menuitem value="R y Vacaciones" action="usuari/RyVacaciones_usuari" />
+                        </p:submenu>
+                        <p:submenu label="RRHH">
+                            <p:menuitem value="Cuadrante" action="RRHH/Cuadrante_RRHH" />
+                            <p:menuitem value="Escribir en planilla" action="RRHH/Plantilla_RRHH" />
+                            <p:menuitem value="Escribir en R y Vacaciones" action="RRHH/RyVacaciones_RRHH" />
+                            <p:menuitem value="Modificar Ficha" action="RRHH/Ficha_RRHH" />
+                            <p:menuitem value="Calendario Laboral" action="RRHH/CalendarioLaboral_RRHH" />
+                        </p:submenu>
+                        <p:submenu label="Administradores">
+                            <p:menuitem value="Planilla" action="admin/Plantilla_admin" />
+                            <p:menuitem value="Cuadrante" action="admin/Cuadrante_admin" />
+                            <p:menuitem value="Ficha" action="admin/Ficha_admin" />                          
+                            <p:menuitem value="R y Vacaciones" action="admin/RyVacaciones_admin" />
+                            <p:menuitem value="Calendario Laboral" action="admin/CalenadrioLaboral_admin" />
+                        </p:submenu>
+                        <p:submenu label="Super Usuario">
+                            <p:menuitem value="Planilla" action="superuser/Plantilla_su" />
+                            <p:menuitem value="Cuadrante" action="superuser/Cuadrante_su" />
+                            <p:menuitem value="Ficha" action="superuser/SeleccioConsulta" />
+                            <p:menuitem value="R y Vacaciones" action="superuser/RyVacaciones_su" />
+                            <p:menuitem value="Calendario Laboral" action="superuser/CalendarioLaboral_su" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

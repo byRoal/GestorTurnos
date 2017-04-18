@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template_usuari.xhtml">
+
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                <p:panel style="margin-top:20px; width: 420px">
+                    <f:facet name="header">
+                        <p:row>
+                            <!-- Nombre usuario -->
+                            <p:column>
+
+                            </p:column>
+                        </p:row>
+
+
+                    </f:facet>
+                    <p:panelGrid>
+                        <p:row>
+                            <p:column colspan="6" rowspan="8" style="font-weight: bold; width:140px "></p:column>
+
+                        </p:row>
+
+                        <p:row>
+
+                            <p:column  style="font-weight: bold;">Nombre: </p:column>
+                            <p:column  style="font-weight: bold;">Pepe</p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Apellido: </p:column>
+                            <p:column  style="font-weight: bold;">Garcia</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">I.D. </p:column>
+                            <p:column  style="font-weight: bold;">u378958</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Departamento: </p:column>
+                            <p:column  style="font-weight: bold;">LHC Tarragona Operations</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Supervisor: </p:column>
+                            <p:column  style="font-weight: bold;">Javier Rubio</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">Turno: </p:column>
+                            <p:column  style="font-weight: bold;">CRACKER TURNO A</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column  style="font-weight: bold;">E-mail: </p:column>
+                            <p:column  style="font-weight: bold;">gtodira@dow.com</p:column>
+                        </p:row>
+
+
+                    </p:panelGrid>
+
+                    <p:panelGrid style="width: 399px">
+                        <p:row>
+                            <p:column colspan="8" styleClass="ui-widget-header">
+                                <p:spacer height="2"/>
+                            </p:column>
+                        </p:row> 
+                    </p:panelGrid>
+
+                  
+                        <p:dataTable var="pol" value="" >
+                            <p:column headerText="Polivalencias">
+                                <h:outputText value="" />
+                            </p:column>
+
+                            <p:column headerText="Fecha">
+                                <h:outputText value="" />
+                            </p:column>
+                        </p:dataTable>
+                   
+                </p:panel>              
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

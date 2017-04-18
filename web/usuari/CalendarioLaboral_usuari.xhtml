@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!--    <h:head>
+            <h:outputScript library="js" name="calendar_localization.js"/>
+        </h:head>-->
+
+    <body>
+
+        <ui:composition template="./template_usuari.xhtml">
+
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <h:panelGrid>
+
+
+                        <h3>Calendario laboral</h3>
+                        <p:schedule value="#{claseCalendario.lazyEventModel}" locale="es" style="width: 850px" draggable="false"/>
+                    </h:panelGrid>
+
+                 
+
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
