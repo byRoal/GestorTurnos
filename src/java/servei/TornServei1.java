@@ -15,9 +15,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.ToggleEvent;
 import org.primefaces.model.Visibility;
+import domini.Diasfestivos;
+import java.util.Date;
 
 /**
  *
@@ -26,6 +29,9 @@ import org.primefaces.model.Visibility;
 @Named
 @ViewScoped
 public class TornServei1 implements Serializable {
+
+    @Inject
+    private DiasFestivosServei serveiDiasFestivos;
 
     private char[] tornA = {'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O'};
     private char[] tornB = {'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R'};
@@ -167,16 +173,38 @@ public class TornServei1 implements Serializable {
 
     public String capSetmana(int dia, int mes) {
         GregorianCalendar finde = new GregorianCalendar();
+        List<Diasfestivos> llistaDies = serveiDiasFestivos.llistarDiasFestivos();
+        boolean trobat = false;
+        boolean curs = false;
+        int i = 0;
+
         finde.set(any, mes, dia);
+        Date data = new Date(any - 1900, mes, dia);
+        while (trobat == false && i < llistaDies.size()) {
+            if (llistaDies.get(i).getFechaFestivo().equals(data)) {
+                trobat = true;
+
+                if (llistaDies.get(i).getEsCursillo() == true) {
+                    curs = true;
+                }
+
+            }
+            i++;
+        }
+
         int day = finde.get(Calendar.DAY_OF_WEEK);
         int month = finde.get(Calendar.DAY_OF_MONTH);
-        if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
-            return "negre";
-        } else if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
+        if (curs == true) {
+            return "verd";
+        } else if (trobat == true) {
+            return "vermell";
+        } else if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
             //System.out.println("vermell " + dia + " " + mes);
-            return "vermell ";
-        } else {
+            return "negre ";
+        } else if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
 //            System.out.println("negre "  +dia +" " +mes);
+            return "vermell";
+        } else {
             return "negre";
         }
     }
@@ -229,7 +257,7 @@ public class TornServei1 implements Serializable {
         horesTorns.add(new HoresTorns(horesM, horesT, horesN, horesR, horesMTNRC, horesTOT, horesX, horesO, horesCurs, horesVac, horesDif));
 
     }
-private List<Boolean> list = Arrays.asList(true, true, true, true, true,true, true, true, true, true, true, true);
+    private List<Boolean> list = Arrays.asList(true, true, true, true, true, true, true, true, true, true, true, true);
 
     public List<Boolean> getList() {
         return list;
