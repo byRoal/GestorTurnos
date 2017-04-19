@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template_su.xhtml">    
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form enctype="multipart/form-data">
+                    <p:panel header="Eliminar usuario" style="margin-bottom: 20px">
+                        <h:panelGrid columns="2" border="0" cellpadding="10" cellspacing="1" >
+
+                            <p:outputLabel for="dowid" value="DOW ID:" style="font-weight: bold" />
+                            <p:outputLabel id="dowid"  value="#{controladorUsuarios.usuariActual.dowID}" style="font-weight: bold; color: red"/>
+
+                            <p:outputLabel for="nom" value="Nombre:" style="font-weight: bold" />
+                            <p:outputLabel id="nom"  value="#{controladorUsuarios.usuariActual.nombre}" /> 
+
+                            <p:outputLabel for="sexo" value="Sexo: " style="font-weight: bold" />
+                            <p:outputLabel id="sexo" value="#{controladorUsuarios.usuariActual.sexo}"/>                                
+
+                            <p:outputLabel for="nacimiento" value="Fecha nacimiento: " style="font-weight: bold" />
+                            <p:outputLabel id="nacimiento" value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />
+
+                            <p:outputLabel for="direccion" value="Dirección:" style="font-weight: bold" />
+                            <p:outputLabel id="direccion"  value="#{controladorUsuarios.usuariActual.direccion}" />
+
+                            <p:outputLabel for="telf" value="Teléfono:" style="font-weight: bold" />
+                            <p:outputLabel id="telf"  value="#{controladorUsuarios.usuariActual.telefono}" />
+
+                            <p:outputLabel for="movil" value="Móvil:" style="font-weight: bold" />
+                            <p:outputLabel id="movil"  value="#{controladorUsuarios.usuariActual.movil}" />
+
+                            <p:outputLabel for="email" value="Email:" style="font-weight: bold" />
+                            <p:outputLabel id="email"  value="#{controladorUsuarios.usuariActual.email}" />
+
+                            <p:outputLabel for="planta" value="Planta: " style="font-weight: bold" />
+                            <p:outputLabel id="planta" value="#{controladorUsuarios.usuariActual.planta}"/>
+
+
+                            <p:outputLabel for="departament" value="Departamento: " style="font-weight: bold" />
+                            <p:outputLabel id="departament" value="#{controladorUsuarios.usuariActual.departamento}"/>
+
+
+                            <p:outputLabel for="torn" value="Turno: " style="font-weight: bold" />
+                            <p:outputLabel id="torn" value="#{controladorUsuarios.usuariActual.turno}"/> 
+
+                            <p:outputLabel for="supervisor" value="Supervisor:" style="font-weight: bold" />
+                            <p:outputLabel id="supervisor"  value="#{controladorUsuarios.usuariActual.supervisor}" />
+
+                            <p:outputLabel for="anyInc" value="Fecha incorporación:" style="font-weight: bold" />
+                            <p:outputLabel id="anyInc" value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                        </h:panelGrid>
+
+                        <p:separator />
+
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:button value="Cancelar" outcome="/index1" icon="ui-icon-cancel" />
+                            <p:commandButton value="Eliminar" actionListener="#{controladorUsuarios.eliminarUsuario(controladorUsuarios.usuariActual.dowID)}" icon="ui-icon-trash" >
+                                <p:confirm header="Eliminar" message="Estás seguro?" icon="ui-icon-alert" />
+                            </p:commandButton>
+
+                            <p:confirmDialog global="true"  >
+                                <p:button value="Si" outcome="/index1"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:button value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

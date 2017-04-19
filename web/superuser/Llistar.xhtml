@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template_su.xhtml">    
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <p:panel>
+                        <p:dataTable id="tbl"  var="usuari" value="#{controladorUsuarios.llistarUsuariosAsc()}"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                                     rowsPerPageTemplate="10,20,30"
+                                     paginator="true" rows="10" style="margin-bottom:20px; ">
+
+                            <f:facet name="header" >
+                                <div style="overflow: hidden">
+                                    <div style="display: inline-block">
+                                        <h:outputText value="USUARIOS" style="font-size: medium;text-align: center" />
+                                    </div>
+                                    <div style="float: right; display: inline-block; " >                                    
+                                        <p:commandButton id="toggler" type="button" value="Columnas"  icon="ui-icon-calculator" />
+                                    </div>
+                                </div>
+                                <p:columnToggler datasource="tbl" trigger="toggler" >
+                                    <p:ajax event="toggle" listener="#{tornServei1.onToggle}" />
+                                </p:columnToggler>
+                            </f:facet>
+
+                            <f:facet name="{Exporters}">
+                                <div style="float: right" >
+                                    <h:commandLink>
+                                        <h:outputText value="Exportar a Excel" />
+                                        <!--<p:graphicImage value="/resources/images/excel3.png" style="width: 30px" />-->                                        
+                                        <p:dataExporter type="xls" target="tbl" fileName="usuarios_list" />
+                                    </h:commandLink>
+                                </div>
+                            </f:facet>
+
+                            <p:column headerText="DOW ID" style="text-align: center" exportable="#{tornServei1.list[0]}">
+                                <h:outputText value="#{usuari.dowID}"/>
+                            </p:column>
+
+                            <p:column headerText="Nombre" style="text-align: center" exportable="#{tornServei1.list[1]}">
+                                <h:outputText value="#{usuari.nombre}"/> 
+                            </p:column>
+
+                            <p:column headerText="Sexo" style="text-align: center" exportable="#{tornServei1.list[2]}">
+                                <h:outputText value="#{usuari.sexo}"/>
+                            </p:column>
+
+                            <p:column headerText="Fecha Nacimiento" style="text-align: center" exportable="#{tornServei1.list[3]}">
+                                <h:outputText value="#{usuari.fechaNacimiento}" >
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column headerText="Teléfono" style="text-align: center" exportable="#{tornServei1.list[4]}">
+                                <h:outputText value="#{usuari.telefono}"/>
+                            </p:column>
+
+                            <p:column headerText="Móvil" style="text-align: center" exportable="#{tornServei1.list[5]}">
+                                <h:outputText value="#{usuari.movil}"/>
+                            </p:column>
+
+                            <p:column headerText="Email" style="text-align: center" exportable="#{tornServei1.list[6]}">
+                                <h:outputText value="#{usuari.email}"/>
+                            </p:column>
+
+                            <p:column headerText="Planta" style="text-align: center" exportable="#{tornServei1.list[7]}">
+                                <h:outputText value="#{usuari.planta}"/>
+                            </p:column>
+
+                            <p:column headerText="Departamento" style="text-align: center" exportable="#{tornServei1.list[8]}">
+                                <h:outputText value="#{usuari.departamento}"/>
+                            </p:column>
+
+                            <p:column headerText="Turno" style="text-align: center" exportable="#{tornServei1.list[9]}">
+                                <h:outputText value="#{usuari.turno}"/>
+                            </p:column>
+
+                            <p:column headerText="Supervisor" style="text-align: center" exportable="#{tornServei1.list[10]}">
+                                <h:outputText value="#{usuari.supervisor}"/>
+                            </p:column>
+
+                            <p:column headerText="Fecha incorporación" style="text-align: center" exportable="#{tornServei1.list[11]}">
+                                <h:outputText value="#{usuari.fechaIncorporacion}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+<!--                            <p:column headerText="Polivalencias" style="text-align: center" exportable="#{tornServei1.list[11]}">
+                                <h:dataTable var="pol" value="#{controladorPolivalencias.llistarPoli('TEST2')}" >
+                                    <p:column  style="text-align: center">
+                                        <h:outputText value="#{pol[0]}"/>
+                                    </p:column>
+
+                                    <p:column  style="text-align: center">
+                                        <h:outputText value="#{pol[1]}"/>
+                                    </p:column>
+                                </h:dataTable>
+                            </p:column>-->
+
+                        </p:dataTable>
+
+                        <p:dataTable id="poli"  var="u" value="#{controladorUsuarios.llistarUsuariosAsc()}"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                                     rowsPerPageTemplate="10,20,30"
+                                     paginator="true" rows="10" style="margin-bottom:20px; ">
+
+                            <f:facet name="header" >
+                                <div style="overflow: hidden">
+                                    <div style="display: inline-block">
+                                        <h:outputText value="POLIVALENCIAS" style="font-size: medium;text-align: center" />
+                                    </div>
+                                    <div style="float: right; display: inline-block; " >                                    
+                                        <p:commandButton id="toggler" type="button" value="Columnas"  icon="ui-icon-calculator" />
+                                    </div>
+                                </div>
+                                <p:columnToggler datasource="poli" trigger="toggler" >
+                                    <p:ajax event="toggle" listener="#{tornServei1.onToggle}" />
+                                </p:columnToggler>
+                            </f:facet>
+
+                            <f:facet name="{Exporters}">
+                                <div style="float: right" >
+                                    <h:commandLink>
+                                        <h:outputText value="Exportar a Excel" />
+                                        <!--<p:graphicImage value="/resources/images/excel3.png" style="width: 30px" />-->                                        
+                                        <p:dataExporter type="xls" target="poli,polivalencies" fileName="polivalencias_list" />
+                                    </h:commandLink>
+                                </div>
+                            </f:facet>
+
+                            <p:column headerText="DOW ID" style="text-align: center">
+                                <h:outputText value="#{u.dowID}"/>
+                            </p:column>
+
+                            <p:column headerText="Polivalencias"  style="text-align: center"> 
+                                
+                                    <h:dataTable id="polivalencies" var="pol" value="#{controladorPolivalencias.llistarPoli('TEST2')}" >
+                                        <p:column  style="text-align: center">
+                                            <h:outputText value="#{pol[0]}"/>
+                                        </p:column>
+
+                                        <p:column  style="text-align: center">
+                                            <h:outputText value="#{pol[1]}"/>
+                                        </p:column>
+                                    </h:dataTable>
+                                
+                            </p:column>                            
+                        </p:dataTable>
+
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

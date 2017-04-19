@@ -7,13 +7,17 @@ package servei;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import static java.util.Collections.list;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.primefaces.event.ToggleEvent;
+import org.primefaces.model.Visibility;
 
 /**
  *
@@ -108,12 +112,12 @@ public class TornServei1 implements Serializable {
 
         anyFinal.set(any, 0, 1);
         //anyFinal.set(2017, 0, 1);
-        System.out.println("passa");
+        //System.out.println("passa");
         long dies = (anyFinal.getTimeInMillis() - anyInicial.getTimeInMillis()) / (1000 * 3600 * 24);
-        System.out.println(dies + "---");
+        //System.out.println(dies + "---");
 
         diaTornComença = (int) dies % 42;
-        System.out.println(diaTornComença);
+        //System.out.println(diaTornComença);
 
         for (int i = 0; i < 366; i++) {
             if (i == 59) {
@@ -169,7 +173,7 @@ public class TornServei1 implements Serializable {
         if (dia == 29 && mes == 1 && !anyTrespas.isLeapYear(any)) {
             return "negre";
         } else if (day == Calendar.SATURDAY || day == Calendar.SUNDAY) {
-            System.out.println("vermell " + dia + " " + mes);
+            //System.out.println("vermell " + dia + " " + mes);
             return "vermell ";
         } else {
 //            System.out.println("negre "  +dia +" " +mes);
@@ -224,6 +228,15 @@ public class TornServei1 implements Serializable {
         diesTorns.add(new DiesTorns(diesM, diesT, diesN, diesR, diesMTNR, diesTOT, diesRF, diesX, diesO, diesCurs, diesRPres));
         horesTorns.add(new HoresTorns(horesM, horesT, horesN, horesR, horesMTNRC, horesTOT, horesX, horesO, horesCurs, horesVac, horesDif));
 
+    }
+private List<Boolean> list = Arrays.asList(true, true, true, true, true,true, true, true, true, true, true, true);
+
+    public List<Boolean> getList() {
+        return list;
+    }
+
+    public void onToggle(ToggleEvent e) {
+        list.set((Integer) e.getData(), e.getVisibility() == Visibility.VISIBLE);
     }
 
 }

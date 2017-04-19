@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Inserir Usuari</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template_su.xhtml">    
+            <ui:define name="title">
+
+            </ui:define>
+
+            <ui:define name="keyword">
+
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form enctype="multipart/form-data">
+                    <p:panel header="Alta usuario" style="margin-bottom: 20px">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="dowid" value="DOW ID:" style="font-weight: bold" />
+                            <p:inputText id="dowid" size="9" value="#{controladorUsuarios.usuariActual.dowID}" />
+
+                            <p:outputLabel for="nom" value="Nombre:" style="font-weight: bold" />
+                            <p:inputText id="nom"  value="#{controladorUsuarios.usuariActual.nombre}" /> 
+
+                            <p:outputLabel for="sexo" value="Sexo: " style="font-weight: bold" />
+                            <p:selectOneMenu id="sexo" value="#{controladorUsuarios.usuariActual.sexo}">
+                                <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
+                                <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
+                                <f:selectItem itemLabel="Mujer" itemValue="Mujer" />                                
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="nacimiento" value="Fecha nacimiento: " style="font-weight: bold" />
+                            <p:calendar id="nacimiento" pattern="dd/MM/yyyy" value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />
+
+                            <p:outputLabel for="direccion" value="Dirección:" style="font-weight: bold" />
+                            <p:inputText id="direccion"  value="#{controladorUsuarios.usuariActual.direccion}" />
+
+                            <p:outputLabel for="telf" value="Teléfono:" style="font-weight: bold" />
+                            <p:inputText id="telf"  value="#{controladorUsuarios.usuariActual.telefono}" />
+
+                            <p:outputLabel for="movil" value="Móvil:" style="font-weight: bold" />
+                            <p:inputText id="movil"  value="#{controladorUsuarios.usuariActual.movil}" />
+
+                            <p:outputLabel for="email" value="Email:" style="font-weight: bold" />
+                            <p:inputText id="email"  value="#{controladorUsuarios.usuariActual.email}" />
+
+                            <p:outputLabel for="planta" value="Planta: " style="font-weight: bold" />
+                            <p:selectOneMenu id="planta" value="#{controladorUsuarios.usuariActual.planta}">
+                                <p:ajax event="change" update="departament"/>
+                                <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
+                                <f:selectItem itemLabel="Cracker" itemValue="Cracker" />
+                                <f:selectItem itemLabel="Octéno" itemValue="Octeno" />                                
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="departament" value="Departamento: " style="font-weight: bold" />
+                            <p:selectOneMenu id="departament" value="#{controladorUsuarios.usuariActual.departamento}">
+                                <f:selectItems  value="#{controladorUsuarios.departaments(controladorUsuarios.usuariActual.planta)}" var="dep" itemValue="#{dep}" itemLabel="#{dep}"/>                                
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="torn" value="Turno: " style="font-weight: bold" />
+                            <p:selectOneMenu id="torn" value="#{controladorUsuarios.usuariActual.turno}">                                
+                                <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
+                                <f:selectItem itemLabel="A" itemValue="A" />
+                                <f:selectItem itemLabel="B" itemValue="B" />
+                                <f:selectItem itemLabel="C" itemValue="C" />
+                                <f:selectItem itemLabel="D" itemValue="D" />
+                                <f:selectItem itemLabel="E" itemValue="E" />
+                                <f:selectItem itemLabel="F" itemValue="F" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="supervisor" value="Supervisor:" style="font-weight: bold" />
+                            <p:inputText id="supervisor"  value="#{controladorUsuarios.usuariActual.supervisor}" />
+
+                            <p:outputLabel for="anyInc" value="Fecha incorporación:" style="font-weight: bold" />
+                            <p:calendar id="anyInc" pattern="dd/MM/yyyy" value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
+
+                            <p:outputLabel value="Foto:" style="font-weight: bold" />
+                            <p:fileUpload value="#{controladorUsuarios.usuariActual.arxiuFoto}" mode="simple" label="Selecciona imagen" />
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                        </h:panelGrid>
+
+                        <p:separator />
+                        <h:panelGrid columns="2" border="0" cellpadding="10" cellspacing="1">
+                            <p:button value="Cancelar" outcome="/index1" icon="ui-icon-cancel" />
+                            <p:commandButton value="Insertar" action="#{controladorUsuarios.crearUsuari(controladorUsuarios.usuariActual.dowID)}" ajax="false" icon="ui-icon-check"/>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

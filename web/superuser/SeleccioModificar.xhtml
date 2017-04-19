@@ -6,11 +6,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-        <h:head>
+    <!--    <h:head>
             <title>Formulari</title>
-        </h:head>
-    <h:body>
-        
+        </h:head>-->
+    <body>
         <ui:composition template="./template_su.xhtml">    
             <ui:define name="title">
 
@@ -21,22 +20,21 @@
             </ui:define>
             
             <ui:define name="body">
-                
-                <h:form>
-                    <p:panel header="Ver ficha" style="margin-bottom:10px; background-color: #e9e9e9">
+                <h:form enctype="multipart/form-data">
+                    <p:panel header="Modificar usuario" style="margin-bottom:10px; background-color: #e9e9e9">
                         <h:panelGrid columns="3" cellpadding="5">
                             <p:outputLabel for="c1" value="Selecciona usuario: " style="font-weight: bold"/>
                             <p:selectOneMenu id="c1" value="#{idUsuari}" style="width:300px" >
                                 <f:selectItem itemLabel="-- Selecciona un usuario --" itemValue="" noSelectionOption="true" />                    
                                 <f:selectItems value="#{controladorUsuarios.llistarUsuariosAsc()}" var="usuari" itemLabel="#{usuari.nombre}" itemValue="#{usuari.IDusuarios}" />
                             </p:selectOneMenu>
-                            <p:commandButton id="acceptar" ajax="false" value="Aceptar" action="#{controladorUsuarios.obtenirUsuarioFitxaSU(idUsuari)}" icon="ui-icon-check"/>
+                            <p:commandButton value="Aceptar" ajax="false" action="#{controladorUsuarios.obtenirUsuarioModificacio(idUsuari)}" icon="ui-icon-check"/>
                         </h:panelGrid>
                         <p:separator />
-                        <p:button  value="Volver" outcome="/index1" icon="ui-icon-arrowthick-1-w" />
+                        <p:button value="Volver" outcome="/index1" icon="ui-icon-arrowthick-1-w" />
                     </p:panel>
                 </h:form>
             </ui:define>
         </ui:composition>
-    </h:body>
+    </body>
 </html>

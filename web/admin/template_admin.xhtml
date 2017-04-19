@@ -15,6 +15,7 @@
         <meta name="Author" content="Ferket M u762818" />
         <link REL="stylesheet" HREF="http://usmdlcdoww001.intranet.dow.com/common/dow/includes/default.css" TYPE="text/css" />
         <link REL="stylesheet" HREF="http://usmdlcdoww001.intranet.dow.com/common/dow/includes/hdr_n_nav.css" TYPE="text/css" />
+        <h:outputScript library="js" name="calendar_localization.js"/>
         <title>Gestor de turnos - Dow</title>
     </h:head>
     <h:body onload="SetMenu()">
@@ -42,9 +43,8 @@
                     <table name="Menu" id="Menu" border="0" width="100px" cellspacing="0" cellpadding="0" >
                         <tr class="menuhead">
                             <td class="menuheadcell">
-                                <p:commandLink action="index">
-                                    <h:outputText value="Home" />
-                                </p:commandLink></td>
+                                <p:link outcome="/index1" value="Home"/> 
+                            </td>
                         </tr>
 
                     </table>

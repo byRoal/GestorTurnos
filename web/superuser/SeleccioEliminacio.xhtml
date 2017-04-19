@@ -23,14 +23,14 @@
             <ui:define name="body">
                 
                 <h:form>
-                    <p:panel header="Ver ficha" style="margin-bottom:10px; background-color: #e9e9e9">
+                    <p:panel header="Eliminar usuario" style="margin-bottom:10px; background-color: #e9e9e9">
                         <h:panelGrid columns="3" cellpadding="5">
                             <p:outputLabel for="c1" value="Selecciona usuario: " style="font-weight: bold"/>
                             <p:selectOneMenu id="c1" value="#{idUsuari}" style="width:300px" >
                                 <f:selectItem itemLabel="-- Selecciona un usuario --" itemValue="" noSelectionOption="true" />                    
                                 <f:selectItems value="#{controladorUsuarios.llistarUsuariosAsc()}" var="usuari" itemLabel="#{usuari.nombre}" itemValue="#{usuari.IDusuarios}" />
                             </p:selectOneMenu>
-                            <p:commandButton id="acceptar" ajax="false" value="Aceptar" action="#{controladorUsuarios.obtenirUsuarioFitxaSU(idUsuari)}" icon="ui-icon-check"/>
+                            <p:commandButton id="acceptar" ajax="false" value="Eliminar" action="#{controladorUsuarios.obtenirUsuarioEliminacio(idUsuari)}" icon="ui-icon-trash"/>
                         </h:panelGrid>
                         <p:separator />
                         <p:button  value="Volver" outcome="/index1" icon="ui-icon-arrowthick-1-w" />

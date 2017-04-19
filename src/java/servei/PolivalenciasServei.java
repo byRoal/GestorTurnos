@@ -7,12 +7,15 @@ package servei;
 
 import dao.PolivalenciasFacade;
 import domini.Polivalencias;
+import domini.Usuarios;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.TransactionAttribute;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
+
 
 /**
  *
@@ -29,19 +32,29 @@ public class PolivalenciasServei implements Serializable{
         polivalenciasDao.create(entity);
     }
 
+    @Transactional
     public void modificarPolivalencia(Polivalencias entity) {
         polivalenciasDao.edit(entity);
     }
 
+    @Transactional
     public void eliminarPolivalencia(Object id) {
         polivalenciasDao.remove(polivalenciasDao.find(id));
     }
 
+    @Transactional
     public Polivalencias obtenirPolivalencia(Object id) {
         return polivalenciasDao.find(id);
     }
 
+    @Transactional
     public List<Polivalencias> llistarPolivalencia() {
         return polivalenciasDao.findAll();
+    }
+  
+    @Transactional
+    public Polivalencias obtenirPolivalenciaDowId(Object id){
+        return polivalenciasDao.findByDowID(id);       
+        
     }
 }

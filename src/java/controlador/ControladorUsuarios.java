@@ -5,12 +5,23 @@
  */
 package controlador;
 
+import domini.Polivalencias;
 import domini.Usuarios;
 import dto.UsuariosDTO;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +31,7 @@ import javax.inject.Named;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import servei.PolivalenciasServei;
 import servei.UsuariosServei;
 
 /**
@@ -35,6 +47,9 @@ public class ControladorUsuarios implements Serializable {
 
     @Inject
     private UsuariosDTO usuariActual;
+
+    @Inject
+    private PolivalenciasServei serveiPolivalencies;
 
     public UsuariosServei getServeiUsuarios() {
         return serveiUsuarios;
@@ -52,19 +67,19 @@ public class ControladorUsuarios implements Serializable {
         this.usuariActual = usuariActual;
     }
 
-    public String preprarInsercio() {
+    public String prepararInsercio() {
         netejarFormulari();
-        return "FormulariInsercio";
+        return "superuser/InsercioUsuari?faces-redirect=true";
     }
 
     public void netejarFormulari() {
-        usuariActual.setAñoIncorporacion(null);
+        usuariActual.setFechaIncorporacion(null);
         usuariActual.setBajasPermisosList(null);
         usuariActual.setContabilidadhorasList(null);
         usuariActual.setDepartamento(null);
         usuariActual.setDireccion(null);
         usuariActual.setDowID(null);
-        usuariActual.setEdad(0);
+        usuariActual.setFechaNacimiento(null);
         usuariActual.setEmail(null);
         usuariActual.setFoto(null);
         usuariActual.setHorasextrasRList(null);
@@ -75,28 +90,83 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setSexo(null);
         usuariActual.setSupervisor(null);
         usuariActual.setTelefono(null);
+        usuariActual.setTurno(null);
     }
 
-    public String crearUsuari(String dowID, String nombre, String sexo, Integer edad, String direccion, String telefono, String movil, String email, String planta, String departamento, Character turno, String supervisor, String añoIncorporacion, BigDecimal vacacionesHechas, BigDecimal vacacionesPendientes, BigDecimal vacacionesArrastradas) {
+    public String crearUsuari(String dowId) {
         byte[] foto = null;
+        String nombre = null, sexo = null, direccion = null, telefono = null, movil = null, email = null, planta = null, departamento = null, supervisor = null;
+        Date fechaNacimiento = null, fechaIncorporacion = null;
+        Character turno = null;
         try {
             foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
         } catch (IOException ex) {
             Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Usuarios u = new Usuarios(dowID, nombre, sexo, edad, direccion, telefono, movil, email, foto, planta, departamento, turno, supervisor, añoIncorporacion, vacacionesHechas, vacacionesPendientes, vacacionesArrastradas);
+
+        if (foto.length == 0) {
+            try {
+            foto = Files.readAllBytes(new File("C:\\Users\\ND17613\\Documents\\NetBeansProjects\\GestorTurnos\\web\\resources\\images\\profile.png").toPath());
+
+//                InputStream input = new FileInputStream("profile.png");
+//                foto = IOUtils.toByteArray(input);
+            } catch (IOException ex) {
+                Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        nombre = usuariActual.getNombre();
+        sexo = usuariActual.getSexo();
+        direccion = usuariActual.getDireccion();
+        telefono = usuariActual.getTelefono();
+        movil = usuariActual.getMovil();
+        email = usuariActual.getEmail();
+        planta = usuariActual.getPlanta();
+        departamento = usuariActual.getDepartamento();
+        supervisor = usuariActual.getSupervisor();
+        fechaIncorporacion = usuariActual.getFechaIncorporacion();
+        fechaNacimiento = usuariActual.getFechaNacimiento();
+        turno = usuariActual.getTurno();
+
+        Usuarios u = new Usuarios(dowId);
+        u.setFoto(foto);
+        u.setFechaIncorporacion(fechaIncorporacion);
+        u.setDepartamento(departamento);
+        u.setDireccion(direccion);
+        u.setEmail(email);
+        u.setFechaNacimiento(fechaNacimiento);
+        u.setMovil(movil);
+        u.setNombre(nombre);
+        u.setPlanta(planta);
+        u.setSexo(sexo);
+        u.setSupervisor(supervisor);
+        u.setTelefono(telefono);
+        u.setTurno(turno);
         serveiUsuarios.inserirUsuario(u);
-        return "index";
+
+        Polivalencias p = new Polivalencias(u);
+        p.setA(false);
+        p.setA1(false);
+        p.setA2(false);
+        p.setA3(false);
+        p.setA4(false);
+        p.setA5(false);
+        p.setCampoOcteno(false);
+        p.setPanelOcteno(false);
+        p.setPanelZC(false);
+        p.setPanelZF(false);
+        serveiPolivalencies.inserirPolivalencia(p);
+        return "/index1?faces-redirect=true";
     }
 
     private void passarUsuariosUsuariosDTO(Usuarios u) {
-        usuariActual.setAñoIncorporacion(u.getAñoIncorporacion());
+        usuariActual.setFechaIncorporacion(u.getFechaIncorporacion());
         usuariActual.setBajasPermisosList(u.getBajasPermisosList());
         usuariActual.setContabilidadhorasList(u.getContabilidadhorasList());
         usuariActual.setDepartamento(u.getDepartamento());
         usuariActual.setDireccion(u.getDireccion());
         usuariActual.setDowID(u.getDowID());
-        usuariActual.setEdad(u.getEdad());
+        usuariActual.setFechaNacimiento(u.getFechaNacimiento());
         usuariActual.setEmail(u.getEmail());
         usuariActual.setHorasextrasRList(u.getHorasextrasRList());
         usuariActual.setMovil(u.getMovil());
@@ -110,7 +180,7 @@ public class ControladorUsuarios implements Serializable {
         usuariActual.setVacacionesArrastradas(u.getVacacionesArrastradas());
         usuariActual.setVacacionesPendientes(u.getVacacionesPendientes());
         usuariActual.setVacacionesHechas(u.getVacacionesHechas());
-        usuariActual.setiDusuarios(u.getIDusuarios());
+        //usuariActual.setiDusuarios(u.getIDusuarios());
 
         if (u.getFoto() != null) {
             ByteArrayInputStream fotoStream = new ByteArrayInputStream(u.getFoto());
@@ -119,30 +189,49 @@ public class ControladorUsuarios implements Serializable {
         }
     }
 
-    public String obtenirUsuarioConsulta(int id) {
+    public String obtenirUsuarioFitxaSU(int id) {
         Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
-        return "Ficha_su";
+        return "Ficha_su?faces-redirect=true";
     }
-    
-    public String obtenirUsuarioModificacio(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
+
+    public String obtenirUsuarioFitxaUser(int id) {
+        Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
-        return "Modificacio";
+        return "ficha_usuari?faces-redirect=true";
     }
-    
-    public String obtenirUsuarioEliminacio(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
+
+    public String obtenirUsuarioFitxaAdmin(int id) {
+        Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
-        return "Eliminacio";
+        return "Ficha_admin?faces-redirect=true";
     }
-    
-    private void passarUsuarioDTOUsuario(Usuarios u){
-        u.setAñoIncorporacion(usuariActual.getAñoIncorporacion());
+
+    public String obtenirUsuarioFitxaRRHH(int id) {
+        Usuarios u = serveiUsuarios.obtenirUsuario(id);
+        passarUsuariosUsuariosDTO(u);
+        return "Ficha_RRHH?faces-redirect=true";
+    }
+
+    public String obtenirUsuarioModificacio(int id) {
+        Usuarios u = serveiUsuarios.obtenirUsuario(id);
+        passarUsuariosUsuariosDTO(u);
+        return "Modificar?faces-redirect=true";
+    }
+
+    public String obtenirUsuarioEliminacio(int id) {
+        Usuarios u = serveiUsuarios.obtenirUsuario(id);
+        passarUsuariosUsuariosDTO(u);
+        return "Eliminacio?faces-redirect=true";
+    }
+
+    private void passarUsuarioDTOUsuario(Usuarios u) {
+        byte[] foto = {0};
+        u.setFechaIncorporacion(usuariActual.getFechaIncorporacion());
         u.setDepartamento(usuariActual.getDepartamento());
         u.setDireccion(usuariActual.getDepartamento());
         u.setDowID(usuariActual.getDowID());
-        u.setEdad(usuariActual.getEdad());
+        u.setFechaNacimiento(usuariActual.getFechaNacimiento());
         u.setEmail(usuariActual.getEmail());
         u.setMovil(usuariActual.getMovil());
         u.setNombre(usuariActual.getNombre());
@@ -154,22 +243,119 @@ public class ControladorUsuarios implements Serializable {
         u.setVacacionesArrastradas(usuariActual.getVacacionesArrastradas());
         u.setVacacionesHechas(usuariActual.getVacacionesHechas());
         u.setVacacionesPendientes(usuariActual.getVacacionesPendientes());
-        u.setIDusuarios(usuariActual.getiDusuarios());
+        //u.setIDusuarios(usuariActual.getiDusuarios());
+
+//        try {
+//            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
+//        } catch (IOException ex) {
+//            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        if (foto.length != 0) {
+//            u.setFoto(foto);
+//        }
     }
-    
-    public String modificarUsuario(String dowId) {
-        Usuarios u = serveiUsuarios.obtenirUsuario(dowId);
+
+    private void passarUsuarioDTOUsuarioFoto(Usuarios u) {
+        byte[] foto = {0};
+        u.setFechaIncorporacion(usuariActual.getFechaIncorporacion());
+        u.setDepartamento(usuariActual.getDepartamento());
+        u.setDireccion(usuariActual.getDepartamento());
+        u.setDowID(usuariActual.getDowID());
+        u.setFechaNacimiento(usuariActual.getFechaNacimiento());
+        u.setEmail(usuariActual.getEmail());
+        u.setMovil(usuariActual.getMovil());
+        u.setNombre(usuariActual.getNombre());
+        u.setPlanta(usuariActual.getPlanta());
+        u.setSexo(usuariActual.getSexo());
+        u.setSupervisor(usuariActual.getSupervisor());
+        u.setTelefono(usuariActual.getTelefono());
+        u.setTurno(usuariActual.getTurno());
+        u.setVacacionesArrastradas(usuariActual.getVacacionesArrastradas());
+        u.setVacacionesHechas(usuariActual.getVacacionesHechas());
+        u.setVacacionesPendientes(usuariActual.getVacacionesPendientes());
+        //u.setIDusuarios(usuariActual.getiDusuarios());
+
+        try {
+            foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (foto.length != 0) {
+            u.setFoto(foto);
+        }
+    }
+
+    public String modificarUsuario(String id) {
+        Usuarios u = serveiUsuarios.obtenirUsuariDowId(id);
         passarUsuarioDTOUsuario(u);
         serveiUsuarios.modificarUsuario(u);
-        return "index";
+//        return "/index1?faces-redirect=true";
+        return "Ficha_su";
     }
-    
-    public String eliminarUsuario(String dowId) {
-        serveiUsuarios.eliminarUsuario(dowId);
-        return "index";
+
+    public String modificarUsuarioFoto(String id) {
+        Usuarios u = serveiUsuarios.obtenirUsuariDowId(id);
+        passarUsuarioDTOUsuarioFoto(u);
+        serveiUsuarios.modificarUsuario(u);
+        return "/index1?faces-redirect=true";
+//        return "Ficha_su";
     }
-    
-    public List<Usuarios> llistarUsuarios(){
+
+    public String eliminarUsuario(String id) {
+        Usuarios u = serveiUsuarios.obtenirUsuariDowId(id);
+        Polivalencias p = serveiPolivalencies.obtenirPolivalenciaDowId(u.getDowID());
+        serveiPolivalencies.eliminarPolivalencia(p.getIDpolivalencias());
+        serveiUsuarios.eliminarUsuario(u.getDowID());
+        return "/index1?faces-redirect=true";
+    }
+
+    public List<Usuarios> llistarUsuarios() {
         return serveiUsuarios.llistarUsuarios();
+    }
+
+    public List<Usuarios> llistarUsuariosAsc() {
+        return serveiUsuarios.llistarUsuariosAsc();
+    }
+
+    public String añosAntiguedad(Date incorporacion) {
+        int antiguedad = 0;
+        if (incorporacion == null) {
+            return "--";
+        } else {
+            Calendar cal1 = new GregorianCalendar();
+            Calendar cal2 = new GregorianCalendar();
+            cal2.setTime(incorporacion);
+
+            antiguedad = cal1.getInstance().get(Calendar.YEAR) - cal2.get(Calendar.YEAR);
+
+            return String.valueOf(antiguedad);
+        }
+    }
+
+    public List<String> departaments(String planta) {
+        List<String> departament = new ArrayList<>();
+        if (planta.equals("Cracker")) {
+
+            departament.add("LHC Tarragona Operations");
+            departament.add("Octene Tarragona Operations");
+            return departament;
+        } else if (planta.equals("Octeno")) {
+//            departament= new String[]{"Octene Productions", "Tarragona Analytical Services"};
+            departament.add("Octene Productions");
+            departament.add("Tarragona Analytical Services");
+            return departament;
+        } else {
+            departament.add("---");
+            return departament;
+        }
+    }
+
+    public String fechaInc() {
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaInc = df.format(usuariActual.getFechaIncorporacion());
+
+        return fechaInc;
     }
 }

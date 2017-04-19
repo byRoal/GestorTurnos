@@ -10,9 +10,12 @@ import domini.Contabilidadhoras;
 import domini.HorasextrasR;
 import domini.Polivalencias;
 import domini.Vacaciones;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
@@ -20,13 +23,13 @@ import org.primefaces.model.UploadedFile;
  *
  * @author ND17613
  */
-@RequestScoped
-public class UsuariosDTO {
+@SessionScoped
+public class UsuariosDTO implements Serializable{
     private Integer iDusuarios;
     private String dowID;
     private String nombre;
     private String sexo;
-    private Integer edad;
+    private Date fechaNacimiento;
     private String direccion;
     private String telefono;
     private String movil;
@@ -37,7 +40,7 @@ public class UsuariosDTO {
     private String departamento;
     private Character turno;
     private String supervisor;
-    private String añoIncorporacion;
+    private Date fechaIncorporacion;
     private BigDecimal vacacionesHechas;
     private BigDecimal vacacionesPendientes;
     private BigDecimal vacacionesArrastradas;
@@ -82,12 +85,12 @@ public class UsuariosDTO {
         this.sexo = sexo;
     }
 
-    public Integer getEdad() {
-        return edad;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getDireccion() {
@@ -170,12 +173,12 @@ public class UsuariosDTO {
         this.supervisor = supervisor;
     }
 
-    public String getAñoIncorporacion() {
-        return añoIncorporacion;
+    public Date getFechaIncorporacion() {
+        return fechaIncorporacion;
     }
 
-    public void setAñoIncorporacion(String añoIncorporacion) {
-        this.añoIncorporacion = añoIncorporacion;
+    public void setFechaIncorporacion(Date fechaIncorporacion) {
+        this.fechaIncorporacion = fechaIncorporacion;
     }
 
     public BigDecimal getVacacionesHechas() {

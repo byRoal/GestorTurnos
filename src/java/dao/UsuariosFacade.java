@@ -7,6 +7,7 @@ package dao;
 
 import domini.Usuarios;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -21,7 +22,7 @@ import javax.persistence.PersistenceContext;
 @SessionScoped
 public class UsuariosFacade extends AbstractFacade<Usuarios> implements Serializable{
 
-    @PersistenceContext(unitName = "GestorTurnosPU")
+    @PersistenceContext(unitName = "GestorTurnosPU2")
     private EntityManager em;
 
     @Override
@@ -33,8 +34,12 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Serializ
         super(Usuarios.class);
     }
     
-    public Usuarios findByDowID(String dowId){
-        return (Usuarios) getEntityManager().createNamedQuery("Usuarios.findByDowID").setParameter("dowId", dowId).getSingleResult();
+    public Object findByDowID(Object dowID){
+        return getEntityManager().createNamedQuery("Usuarios.findByDowID").setParameter("dowID", dowID ).getSingleResult();
+    }
+    
+    public List<Usuarios> findAllAsc(){
+        return getEntityManager().createNamedQuery("Usuarios.findAllAsc").getResultList();
     }
     
 }

@@ -7,6 +7,7 @@ package dao;
 
 import domini.Polivalencias;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -21,7 +22,7 @@ import javax.persistence.PersistenceContext;
 @SessionScoped
 public class PolivalenciasFacade extends AbstractFacade<Polivalencias> implements Serializable{
 
-    @PersistenceContext(unitName = "GestorTurnosPU")
+    @PersistenceContext(unitName = "GestorTurnosPU2")
     private EntityManager em;
 
     @Override
@@ -33,4 +34,7 @@ public class PolivalenciasFacade extends AbstractFacade<Polivalencias> implement
         super(Polivalencias.class);
     }
     
+    public Polivalencias findByDowID(Object id){
+        return (Polivalencias) getEntityManager().createNamedQuery("Polivalencias.findByDowID").setParameter("id", id).getSingleResult();
+    }
 }

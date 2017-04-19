@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +50,8 @@ import javax.persistence.TemporalType;
     , @NamedQuery(name = "Polivalencias.findByPanelOcteno", query = "SELECT p FROM Polivalencias p WHERE p.panelOcteno = :panelOcteno")
     , @NamedQuery(name = "Polivalencias.findByFechaPanelOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaPanelOcteno = :fechaPanelOcteno")
     , @NamedQuery(name = "Polivalencias.findByCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.campoOcteno = :campoOcteno")
-    , @NamedQuery(name = "Polivalencias.findByFechaCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaCampoOcteno = :fechaCampoOcteno")})
+    , @NamedQuery(name = "Polivalencias.findByFechaCampoOcteno", query = "SELECT p FROM Polivalencias p WHERE p.fechaCampoOcteno = :fechaCampoOcteno")
+    , @NamedQuery(name = "Polivalencias.findByDowID", query = "SELECT p FROM Polivalencias p WHERE p.dowID.dowID = :id ")})
 public class Polivalencias implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -68,12 +70,12 @@ public class Polivalencias implements Serializable {
     @Column(name = "fecha1_11")
     @Temporal(TemporalType.DATE)
     private Date fecha111;
-    @Column(name = "2")
+    @Column(name = "p2")
     private Boolean a1;
     @Column(name = "fecha2")
     @Temporal(TemporalType.DATE)
     private Date fecha2;
-    @Column(name = "3")
+    @Column(name = "p3")
     private Boolean a2;
     @Column(name = "fecha3")
     @Temporal(TemporalType.DATE)
@@ -109,7 +111,7 @@ public class Polivalencias implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaCampoOcteno;
     @JoinColumn(name = "dowID", referencedColumnName = "dowID")
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Usuarios dowID;
 
     public Polivalencias() {
@@ -145,6 +147,10 @@ public class Polivalencias implements Serializable {
 
     public Integer getIDpolivalencias() {
         return iDpolivalencias;
+    }
+
+    public Polivalencias(Usuarios dowID) {
+        this.dowID = dowID;
     }
 
     public void setIDpolivalencias(Integer iDpolivalencias) {
@@ -343,5 +349,5 @@ public class Polivalencias implements Serializable {
     public String toString() {
         return "domini.Polivalencias[ iDpolivalencias=" + iDpolivalencias + " ]";
     }
-    
+
 }
