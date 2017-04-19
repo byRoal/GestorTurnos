@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 19, 2017, 9:45:58 AM
+    Author     : ND17615
+*/
+span.fc-button-agendaWeek{
+    display:none;
+}
+
+span.fc-button-agendaDay{
+    display:none;
+}
+
+span.fc-button-month{
+    display:none;
+}
+
+.fc-header-title h2{
+
+    font-size: 200%;
+}
+
+H3{
+    font-size: 200% !important; 
+}
+
+.fc-grid .fc-day-number{
+    font-size: large;
+}
+
+.fc-grid th{
+    font-size: medium;
+}
+
+.fc-header .fc-button{
+    font-size: medium;
+}
+
+.fc-event-time{
+    visibility: hidden;
+}
+.fc-event-title{
+    font-size: small;
+}
+.ui-datepicker{
+    width: 50em !important;
+}
+.ui-datepicker .ui-datepicker-calendar .ui-state-default{
+    text-align: center;
+    font-size: x-large;
+}
+.ui-datepicker th{
+    font-size: small;
+}
+.ui-datepicker .ui-datepicker-title{
+    font-size: large;
+}
+TD{
+    height: 65px;
+}
+

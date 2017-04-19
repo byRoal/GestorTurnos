@@ -19,31 +19,19 @@
 
             <ui:define name="body">
                 <h:form>
-                    <h:panelGrid columns="4" >
+                    <h:panelGrid style="margin: auto">
+                        <p:calendar locale="es" value="#{controladorDiasFestivos2.date}" mode="inline"/>              
+                    </h:panelGrid>
+                    <h:panelGrid style="margin: auto">
                         <p:row>
-                            <p:column>
-                                <p:calendar locale="es" value="#{controladorDiasFestivos2.date}" mode="inline"/>
-                            </p:column>                           
+                            <p:button outcome="AñadirDiaFestivo" value="Añadir dia festivo" />                       
+                            <p:button outcome="VerDiasFestivos" value="Ver dias festivos" />
+                            <p:button outcome="SeleccionEliminarDiaFestivo" value="Eliminar dias festivos" />
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                 <p:button outcome="AñadirDiaFestivo" value="Añadir dia festivo" />
-                            </p:column>
-                        </p:row>   
-                        <p:row>
-                            <p:column>
-                                 <p:button outcome="VerDiasFestivos" value="Ver dias festivos" />
-                            </p:column>
-                        </p:row> 
-                        <p:row>
-                            <p:column>
-                                 <p:button outcome="SeleccionEliminarDiaFestivo" value="Eliminar dias festivos" />
-                            </p:column>
-                        </p:row>  
                     </h:panelGrid>
                 </h:form>
                 <h:form>
-                    
+
                 </h:form>
             </ui:define>
 
