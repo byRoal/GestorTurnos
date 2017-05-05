@@ -12,7 +12,7 @@
 
     <body>
 
-        <ui:composition template="./template_usuari.xhtml">
+        <ui:composition template="./template_usuari_1.xhtml">
 
             <ui:define name="title">
 
@@ -24,15 +24,14 @@
 
             <ui:define name="body">
                 <h:form>
-                    <h:panelGrid>
-
-
-                        <h3>Calendario laboral</h3>
-                        <p:schedule value="#{claseCalendario.lazyEventModel}" locale="es" style="width: 850px" draggable="false"/>
+                    <h:panelGrid style="margin: auto">
+                        <p:calendar locale="es" value="#{controladorDiasFestivos2.date}" mode="inline"/>              
                     </h:panelGrid>
-
-                 
-
+                    <h:panelGrid style="margin: auto">
+                       
+                    </h:panelGrid>
+                </h:form>
+                <h:form>
 
                 </h:form>
             </ui:define>

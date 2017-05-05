@@ -94,9 +94,9 @@
 
                         <p:separator />
 
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:commandButton value="Cancelar" action="/index1" icon="ui-icon-cancel" ajax="false"/>
+                        <h:panelGrid columns="2" cellpadding="5">                            
                             <p:commandButton value="Modificar" action="#{controladorUsuarios.modificarUsuarioFoto(controladorUsuarios.usuariActual.dowID)}" icon="ui-icon-check" ajax="false"/>
+                            <p:commandButton value="Cancelar" action="/index" icon="ui-icon-cancel" ajax="false"/>
                         </h:panelGrid>
                     </p:panel>
                 </h:form>

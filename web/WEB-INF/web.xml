@@ -27,6 +27,18 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index1.xhtml</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filters.FilterSU</filter-class>
+    </filter>
+<!--    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>-->
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/superuser/*</url-pattern>        
+    </filter-mapping>
 </web-app>

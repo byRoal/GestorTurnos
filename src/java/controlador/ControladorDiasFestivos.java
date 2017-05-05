@@ -85,7 +85,7 @@ public class ControladorDiasFestivos implements Serializable {
 
         init();
 
-        return "index1";
+        return "index";
     }
 
     public void cargarDiasFestivos() {

@@ -24,7 +24,7 @@
                     <p:panel header="Alta usuario" style="margin-bottom: 20px">
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel for="dowid" value="DOW ID:" style="font-weight: bold" />
-                            <p:inputText id="dowid" size="9" value="#{controladorUsuarios.usuariActual.dowID}" />
+                            <p:inputText id="dowid" size="9" value="#{controladorUsuarios.usuariActual.dowID}" required="true"/>
 
                             <p:outputLabel for="nom" value="Nombre:" style="font-weight: bold" />
                             <p:inputText id="nom"  value="#{controladorUsuarios.usuariActual.nombre}" /> 
@@ -91,8 +91,8 @@
 
                         <p:separator />
                         <h:panelGrid columns="2" border="0" cellpadding="10" cellspacing="1">
-                            <p:button value="Cancelar" outcome="/index1" icon="ui-icon-cancel" />
                             <p:commandButton value="Insertar" action="#{controladorUsuarios.crearUsuari(controladorUsuarios.usuariActual.dowID)}" ajax="false" icon="ui-icon-check"/>
+                            <p:button value="Cancelar" outcome="/index" icon="ui-icon-cancel" />                            
 
                         </h:panelGrid>
                     </p:panel>

@@ -21,44 +21,42 @@
 
             <ui:define name="body">
 
-                <p:dialog header="Cambiar telefono" widgetVar="dlg1" modal="true" height="100" resizable="false" draggable="false" >
+                <p:dialog header="Añadir polivalencia" widgetVar="dlg1" modal="true" height="auto" resizable="false" draggable="false" >
                     <h:form>                        
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
 
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.departamento}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.direccion}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.dowID}" />
-<!--                        <h:inputHidden value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />-->
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.email}" />     
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.movil}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.nombre}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.planta}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.sexo}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.supervisor}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.telefono}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.turno}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesArrastradas}" />
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />                    
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" />
                         <h:panelGrid style="text-align: center">
-                            <h:outputText value="Introduce el nuevo telefono" />
-                            <h:inputText value="#{controladorUsuarios.usuariActual.telefono}" />
+                            <h:outputText value="Nueva polivalencia" />
+                            <p:selectOneMenu value="#{polivalencia}">
+                                <f:selectItem noSelectionOption="true" itemLabel="---" itemValue="" />
+                                <f:selectItem itemLabel="1/11" itemValue="1/11" />
+                                <f:selectItem itemLabel="2" itemValue="2" />
+                                <f:selectItem itemLabel="3" itemValue="3" />
+                                <f:selectItem itemLabel="4/5/10" itemValue="4/5/10" />
+                                <f:selectItem itemLabel="6/7" itemValue="6/7" />
+                                <f:selectItem itemLabel="8/9" itemValue="8/9" />
+                                <f:selectItem itemLabel="Panel ZF" itemValue="Panel ZF" />
+                                <f:selectItem itemLabel="Panel ZC" itemValue="Panel ZC" />
+                                <f:selectItem itemLabel="Panel octeno" itemValue="Panel octeno" />
+                                <f:selectItem itemLabel="Campo octeno" itemValue="Campo octeno" />
+                            </p:selectOneMenu>
                             <br/>
-                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:telf" oncomplete="PF('dlg1').hide();" />
+                            <h:outputText value="Fecha" />
+                            <p:calendar pattern="dd/MM/yyyy" value="#{fecha}" />
+                            <br/>
+                            <p:commandButton value="Modificar"  action="#{controladorPolivalencias.modificarPolivalencias(controladorUsuarios.usuariActual.dowID,polivalencia, fecha)}" update=":datos:polivalencies" oncomplete="PF('dlg1').hide();" />
                         </h:panelGrid>
                     </h:form>
                 </p:dialog>
-                
-                <p:dialog header="Cambiar movil" widgetVar="dlg2" modal="true" height="100" resizable="false" draggable="false" >
+
+                <p:dialog header="Cambiar telefonos" widgetVar="dlg2" modal="true" height="auto" resizable="false" draggable="false" >
                     <h:form>                        
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
+                        <!--<h:inputHidden value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />-->
 
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.departamento}" />
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.direccion}" />
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.dowID}" />
 <!--                        <h:inputHidden value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />-->
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.email}" /> 
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.movil}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.email}" />
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.nombre}" />
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.planta}" />
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.sexo}" />
@@ -69,17 +67,20 @@
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />                    
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" />
                         <h:panelGrid style="text-align: center">
-                            <h:outputText value="Introduce el nuevo movil" />
+                            <h:outputText value="Nuevo teléfono" />
+                            <h:inputText value="#{controladorUsuarios.usuariActual.telefono}" />
+
+                            <h:outputText value="Nuevo móvil" />
                             <h:inputText value="#{controladorUsuarios.usuariActual.movil}" />
                             <br/>
-                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:movil" oncomplete="PF('dlg2').hide();" />
+                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:movil :datos:telf"  oncomplete="PF('dlg2').hide();" />
                         </h:panelGrid>
                     </h:form>
                 </p:dialog>
-                
-                <p:dialog header="Cambiar turno" widgetVar="dlg3" modal="true" height="100" resizable="false" draggable="false" >
+
+                <p:dialog header="Cambiar turno" widgetVar="dlg3" modal="true" height="auto" resizable="false" draggable="false" >
                     <h:form>                        
-                        <h:inputHidden value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
+                        <!--<h:inputHidden value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />-->
 
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.departamento}" />
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.direccion}" />
@@ -99,7 +100,7 @@
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />                    
                         <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" />
                         <h:panelGrid style="text-align: center">
-                            <h:outputText value="Introduce el nuevo turno " /> 
+                            <h:outputText value="Selecciona nuevo turno " /> 
                             <br />
                             <p:selectOneMenu value="#{controladorUsuarios.usuariActual.turno}">
                                 <f:selectItem itemLabel="A" itemValue="A" />
@@ -110,7 +111,70 @@
                                 <f:selectItem itemLabel="F" itemValue="F" />
                             </p:selectOneMenu>
                             <br/>
-                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:turno" oncomplete="PF('dlg3').hide();" />
+                            <p:commandButton value="Modificar" action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:turno" oncomplete="PF('dlg3').hide();" />
+                        </h:panelGrid>
+                    </h:form>
+                </p:dialog>
+
+                <p:dialog header="Cambiar fecha" widgetVar="dlg4" modal="true" height="auto" resizable="false" draggable="false" >
+                    <h:form>                        
+
+
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.departamento}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.direccion}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.dowID}" />
+<!--                        <h:inputHidden value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />-->
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.email}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.nombre}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.planta}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.sexo}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.supervisor}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.telefono}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.turno}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesArrastradas}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />                    
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.telefono}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.movil}" />
+                        <h:panelGrid style="text-align: center">
+                            <h:outputText value="Fecha nueva:" />
+                            <p:calendar pattern="dd/MM/yyyy" value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
+                            <br/>
+                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:fechaInc"  oncomplete="PF('dlg4').hide();" />
+                        </h:panelGrid>
+                    </h:form>
+                </p:dialog>
+
+                <p:dialog header="Cambiar sexo" widgetVar="dlg5" modal="true" height="auto" resizable="false" draggable="false" >
+                    <h:form>                        
+                        <!--<h:inputHidden value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />-->
+
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.departamento}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.direccion}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.dowID}" />
+<!--                        <h:inputHidden value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />-->
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.email}" />                    
+
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.movil}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.nombre}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.planta}" />
+
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.sexo}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.supervisor}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.telefono}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.turno}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesArrastradas}" />
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesHechas}" />                    
+                        <h:inputHidden value="#{controladorUsuarios.usuariActual.vacacionesPendientes}" />
+                        <h:panelGrid style="text-align: center">
+                            <h:outputText value="Selecciona nuevo sexo" /> 
+                            <br />
+                            <p:selectOneMenu value="#{controladorUsuarios.usuariActual.sexo}">
+                                <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
+                                <f:selectItem itemLabel="Mujer" itemValue="Mujer" />                                
+                            </p:selectOneMenu>
+                            <br/>
+                            <p:commandButton value="Modificar" action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:sexo" oncomplete="PF('dlg5').hide();" />
                         </h:panelGrid>
                     </h:form>
                 </p:dialog>
@@ -154,7 +218,7 @@
                                 <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/></p:column>
                             </p:row>
                             <p:row>
-                                <p:column  style="font-weight: bold;">E-mail: </p:column>
+                                <p:column  style="font-weight: bold;">Email: </p:column>
                                 <p:column  style="font-weight: bold;"><p:outputLabel value="#{controladorUsuarios.usuariActual.email}" style="font-weight: bold"/></p:column>
                             </p:row>
 
@@ -170,7 +234,7 @@
                         </p:panelGrid>
 
 
-                        <p:dataTable var="pol" value="#{controladorPolivalencias.llistarPoli(controladorUsuarios.usuariActual.dowID)}" style="width: 399px; text-align: center" >
+                        <p:dataTable id="polivalencies" var="pol" value="#{controladorPolivalencias.llistarPoli(controladorUsuarios.usuariActual.dowID)}" style="width: 399px; text-align: center" >
                             <p:column headerText="Polivalencias" style="text-align: center">
                                 <h:outputText value="#{pol[0]}"/>
                             </p:column>
@@ -185,23 +249,23 @@
                     <p:panel style="width: 420px; margin: 0 auto" >
                         <p:panelGrid style="width: 400px; text-align: center" >
                             <p:row >
-                                <p:column  style="font-weight: bold;">Telefono </p:column>
+                                <p:column  style="font-weight: bold;">Teléfono </p:column>
                                 <p:column  style="font-weight: bold;width: 150px" >
                                     <p:outputLabel id="telf" value="#{controladorUsuarios.usuariActual.telefono}" style="font-weight: bold" />
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton style="padding-right: auto" ajax="false" value="Cambiar" type="button" onclick="PF('dlg1').show();" />
+                                    <p:commandButton style="padding-right: auto" ajax="false" value="Añadir polivalencia" type="button" onclick="PF('dlg1').show();" />
                                 </p:column>
 
                             </p:row>
 
                             <p:row>
-                                <p:column  style="font-weight: bold;width: 150px">Movil </p:column>
+                                <p:column  style="font-weight: bold;width: 150px">Móvil </p:column>
                                 <p:column  style="font-weight: bold;width: 150px">
                                     <p:outputLabel id="movil" value="#{controladorUsuarios.usuariActual.movil}" style="font-weight: bold"/>
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton style="padding-right: auto" ajax="false" value="Cambiar" type="button" onclick="PF('dlg2').show();" />
+                                    <p:commandButton style="padding-right: auto" ajax="false" value="Cambiar telefonos" type="button" onclick="PF('dlg2').show();" />
                                 </p:column>
                             </p:row>
                             <p:row>
@@ -210,7 +274,7 @@
                                     <p:outputLabel id="turno" value="#{controladorUsuarios.usuariActual.turno}" style="font-weight: bold"/>
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton style="padding-right: auto" ajax="false" value="Cambiar" type="button" onclick="PF('dlg3').show();" />
+                                    <p:commandButton style="padding-right: auto" ajax="false" value="Cambiar turno" type="button" onclick="PF('dlg3').show();" />
                                 </p:column>
                             </p:row>
                         </p:panelGrid>
@@ -219,32 +283,141 @@
                     <p:panel style="width: 420px; margin: 0 auto">
                         <p:panelGrid style="width: 400px; text-align: center">
                             <p:row>
-                                <p:column  style="font-weight: bold;">Fecha Incorporacion </p:column>
-                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" style="font-weight: bold"/></p:column>
+                                <p:column  style="font-weight: bold;width: 150px">Sexo </p:column>
+                                <p:column  style="font-weight: bold;width: 150px">
+                                    <p:outputLabel id="sexo" value="#{controladorUsuarios.usuariActual.sexo}" style="font-weight: bold"/>
+                                </p:column>
                                 <p:column>
-                                    <p:commandButton style="padding-right: auto" value="Nuevo usuario" ajax="false" action="#{controladorUsuarios.prepararInsercio()}"/>
+                                    <p:commandButton style="padding-right: auto" value="Cambiar sexo" ajax="false" type="button" onclick="PF('dlg5').show();"/>
                                 </p:column>
                             </p:row>
 
                             <p:row>
-                                <p:column  style="font-weight: bold;width: 150px">Años antiguedad </p:column>
+                                <p:column  style="font-weight: bold;">Fecha Incorporacion </p:column>
+                                <p:column  style="font-weight: bold;width: 150px">
+                                    <p:outputLabel id="fechaInc" value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" style="font-weight: bold">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </p:outputLabel>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton style="padding-right: auto" value="Cambiar fecha" ajax="false" type="button" onclick="PF('dlg4').show();"/>
+                                </p:column>
+                            </p:row>
+
+                            <p:row>
+                                <p:column  style="font-weight: bold;width: 150px; height: 35px">Años antiguedad </p:column>
                                 <p:column  style="font-weight: bold;width: 150px">
                                     <p:outputLabel value="#{controladorUsuarios.añosAntiguedad(controladorUsuarios.usuariActual.fechaIncorporacion)}" />
                                 </p:column>
                                 <p:column>
-                                    <p:button style="padding-right: auto" value="Cambiar datos"></p:button>
+                                    <!--                                    <p:button style="padding-right: auto" value="Cambiar datos"></p:button>-->
+<!--                                    <p:graphicImage value="/resources/images/dow.png"  />-->
                                 </p:column>
-                            </p:row>
-                            <p:row>
-                                <p:column  style="font-weight: bold;width: 150px">Sexo </p:column>
-                                <p:column  style="font-weight: bold;width: 150px"><p:outputLabel value="#{controladorUsuarios.usuariActual.sexo}" style="font-weight: bold"/></p:column>
-                                <p:column>
-                                    <p:button style="padding-right: auto" value="Guardar datos"></p:button>
-                                </p:column>
-                            </p:row>
+                            </p:row>                            
                         </p:panelGrid>
                     </p:panel>
 
+
+                    <!--                    <p:panel style="width: 420px; margin: 0 auto">
+                                            <p:panelGrid style="width: 400px">
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="#{controladorUsuarios.usuariActual.nombre}" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Turno #{controladorUsuarios.usuariActual.turno}" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Tarragona Norte" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Polivalencias" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Dias 12 horas" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Dias baja" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Dias permiso" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Informe completo" />
+                                                    </p:column>
+                    
+                                                    <p:column style="width: 100px; text-align: center">
+                                                        <p:selectBooleanCheckbox  />
+                                                    </p:column>
+                    
+                                                </p:row>
+                    
+                    
+                                                <p:row>
+                                                    <p:column  style="font-weight: bold; width: 200px; text-align: center">
+                                                        <p:outputLabel value="Exportar a Excel" />
+                                                    </p:column>
+                    
+                                                    <p:column style="text-align: center">
+                    
+                                                        <p:commandLink id="xls"  >  
+                                                            <p:graphicImage value="/resources/excel2.png"  />  
+                                                            <f:setPropertyActionListener value="true" target="" />  
+                    
+                                                        </p:commandLink>  
+                                                    </p:column>
+                                                </p:row>
+                                            </p:panelGrid>
+                                        </p:panel>-->
                 </h:form>
             </ui:define>
         </ui:composition>

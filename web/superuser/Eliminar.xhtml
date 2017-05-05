@@ -33,7 +33,9 @@
                             <p:outputLabel id="sexo" value="#{controladorUsuarios.usuariActual.sexo}"/>                                
 
                             <p:outputLabel for="nacimiento" value="Fecha nacimiento: " style="font-weight: bold" />
-                            <p:outputLabel id="nacimiento" value="#{controladorUsuarios.usuariActual.fechaNacimiento}" />
+                            <p:outputLabel id="nacimiento" value="#{controladorUsuarios.usuariActual.fechaNacimiento}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </p:outputLabel>
 
                             <p:outputLabel for="direccion" value="Dirección:" style="font-weight: bold" />
                             <p:outputLabel id="direccion"  value="#{controladorUsuarios.usuariActual.direccion}" />
@@ -62,7 +64,9 @@
                             <p:outputLabel id="supervisor"  value="#{controladorUsuarios.usuariActual.supervisor}" />
 
                             <p:outputLabel for="anyInc" value="Fecha incorporación:" style="font-weight: bold" />
-                            <p:outputLabel id="anyInc" value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
+                            <p:outputLabel id="anyInc" value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </p:outputLabel>
 
                         </h:panelGrid>
 
@@ -73,13 +77,14 @@
                         <p:separator />
 
                         <h:panelGrid columns="2" cellpadding="5">
-                            <p:button value="Cancelar" outcome="/index1" icon="ui-icon-cancel" />
+                            
                             <p:commandButton value="Eliminar" actionListener="#{controladorUsuarios.eliminarUsuario(controladorUsuarios.usuariActual.dowID)}" icon="ui-icon-trash" >
                                 <p:confirm header="Eliminar" message="Estás seguro?" icon="ui-icon-alert" />
                             </p:commandButton>
+                            <p:button value="Cancelar" outcome="/index" icon="ui-icon-cancel" />
 
                             <p:confirmDialog global="true"  >
-                                <p:button value="Si" outcome="/index1"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:button value="Si" outcome="/index"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                 <p:button value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                             </p:confirmDialog>
                         </h:panelGrid>

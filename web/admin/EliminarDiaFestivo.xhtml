@@ -8,7 +8,7 @@
 
     <body>
 
-        <ui:composition template="./template_su.xhtml">
+        <ui:composition template="./template_admin.xhtml">
 
             <ui:define name="title">
                 
@@ -44,7 +44,7 @@
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:commandButton value="Eliminar" action="#{controladorDiasFestivos2.eliminarDiaFestivo(controladorDiasFestivos2.diasFestivosactual.titulo)}"
                                              icon="ui-icon-check" />
-                            <p:button value="Cancelar" outcome="/superuser/SeleccionEliminarDiaFestivo" icon="ui-icon-cancel" />
+                            <p:button value="Cancelar" outcome="/admin/SeleccionEliminarDiaFestivo" icon="ui-icon-cancel" />
                         </h:panelGrid>
                     </p:panel>
                 </h:form>

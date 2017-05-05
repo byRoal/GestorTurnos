@@ -33,6 +33,7 @@ public class TornServei1 implements Serializable {
     @Inject
     private DiasFestivosServei serveiDiasFestivos;
 
+    //declaramos las sequencias correspondientes de cada turno que hay
     private char[] tornA = {'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O'};
     private char[] tornB = {'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R'};
     private char[] tornC = {'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X'};
@@ -40,6 +41,7 @@ public class TornServei1 implements Serializable {
     private char[] tornE = {'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M', 'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T'};
     private char[] tornF = {'M', 'T', 'T', 'N', 'N', 'N', 'X', 'X', 'M', 'M', 'T', 'T', 'T', 'N', 'N', 'X', 'X', 'M', 'M', 'M', 'T', 'T', 'N', 'N', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'X', 'X', 'R', 'R', 'R', 'R', 'R', 'X', 'X', 'M'};
 
+    //declaramos los arrays donde almacenaremos toda la sequencia de cada turno de un año entero
     private char[] seq1 = new char[366];
     private char[] seq2 = new char[366];
     private char[] seq3 = new char[366];
@@ -54,6 +56,8 @@ public class TornServei1 implements Serializable {
     private List<DiesTorns> diesTorns;
     private List<HoresTorns> horesTorns;
     private List<Torn> torns;
+    List<Diasfestivos> llistaDies;
+
     private int any = Calendar.getInstance().get(Calendar.YEAR);
 
     private int diaTornComença;
@@ -61,15 +65,16 @@ public class TornServei1 implements Serializable {
     private int horesAny = 1712;
     private int diesAny = horesAny / 8;
 
+    /**
+     * función que se incia antes de cargar la página para mostrar los datos
+     */
     @PostConstruct
     public void init() {
+        llistaDies = serveiDiasFestivos.llistarDiasFestivos();
         torns = new ArrayList(6);
         diesTorns = new ArrayList(6);
         horesTorns = new ArrayList(6);
-        if (primer) {
-            torn1(any);
-            primer = false;
-        }
+        torn1(any);
     }
 
     public int getHoresAny() {
@@ -89,9 +94,12 @@ public class TornServei1 implements Serializable {
     }
 
     public void setAny(int any) {
+        //No se puede poner un año menor a 2008
+        if (any < 2008) {
+            any = 2008;
+        }
         this.any = any;
-        primer = false;
-        init();
+
     }
 
     public List<DiesTorns> getDiesTorns() {
@@ -109,14 +117,22 @@ public class TornServei1 implements Serializable {
     }
 
     public void torn3(int any1) {
-        any = any - 1;
+        //No se puede poner un año menor a 2008
+        if (any1 < 2008) {
+            any = 2008;
+            any1 = 2008;
+        } else {
+            any = any - 1;
+        }
+
         torn1(any1);
 
     }
 
     public void torn1(int any) {
-
+        torns.clear();
         anyFinal.set(any, 0, 1);
+
         //anyFinal.set(2017, 0, 1);
         //System.out.println("passa");
         long dies = (anyFinal.getTimeInMillis() - anyInicial.getTimeInMillis()) / (1000 * 3600 * 24);
@@ -163,6 +179,9 @@ public class TornServei1 implements Serializable {
         torns.add(new Torn(seq5));
         torns.add(new Torn(seq6));
 
+        diesTorns.clear();
+        horesTorns.clear();
+
         contaDies(seq1);
         contaDies(seq2);
         contaDies(seq3);
@@ -173,7 +192,7 @@ public class TornServei1 implements Serializable {
 
     public String capSetmana(int dia, int mes) {
         GregorianCalendar finde = new GregorianCalendar();
-        List<Diasfestivos> llistaDies = serveiDiasFestivos.llistarDiasFestivos();
+
         boolean trobat = false;
         boolean curs = false;
         int i = 0;

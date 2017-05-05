@@ -15,11 +15,12 @@
         <meta name="Author" content="Ferket M u762818" />
         <link REL="stylesheet" HREF="http://usmdlcdoww001.intranet.dow.com/common/dow/includes/default.css" TYPE="text/css" />
         <link REL="stylesheet" HREF="http://usmdlcdoww001.intranet.dow.com/common/dow/includes/hdr_n_nav.css" TYPE="text/css" />
+          <h:outputStylesheet name="css/calendario.css" />
         <h:outputStylesheet name="css/color.css" />
         <h:outputScript library="js" name="calendar_localization.js"/>
         <title>Gestor de turnos - Dow</title>
     </h:head>
-    <h:body onload="SetMenu()">        
+    <h:body onload="SetMenu()">
         <table width="100%" cellspacing="0" cellpadding="0">
             <tr>
                 <td name="HeaderCell" id="HeaderCell" colspan="3"><a name="Top"></a>
@@ -37,14 +38,14 @@
                     </table>
 
                 </td>
-                <!--                <td name="RightMarginCell" id="RightMarginCell" width="19%" rowspan="2"><img src="http://usmdlcdoww001.intranet.dow.com/common/images/rightspacer.gif" width="78" hspace="60" height="1" /><p /></td>-->
+                <!--<td name="RightMarginCell" id="RightMarginCell" width="19%" rowspan="2"><img src="http://usmdlcdoww001.intranet.dow.com/common/images/rightspacer.gif" width="78" hspace="60" height="1" /><p /></td>-->
             </tr>
             <tr>
                 <td name="MenuCell" id="MenuCell" valign="top" bgcolor="DDDDDD" style="border: 0">                    
                     <table name="Menu" id="Menu" border="0" width="100px" cellspacing="0" cellpadding="0" >
                         <tr class="menuhead">
                             <td class="menuheadcell">
-                                <p:link outcome="/index" value="Home"/>                                    
+                                <p:link outcome="/index" value="Home"/> 
                             </td>
                         </tr>
 

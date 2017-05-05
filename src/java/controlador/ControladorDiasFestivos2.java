@@ -92,7 +92,7 @@ public class ControladorDiasFestivos2 implements Serializable {
         Diasfestivos d = new Diasfestivos(titulo, fechaFestivo, comentario,cursillo);
         serveiDiasFestivos.inserirDiaFestivo(d);
 
-        return "/index1";
+        return "/index?faces-redirect=true";
     }
 
     public void cargarDiasFestivos() {
@@ -127,7 +127,7 @@ public class ControladorDiasFestivos2 implements Serializable {
     public String obtenirDiasFestivosEliminacio(String titulo) {
         Diasfestivos d = serveiDiasFestivos.eliminarFiesta(titulo);
         passarDiasFestivosDiasFestivosDTO(d);
-        return "EliminarDiaFestivo";
+        return "EliminarDiaFestivo?faces-redirect=true";
     }
 
     private void passarDiasFestivosDTODiasFestivos(Diasfestivos d) {
@@ -146,7 +146,7 @@ public class ControladorDiasFestivos2 implements Serializable {
     public String eliminarDiaFestivo(String titulo) {
         Diasfestivos d = serveiDiasFestivos.eliminarFiesta(titulo);
         serveiDiasFestivos.eliminarDiaFestivo(d.getIDDiasFestivos());
-        return "/index1";
+        return "/index?faces-redirect=true";
     }
 
     public List<Diasfestivos> llistarDiasFestivos() {

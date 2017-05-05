@@ -7,7 +7,7 @@
 
     <body>
 
-        <ui:composition template="./template_su.xhtml">
+        <ui:composition template="./template_admin.xhtml">
 
             <ui:define name="title">
 
@@ -33,7 +33,7 @@
 
 
 
-                            <p:outputLabel for="comen" value="Comentario: " style="font-weight: bold"/>
+                            <p:outputLabel for="comen"  value="Comentario: " style="font-weight: bold"/>
                             <p:inputTextarea id="comen" required="true" value="#{controladorDiasFestivos2.diasFestivosactual.comentario}"/>
 
                             <p:outputLabel for="cursillo" value="Cursillo: " style="font-weight: bold"/>
@@ -46,8 +46,8 @@
                                              action="#{controladorDiasFestivos2.crearDiaFestivo(controladorDiasFestivos2.diasFestivosactual.titulo, 
                                                        controladorDiasFestivos2.diasFestivosactual.fechaFestivo, controladorDiasFestivos2.diasFestivosactual.comentario,
                                                        controladorDiasFestivos2.diasFestivosactual.esCursillo)}"
-                                            icon="ui-icon-check" ajax="false" />
-                            <p:button value="Cancelar" outcome="/superuser/CalendarioLaboral_su" icon="ui-icon-cancel"/>
+                                             icon="ui-icon-check" ajax="false" />
+                            <p:button value="Cancelar" outcome="/admin/CalendarioLaboral_admin" icon="ui-icon-cancel"/>
                         </h:panelGrid>
                     </p:panel>                  
                 </h:form>

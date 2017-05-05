@@ -23,11 +23,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Cookie;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -69,9 +72,12 @@ public class ControladorUsuarios implements Serializable {
 
     public String prepararInsercio() {
         netejarFormulari();
-        return "superuser/InsercioUsuari?faces-redirect=true";
+        return "superuser/AltaUsuario?faces-redirect=true";
     }
 
+    /**
+     * función para poner null a todas las variables de usuariActual
+     */
     public void netejarFormulari() {
         usuariActual.setFechaIncorporacion(null);
         usuariActual.setBajasPermisosList(null);
@@ -94,19 +100,23 @@ public class ControladorUsuarios implements Serializable {
     }
 
     public String crearUsuari(String dowId) {
+        //variables que puede tener un usuario
         byte[] foto = null;
         String nombre = null, sexo = null, direccion = null, telefono = null, movil = null, email = null, planta = null, departamento = null, supervisor = null;
         Date fechaNacimiento = null, fechaIncorporacion = null;
         Character turno = null;
+        
+       //cojemos los datos de la foto subida
         try {
             foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
         } catch (IOException ex) {
             Logger.getLogger(ControladorUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        //Si no se ha subido ninguna foto, se pone una imagen por defecto al usuario
         if (foto.length == 0) {
             try {
-            foto = Files.readAllBytes(new File("C:\\Users\\ND17613\\Documents\\NetBeansProjects\\GestorTurnos\\web\\resources\\images\\profile.png").toPath());
+                foto = Files.readAllBytes(new File("C:\\Users\\ND17613\\Documents\\NetBeansProjects\\GestorTurnos\\web\\resources\\images\\profile.png").toPath());
 
 //                InputStream input = new FileInputStream("profile.png");
 //                foto = IOUtils.toByteArray(input);
@@ -115,6 +125,7 @@ public class ControladorUsuarios implements Serializable {
             }
         }
 
+        //todas las variables toman el valor que se les ha dado en el formulario de inserción
         nombre = usuariActual.getNombre();
         sexo = usuariActual.getSexo();
         direccion = usuariActual.getDireccion();
@@ -128,6 +139,7 @@ public class ControladorUsuarios implements Serializable {
         fechaNacimiento = usuariActual.getFechaNacimiento();
         turno = usuariActual.getTurno();
 
+        //Se crea un usuario nuevo con todos los datos y se inserta en la BD
         Usuarios u = new Usuarios(dowId);
         u.setFoto(foto);
         u.setFechaIncorporacion(fechaIncorporacion);
@@ -144,6 +156,7 @@ public class ControladorUsuarios implements Serializable {
         u.setTurno(turno);
         serveiUsuarios.inserirUsuario(u);
 
+        //Se crea un campo en la tabla polivalencias con el nuevo usuario pero sin ningún dato extra 
         Polivalencias p = new Polivalencias(u);
         p.setA(false);
         p.setA1(false);
@@ -156,9 +169,14 @@ public class ControladorUsuarios implements Serializable {
         p.setPanelZC(false);
         p.setPanelZF(false);
         serveiPolivalencies.inserirPolivalencia(p);
-        return "/index1?faces-redirect=true";
+        
+        return "/index?faces-redirect=true";
     }
 
+    /**
+     * función para pasar información de un usuario de la BD a la web 
+     * @param u 
+     */
     private void passarUsuariosUsuariosDTO(Usuarios u) {
         usuariActual.setFechaIncorporacion(u.getFechaIncorporacion());
         usuariActual.setBajasPermisosList(u.getBajasPermisosList());
@@ -198,7 +216,7 @@ public class ControladorUsuarios implements Serializable {
     public String obtenirUsuarioFitxaUser(int id) {
         Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
-        return "ficha_usuari?faces-redirect=true";
+        return "Ficha_usuario?faces-redirect=true";
     }
 
     public String obtenirUsuarioFitxaAdmin(int id) {
@@ -222,9 +240,13 @@ public class ControladorUsuarios implements Serializable {
     public String obtenirUsuarioEliminacio(int id) {
         Usuarios u = serveiUsuarios.obtenirUsuario(id);
         passarUsuariosUsuariosDTO(u);
-        return "Eliminacio?faces-redirect=true";
+        return "Eliminar?faces-redirect=true";
     }
 
+    /**
+     * función para pasar informacón de un usuario de la web a la BD
+     * @param u 
+     */
     private void passarUsuarioDTOUsuario(Usuarios u) {
         byte[] foto = {0};
         u.setFechaIncorporacion(usuariActual.getFechaIncorporacion());
@@ -256,6 +278,10 @@ public class ControladorUsuarios implements Serializable {
 //        }
     }
 
+    /**
+     * función para pasar información de un usuario de la web a la BD
+     * @param u 
+     */
     private void passarUsuarioDTOUsuarioFoto(Usuarios u) {
         byte[] foto = {0};
         u.setFechaIncorporacion(usuariActual.getFechaIncorporacion());
@@ -275,7 +301,7 @@ public class ControladorUsuarios implements Serializable {
         u.setVacacionesHechas(usuariActual.getVacacionesHechas());
         u.setVacacionesPendientes(usuariActual.getVacacionesPendientes());
         //u.setIDusuarios(usuariActual.getiDusuarios());
-
+        
         try {
             foto = IOUtils.toByteArray(usuariActual.getArxiuFoto().getInputstream());
         } catch (IOException ex) {
@@ -299,7 +325,7 @@ public class ControladorUsuarios implements Serializable {
         Usuarios u = serveiUsuarios.obtenirUsuariDowId(id);
         passarUsuarioDTOUsuarioFoto(u);
         serveiUsuarios.modificarUsuario(u);
-        return "/index1?faces-redirect=true";
+        return "/index?faces-redirect=true";
 //        return "Ficha_su";
     }
 
@@ -308,7 +334,7 @@ public class ControladorUsuarios implements Serializable {
         Polivalencias p = serveiPolivalencies.obtenirPolivalenciaDowId(u.getDowID());
         serveiPolivalencies.eliminarPolivalencia(p.getIDpolivalencias());
         serveiUsuarios.eliminarUsuario(u.getDowID());
-        return "/index1?faces-redirect=true";
+        return "/index?faces-redirect=true";
     }
 
     public List<Usuarios> llistarUsuarios() {
@@ -319,6 +345,11 @@ public class ControladorUsuarios implements Serializable {
         return serveiUsuarios.llistarUsuariosAsc();
     }
 
+    /**
+     * función para determinar los años de antiguedad que lleva un usuario en la empresa pasandole por parámetro su año de incorporación
+     * @param incorporacion
+     * @return 
+     */
     public String añosAntiguedad(Date incorporacion) {
         int antiguedad = 0;
         if (incorporacion == null) {
@@ -334,6 +365,11 @@ public class ControladorUsuarios implements Serializable {
         }
     }
 
+    /**
+     * función que cambia la lista de departamentos en el formulario de inserción dependiendo de la planta que reciba por parametro
+     * @param planta
+     * @return 
+     */
     public List<String> departaments(String planta) {
         List<String> departament = new ArrayList<>();
         if (planta.equals("Cracker")) {
@@ -352,10 +388,38 @@ public class ControladorUsuarios implements Serializable {
         }
     }
 
+    /**
+     * función para formatear la fecha de incorporación de un usuario
+     * @return 
+     */
     public String fechaInc() {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String fechaInc = df.format(usuariActual.getFechaIncorporacion());
 
         return fechaInc;
     }
+
+    public int renderRole() {
+//        Map<String, Object> cookies = FacesContext.getCurrentInstance().getExternalContext().getRequestCookieMap();
+//        Cookie cookie = (Cookie) cookies.get("dowid");
+//        String dowid = cookie.getValue();
+//        Usuarios usuari = serveiUsuarios.obtenirUsuariDowId(dowid);
+        String role = "user";
+    
+        switch(role){
+            case "user":
+                return 1;
+                
+            case "rrhh":
+                return 2;
+               
+            case "admin":
+                return 3;
+                
+            case "su":
+                return 4;
+        }
+        return 0;
+    }   
+    
 }
