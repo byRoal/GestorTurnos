@@ -65,7 +65,7 @@
         {// code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.open("GET", "http://usmdlcdoww002.intranet.dow.com/common/components/userinfo/UserInfoXml.asp?UserID=me", false);
+        xmlhttp.open("GET", "resources/xml/UserInfoXml.xml", false);
         xmlhttp.send();
         xmlDoc = xmlhttp.responseXML;
         document.getElementById("welcome").innerHTML =

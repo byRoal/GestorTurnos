@@ -43,7 +43,7 @@
                             <h:outputText value="Fecha" />
                             <p:calendar pattern="dd/MM/yyyy" value="#{fecha}" />
                             <br/>
-                            <p:commandButton value="Modificar"  action="#{controladorPolivalencias.modificarPolivalencias(controladorUsuarios.usuariActual.dowID,polivalencia, fecha)}" update=":datos:polivalencies" oncomplete="PF('dlg1').hide();" />
+                            <p:commandButton value="Modificar"  action="#{controladorPolivalencias.modificarPolivalenciasAdmin(controladorUsuarios.usuariActual.dowID,polivalencia, fecha)}" update=":datos:polivalencies" oncomplete="PF('dlg1').hide();" />
                         </h:panelGrid>
                     </h:form>
                 </p:dialog>

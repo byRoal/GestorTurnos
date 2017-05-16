@@ -20,28 +20,28 @@
             <ui:define name="body">
                 <h:form>
                     <p:menubar>
-                        <p:submenu label="Usuarios" >
+                        <p:submenu label="Usuarios" rendered="#{controladorUsuarios.renderRole() eq 1}">
                             <p:menuitem value="Planilla" ajax="false" />
                             <p:menuitem value="Cuadrante" outcome="usuario/Cuadrante" ajax="false" />
                             <p:menuitem value="Ficha" ajax="false" outcome="usuario/SeleccionConsulta" />
                             <p:menuitem value="R y Vacaciones" ajax="false" />
                             <p:menuitem value="Calendario Laboral" ajax="false" outcome="usuario/CalendarioLaboral_usuario" />                            
                         </p:submenu>
-                        <p:submenu label="RRHH"  >
+                        <p:submenu label="RRHH" rendered="#{controladorUsuarios.renderRole() eq 2}">
                             <p:menuitem value="Planilla" ajax="false" />
                             <p:menuitem value="Cuadrante" ajax="false" outcome="RRHH/Cuadrante" />
                             <p:menuitem value="Ficha" ajax="false" outcome="RRHH/SeleccionConsulta" />
                             <p:menuitem value="R y Vacaciones" ajax="false"/>                            
                             <p:menuitem value="Calendario Laboral" ajax="false" outcome="RRHH/CalendarioLaboral_RRHH" />
                         </p:submenu>
-                        <p:submenu label="Administradores" >
+                        <p:submenu label="Administradores" rendered="#{controladorUsuarios.renderRole() eq 3}">
                             <p:menuitem value="Planilla" ajax="false" />
                             <p:menuitem value="Cuadrante" ajax="false" outcome="admin/Cuadrante" />
                             <p:menuitem value="Ficha" ajax="false" outcome="admin/SeleccionConsulta" />                          
                             <p:menuitem value="R y Vacaciones" ajax="false"  />
                             <p:menuitem value="Calendario Laboral" ajax="false" outcome="admin/CalendarioLaboral_admin" />                            
                         </p:submenu>
-                        <p:submenu label="Super Usuario" >
+                        <p:submenu label="Super Usuario" rendered="#{controladorUsuarios.renderRole() eq 4}">
                             <p:menuitem value="Planilla" ajax="false" outcome="superuser/Plantilla_su" />
                             <p:menuitem value="Cuadrante" ajax="false" outcome="superuser/Cuadrante" />
                             <p:menuitem value="Ficha" ajax="false" outcome="superuser/SeleccionConsulta" />                            

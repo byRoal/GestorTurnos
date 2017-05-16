@@ -1,0 +1,32 @@
+<MyData>
+<user>
+<uid>ND17613</uid>
+<cn>Cusido, Adria (A)</cn>
+<sn>Cusido</sn>
+<givenName>Adria</givenName>
+<initials>A</initials>
+<TenantCode>T001</TenantCode>
+<Company>Institut Francesc Vidal i Barraquer</Company>
+<Department>LHC TICA Tarragona North</Department>
+<postalAddress></postalAddress>
+<postalcode></postalcode>
+<co>SPAIN</co>
+<l>TARRAGONA NORTH</l>
+<st>CA</st>
+<c>ES</c>
+<Extension-Attribute-10></Extension-Attribute-10>
+<Telephone-Office2></Telephone-Office2>
+<Telephone-Home2></Telephone-Home2>
+<homephone></homephone>
+<secretary></secretary>
+<Telephone-Assistant></Telephone-Assistant>
+<physicalDeliveryOfficeName></physicalDeliveryOfficeName>
+<telephoneNumber></telephoneNumber>
+<facsimileTelephoneNumber></facsimileTelephoneNumber>
+<mobile></mobile>
+<pager></pager>
+<mail>ACusido@dow.com</mail>
+<mailto>mailto:ACusido@dow.com</mailto>
+<AdsPath>LDAP://dow.com/CN=Cusido\, Adria (A),OU=Contractors,OU=Dow Users,DC=dow,DC=com</AdsPath>
+</user>
+</MyData>

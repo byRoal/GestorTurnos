@@ -129,6 +129,10 @@ public class TornServei1 implements Serializable {
 
     }
 
+    /**
+     * función que calcula toda la secuencia de turnos durante el año deseado.
+     * @param any número de año del que se quiere calcular el cuadrante
+     */
     public void torn1(int any) {
         torns.clear();
         anyFinal.set(any, 0, 1);
@@ -190,6 +194,12 @@ public class TornServei1 implements Serializable {
         contaDies(seq6);
     }
 
+    /**
+     * función que calcula si el dia introducido es fin de semana, o si este figura en la tabla de fiestas/cursillos de la BD. En caso afirmativo es pintado rojo o verde. 
+     * @param dia dia de la fecha a consultar
+     * @param mes mes de la fecha a consultar
+     * @return String que determina el nombre del color cómo será pintado el dia
+     */
     public String capSetmana(int dia, int mes) {
         GregorianCalendar finde = new GregorianCalendar();
 
@@ -228,6 +238,10 @@ public class TornServei1 implements Serializable {
         }
     }
 
+    /**
+     * a partir de la secuencia de turnos determina la cantidad de horas/días que se hacen de los diferentes turnos 
+     * @param seq secuencia de turnos de un año completo
+     */
     private void contaDies(char[] seq) {
         final int HORES = 8;
         int diesM = 0, diesT = 0, diesN = 0, diesR = 0, diesMTNR = 0, diesTOT = 0, diesRF = 0, diesX = 0, diesO = 0, diesCurs = 10, diesRPres = 0;

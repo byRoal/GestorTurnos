@@ -43,7 +43,7 @@
                             <h:outputText value="Fecha" />
                             <p:calendar pattern="dd/MM/yyyy" value="#{fecha}" />
                             <br/>
-                            <p:commandButton value="Modificar"  action="#{controladorPolivalencias.modificarPolivalencias(controladorUsuarios.usuariActual.dowID,polivalencia, fecha)}" update=":datos:polivalencies" oncomplete="PF('dlg1').hide();" />
+                            <p:commandButton value="Modificar"  action="#{controladorPolivalencias.modificarPolivalenciasSU(controladorUsuarios.usuariActual.dowID,polivalencia, fecha)}" update=":datos:polivalencies" oncomplete="PF('dlg1').hide();" />
                         </h:panelGrid>
                     </h:form>
                 </p:dialog>
@@ -140,7 +140,7 @@
                             <h:outputText value="Fecha nueva:" />
                             <p:calendar pattern="dd/MM/yyyy" value="#{controladorUsuarios.usuariActual.fechaIncorporacion}" />
                             <br/>
-                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:fechaInc"  oncomplete="PF('dlg4').hide();" />
+                            <p:commandButton value="Modificar"  action="#{controladorUsuarios.modificarUsuario(controladorUsuarios.usuariActual.dowID)}" update=":datos:fechaInc :datos:antig"  oncomplete="PF('dlg4').hide();" />
                         </h:panelGrid>
                     </h:form>
                 </p:dialog>
@@ -307,7 +307,7 @@
                             <p:row>
                                 <p:column  style="font-weight: bold;width: 150px; height: 35px">Años antiguedad </p:column>
                                 <p:column  style="font-weight: bold;width: 150px">
-                                    <p:outputLabel value="#{controladorUsuarios.añosAntiguedad(controladorUsuarios.usuariActual.fechaIncorporacion)}" />
+                                    <p:outputLabel id="antig" value="#{controladorUsuarios.añosAntiguedad(controladorUsuarios.usuariActual.fechaIncorporacion)}" />
                                 </p:column>
                                 <p:column>
                                     <!--                                    <p:button style="padding-right: auto" value="Cambiar datos"></p:button>-->

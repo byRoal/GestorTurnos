@@ -22,7 +22,7 @@ import javax.persistence.PersistenceContext;
 @SessionScoped
 public class UsuariosFacade extends AbstractFacade<Usuarios> implements Serializable{
 
-    @PersistenceContext(unitName = "GestorTurnosPU")
+    @PersistenceContext(unitName = "GestorTurnosPU2")
     private EntityManager em;
 
     @Override

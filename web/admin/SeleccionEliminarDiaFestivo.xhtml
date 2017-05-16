@@ -27,8 +27,8 @@
                                 <f:selectItem itemLabel="-- Selecciona un dia festivo --" itemValue="" noSelectionOption="true" />
                                 <f:selectItems value="#{controladorDiasFestivos2.llistarDiasFestivos()}" var="diafest" itemValue="#{diafest.titulo}" />
                             </p:selectOneMenu>
-                            <p:commandButton value="Eliminar" 
-                                             action="#{controladorDiasFestivos2.obtenirDiasFestivosEliminacio(controladorDiasFestivos2.diasFestivosactual.titulo)}"
+                            <p:commandButton value="Eliminar" ajax="false"
+                                             action="#{controladorDiasFestivos2.obtenirDiasFestivosEliminacioAdmin(controladorDiasFestivos2.diasFestivosactual.titulo)}"
                                              icon="ui-icon-pencil" />
                         </h:panelGrid>
                         <p:separator/>

@@ -164,7 +164,14 @@ public class ControladorPolivalencias implements Serializable {
         p.setPanelOcteno(polivalenciasActual.getPanelOcteno());
     }
 
-    public String modificarPolivalencias(String dowId, String polivalencia, Date fecha) {
+    /**
+     * función que permite añadir una polivalencia y su fecha correspondiente al usuario deseado.
+     * @param dowId id del usuario
+     * @param polivalencia String que respresenta la polivalencia
+     * @param fecha fecha que determina cuando adquirio la polivalencia
+     * @return String que determina la página dónde se redireccionará al terminar
+     */
+    public String modificarPolivalenciasSU(String dowId, String polivalencia, Date fecha) {
 //        Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
         Polivalencias p = serveiPolivalencias.obtenirPolivalenciaDowId(dowId);
 
@@ -224,6 +231,74 @@ public class ControladorPolivalencias implements Serializable {
         serveiPolivalencias.modificarPolivalencia(p);
         return "Ficha_su";
     }
+    
+    /**
+     * función que permite añadir una polivalencia y su fecha correspondiente al usuario deseado.
+     * @param dowId id del usuario
+     * @param polivalencia String que respresenta la polivalencia
+     * @param fecha fecha que determina cuando adquirio la polivalencia
+     * @return String que determina la página dónde se redireccionará al terminar
+     */
+    public String modificarPolivalenciasAdmin(String dowId, String polivalencia, Date fecha) {
+//        Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
+        Polivalencias p = serveiPolivalencias.obtenirPolivalenciaDowId(dowId);
+
+        switch (polivalencia) {
+            case "1/11":
+                p.setA(true);
+                p.setFecha111(fecha);
+                break;
+
+            case "2":
+                p.setA1(true);
+                p.setFecha2(fecha);
+                break;
+
+            case "3":
+                p.setA2(true);
+                p.setFecha3(fecha);
+                break;
+
+            case "4/5/10":
+                p.setA3(true);
+                p.setFecha4510(fecha);
+                break;
+
+            case "6/7":
+                p.setA4(true);
+                p.setFecha67(fecha);
+                break;
+
+            case "8/9":
+                p.setA5(true);
+                p.setFecha89(fecha);
+                break;
+
+            case "Panel ZF":
+                p.setFechaPanelZF(fecha);
+                p.setPanelZF(true);
+                break;
+
+            case "Panel ZC":
+                p.setFechaPanelZF(fecha);
+                p.setPanelZC(true);
+                break;
+
+            case "Panel octeno":
+                p.setFechaPanelOcteno(fecha);
+                p.setPanelOcteno(true);
+                break;
+
+            case "Campo octeno":
+                p.setCampoOcteno(true);
+                p.setFechaCampoOcteno(fecha);
+                break;
+        }
+
+//        passarPolivalenciasDTOPolivalencias(p);
+        serveiPolivalencias.modificarPolivalencia(p);
+        return "Ficha_admin";
+    }
 
     public String eliminarPolivalencias(String dowId) {
         Usuarios usuari = serveiUsuarios.obtenirUsuario(dowId);
@@ -250,6 +325,11 @@ public class ControladorPolivalencias implements Serializable {
         return polis;
     }
 
+    /**
+     * función que devuelve una lista con las polivalencias y su respectivas fechas de un usuario determinado
+     * @param id id del usuario del qual se quiere obtener la lista
+     * @return lista de polivalencias con su fecha
+     */
     public List<String[]> llistarPoli(String id) {
         //boolean fi = false;
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
